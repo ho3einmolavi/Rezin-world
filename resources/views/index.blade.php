@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/slideshow-header/Gentium+Basic.css">
     <link rel="stylesheet" type="text/css" href="css/login-register/login-register.css">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    {{--<link rel="stylesheet" href="{{ asset('css/app.css') }}">--}}
 
 
 
@@ -58,7 +58,7 @@
 <!---->
 <script src="js/modernizr.min.js"></script>
 <!--login-register---->
-<script src="js/login-register/login-register.js"></script>
+<script src="/js/login-register/login-register.js"></script>
 
 
 </body>

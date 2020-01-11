@@ -4,9 +4,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+import Vue from 'vue'
 
-window.Vue = require('vue');
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter);
 
 /**
  * The following block of code may be used to automatically register your
@@ -26,6 +28,14 @@ Vue.component('main-footer', require('./components/main-footer.vue').default);
 Vue.component('index-content', require('./components/index-content.vue').default);
 Vue.component('index-products', require('./components/index-products.vue').default);
 Vue.component('index-information', require('./components/index-information.vue').default);
+Vue.component('app', require('./components/app.vue').default);
+Vue.component('products', require('./components/products.vue').default);
+Vue.component('another-header', require('./components/another-header.vue').default);
+
+
+const routes = [
+    {path: '/products' , component:require('./components/products.vue').default}
+];
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -33,6 +43,14 @@ Vue.component('index-information', require('./components/index-information.vue')
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
+const router = new VueRouter({
+    mode: 'history' ,
+    routes // short for `routes: routes`
+});
+
+
 const app = new Vue({
+    router ,
     el: '#app',
 });
