@@ -1,0 +1,121 @@
+
+
+
+.menu-responsive
+{
+  width: 33px;
+  height: 35px;
+  background:;
+  border-radius: 20%;
+ /* position: fixed;*/
+ position: relative;
+  top: 3px;
+  right: 0px;
+  box-shadow: 0 0 0 0 #393737,0 0 0 0 #393737;
+  transition: box-shadow 1.1s cubic-bezier(.19,1,.22,1);
+  z-index:2;
+}
+
+
+
+.hamburguer
+{
+  width: 23px;
+  height: 2px;
+  background: #c4bcbc;
+  position: relative;
+  top:18px;
+  right:5px;
+  display: block;
+  transition: .3s ease-in-out;
+}
+
+
+
+.hamburguer:before,
+.hamburguer:after
+{
+  content: '';
+  display: block;
+  background: #c4bcbc;
+  width: 23px;
+  height: 2px;
+  transition: .3s ease-in-out;
+  position: absolute;
+}
+
+.hamburguer:before
+{
+  top: -10px;
+}
+
+.hamburguer:after
+{
+  bottom: -10px;
+}
+
+.input-none
+{
+  display: none !important;
+}
+
+input:checked ~ label .hamburguer
+{
+  transform: rotate(45deg);
+}
+
+input:checked ~ label .hamburguer:before
+{
+  transform:rotate(90deg);
+  top:0;
+}
+
+input:checked ~ label .hamburguer:after
+{
+  transform: rotate(90deg);
+  bottom:0;
+}
+
+
+input:checked ~ label .menu-responsive
+{
+  box-shadow: 0 0 0 320vw rgba(80,80,80,.5), 0 0 0 740vh rgba(80,80,80,.5)
+}
+
+/*Apagar Estudando*/
+
+input:checked ~ .nav-nav
+{
+  opacity: 1;
+
+ 
+}
+
+ .nav-nav
+{
+  position: absolute;
+  top:160px;
+  /*left: 50%;*/
+  transform: translate(-50%,-50%);
+  list-style: none;
+z-index: 3;
+  opacity: 0;
+  transition: .25s .1s cubic-bezier(0,1.07,0,1.02);
+width: 135px;
+text-align: right;
+}
+
+.ttogle
+{
+  margin-bottom:0px;
+  color:#fff;
+  font-size: 15px;
+  text-decoration: none;
+  font-weight: bold;
+ 
+}
+
+.menu-responsive ul{
+  margin:0px;
+  padding:0px;
+}

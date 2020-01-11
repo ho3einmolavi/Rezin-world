@@ -1,0 +1,61 @@
+#number {
+  min-width: 70px;
+}
+#number:after {
+  height: 70px;
+  content: attr(data-content);
+}
+
+.bounce {
+  animation: changeLetter 0.4s linear alternate;
+}
+
+@keyframes changeLetter {
+  0% {
+    font-size: 15px;
+    -webkit-transform: rotate(5deg);
+  }
+  50% {
+    font-size: 20px;
+    -webkit-transform: rotate(-10deg);
+  }
+  100% {
+    font-size: 15px;
+    -webkit-transform: rotate(0deg);
+  }
+}
+.wrapper {
+  font-family: 'Lato', 'Lucida Grande', 'Lucida Sans Unicode', Tahoma, Sans-Serif;
+  font-size: 15px;
+  /*margin: 100px auto;*/
+  text-align: center;
+  width: 100%;
+  height: 100px;
+  user-select: none;
+  display: flex;
+  margin-top: 15px;
+}
+.wrapper div {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.control {
+  user-select: none;
+  cursor: pointer;
+  color: #ff424c;
+  border-radius: 60px;
+}
+
+@media (min-width: 320px) and (max-width: 576px){
+  .wrapper{
+    display: block;
+  }
+}
+
+
+@media (min-width: 576px) and (max-width: 768px){
+  .wrapper{
+    display: block;
+  }
+}

@@ -1,0 +1,189 @@
+
+
+.mySlides img {
+  vertical-align: middle;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+ 
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  /*position: absolute;*/
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+ margin-left: 71px;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0px;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+/*
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}*/
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #1c1a1a;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color:#e3dbdb;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.images-inside img{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+.images-inside{
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -30px;
+}
+
+
+@media (min-width: 320px) and (max-width: 576px){
+.mySlides img{
+  width: 285px;
+  height: 285px;
+  }
+  .mySlides{
+    width: 290px !important;
+  }
+  .images-inside img{
+    width: 50px;
+    height: 50px;
+  }
+  .card-main-left-like-between-left-buy{
+    display: none;
+  }
+  .images-inside{
+    margin-left: -10px;
+  }
+}
+
+
+@media (min-width: 576px) and (max-width: 768px){
+.mySlides img{
+  width: 285px;
+  height: 285px;
+  }
+  .mySlides{
+    width: 290px !important;
+  }
+  .images-inside img{
+    width: 50px;
+    height: 50px;
+  }
+  .card-main-left-like-between-left-buy{
+    display: none;
+  }
+  .images-inside{
+    margin-left: -10px;
+  }
+}
+
+@media (min-width:768px) and (max-width:960px){
+.card-main{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.mySlides img{
+  width: 250px;
+  height: 250px;
+}
+.mySlides{
+  width: 260px !important;
+}
+.prev, .next{
+  margin-left: 57px;
+}
+.images-inside img{
+  width: 48px;
+  height: 48px;
+}
+}
+
+@media (min-width:960px) and (max-width:1114px){
+.card-main{
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.mySlides img{
+  width: 250px;
+  height: 250px;
+}
+.mySlides{
+  width: 260px !important;
+}
+.prev, .next{
+  margin-left: 57px;
+}
+.images-inside img{
+  width: 48px;
+  height: 48px;
+}
+}
