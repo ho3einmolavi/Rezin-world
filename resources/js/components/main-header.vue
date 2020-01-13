@@ -234,10 +234,11 @@
                     </div>
                     <div class="col-10 col-sm-7 col-md-4 col-lg-6 col-xl-6 logo-search">
                         <div class="col-xs col col-sm col-md-12 col-lg col-xl delete-padding">
+
                             <div class="search-box">
                                 <form class="search-form">
-                                    <input class="form-control" placeholder="جستجو : محصول , گروه محصول" type="text">
-                                    <button class="btn btn-link search-btn">
+                                    <input class="form-control" v-model="title" @keypress.enter="search" placeholder="جستجو : محصول , گروه محصول" type="text">
+                                    <button @click="search" class="btn btn-link search-btn">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </form>
@@ -255,13 +256,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col col-sm col-md-12 col-lg col-xl header-main-bottom-span delete-res">
-                <a href="index.html"><span class="text-main title-4">  پیشنهاد محصول </span></a>
-                <a href=""><span class="text-main title-4"> جدیدترین آموزش ها </span></a>
-                <a href=""><span class="text-main title-4"> جدیدترین محصولات </span></a>
-                <a href=""><span class="text-main title-4"> نقاشی روی پارچه </span></a>
-                <a href=""><span class="text-main title-4"> زیورالات رینی </span></a>
-                <a href=""><span class="text-main title-4"> کلاس های اموزشی </span></a>
+            <div class="col col-sm col-md-12 col-lg col-xl header-main-bottom-span">
+                <a v-for="item in main_categories" :href="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></a>
             </div>
             <div class="col col-sm col-xs col-md col-lg col-xl-12 header-main-bottom-slideshow">
                 <!-- partial:index.partial.html -->
@@ -513,7 +509,36 @@
 
 <script>
     export default {
-        name: "main-header"
+        name: "main-header" ,
+
+        created() {
+            this.getCat();
+        } ,
+
+        data() {
+            return {
+                main_categories: [] ,
+                title: ''
+            }
+        } ,
+
+        methods: {
+            search() {
+                window.location = `/products/search/${this.title}`
+            } ,
+            getCat() {
+                axios({
+                    method: 'get' ,
+                    url: '/api/menu'
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.main_categories = res.data;
+                       // this.$emit('first-emit-cat' , this.main_categories);
+                    })
+                    .catch(err => console.log(err.response))
+            } ,
+        }
     }
 </script>
 

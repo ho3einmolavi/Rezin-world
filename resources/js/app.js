@@ -3,7 +3,7 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
+require('./bootstrap');
 import Vue from 'vue'
 
 import VueRouter from 'vue-router'
@@ -34,7 +34,10 @@ Vue.component('another-header', require('./components/another-header.vue').defau
 
 
 const routes = [
-    {path: '/products' , component:require('./components/products.vue').default}
+    // {path: '/products' , component:require('./components/products.vue').default},
+    {path: '/products/category/:id' ,name:'product' , meta:{title: 'محصولات'} ,component:require('./components/products.vue').default } ,
+    {path: '/products/search/:title',name:'product' , meta:{title: 'محصولات'} ,component:require('./components/products.vue').default } ,
+    {path: '/products/category/:main/second/:sec',name:'product' , meta:{title: 'محصولات'} ,component:require('./components/products.vue').default } ,
 ];
 
 /**

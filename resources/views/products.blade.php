@@ -28,25 +28,33 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/dropdown/dropdown.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/filter-price/filter-price.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/login-register/login-register.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/flat-ui/flat-ui.css') }}">
 
 </head>
 <body>
+
     <div id="app">
         <app></app>
     </div>
 
-<script src="{{ asset('js/app.js') }}"></script>
-<!--star-->
-<script  src="{{ asset('js/star/star.js') }}"></script>
-<!--bootstrap-->
-<script  src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
-<script  src="{{ asset('js/bootstrap/bootstrap.js') }}"></script>
-<!--sidebar-->
-<script src="{{ asset('js/sidebar-page-product/sidebar-page-product.js') }}"></script>
-<script  src="{{ asset('js/dropdown/dropdown.js') }}"></script>
-<!--filter-price-->
-<script src="{{ asset('js/filter-price/nouislider.min.js') }}"></script>
-<script  src="{{ asset('js/filter-price/filter-price.js') }}"></script>
-<script src="{{ asset('js/login-register/login-register.js') }}"></script>
+
+    <script src="{{ asset('js/app.js') }}"></script>
+    <!--star-->
+    <script  src="{{ asset('js/star/star.js') }}"></script>
+    <!--bootstrap-->
+    <script  src="{{ asset('js/bootstrap/bootstrap.min.js') }}"></script>
+    <script  src="{{ asset('js/bootstrap/bootstrap.js') }}"></script>
+    <!--sidebar-->
+    <script src="{{ asset('js/sidebar-page-product/sidebar-page-product.js') }}"></script>
+    <script  src="{{ asset('js/dropdown/dropdown.js') }}"></script>
+    <!--filter-price-->
+    <script src="{{ asset('js/filter-price/nouislider.min.js') }}"></script>
+    <script  src="{{ asset('js/filter-price/filter-price.js') }}"></script>
+    <script  src="{{ asset('js/flat-ui/flat-ui.js') }}"></script>
+
+
+    <script src="{{ asset('js/modernizr.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/login-register/login-register.js') }}"></script>
 </body>
 </html>

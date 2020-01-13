@@ -1,5 +1,7 @@
 <template>
     <div class="col col-sm col-md-12 col-lg col-xl  header-main delete-padding">
+
+        <!-------->
         <div class="col-md-12 header-main-top flex">
             <div class="col-xs col-1 col-sm-2 col-md col-lg-1 col-xl menu-res">
                 <input type="checkbox" id="menu-hamburguer" class="input-none">
@@ -34,89 +36,6 @@
                 <a href=""><span class="text-main title-4"> تماس با ما </span></a>
             </div>
             <div class="col-xs-6 col-6 col-sm-4 col-md-4 col-lg-3 col-xl header-main-top-left">
-                <!------>
-                <!--
-          <nav class="main-nav">
-              <ul>
-                  <li><a class="signup text-black title-4" href="#0">ثبت نام</a></li>
-                  <li><a class="signin text-black title-4" href="#0">ورود  </a></li>
-              </ul>
-          </nav>
-          <div class="user-modal is-visible">
-            <div class="user-modal-container">
-              <ul class="switcher">
-                <li>
-                  <a href="#0">ورود </a>
-                </li>
-                <li>
-                  <a href="#0">ساخت اکانت</a>
-                </li>
-              </ul>
-              <div id="login" class="">
-                <form class="form">
-                  <p  class="fieldset">
-                    <label for="signin-email" class="image-replace email">E-mail</label>
-                    <input id="signin-email" type="text" placeholder="شماره موبایل یا ایمیل خود را وارد کنید ..." class="full-width has-padding has-border">
-                    <span class="error-message">An account with this email address does not exist!</span>
-                  </p>
-                  <p class="fieldset">
-                    <label for="signin-password" class="image-replace password">Password</label>
-                    <input id="signin-password" type="password" placeholder="پسورد" class="full-width has-padding has-border">
-                    <a href="#0" class="hide-password">نمایش</a> <span class="error-message">Wrong password! Try again.</span>
-                  </p>
-
-                  <p class="fieldset">
-                    <input type="button" value="ورود" class="full-width auth-button">
-                  </p>
-                </form>
-                <p class="form-bottom-message">
-                  <a href="#0">رمز عبور خود را فراموش کرده اید ؟</a>
-                </p>
-              </div>
-              <div id="signup" class="is-selected">
-                <form class="form">
-                  <p class="fieldset">
-                    <label for="signin-email1" class="image-replace email">E-mail</label>
-                    <input id="signin-email1" type="email" placeholder="ایمیل" class="full-width has-padding has-border">
-                  </p>
-                  <p class="fieldset">
-                    <label for="signin-password1" class="image-replace password">Password</label>
-                    <input id="signin-password1" type="password" placeholder="رمز عبور" class="full-width has-padding has-border">
-                    <a href="#0" class="hide-password">نمایش</a>
-                  </p>
-                   <p class="fieldset">
-                    <label for="signin-password2" class="image-replace ">phone</label>
-                    <input id="signin-password2" type="text" placeholder="شماره همراه" class="full-width has-padding has-border">
-                  </p>
-                  <p class="fieldset">
-                    <input type="button" value="ثبت نام" class="full-width auth-button">
-                  </p>
-                </form>
-              </div>
-              <div id="reset-password">
-                <p class="form-message">Lost your password? Please enter your email address.
-               <br > You will receive a link to create a new password.
-               </p>
-               <form class="form">
-                <p class="fieldset">
-                  <label for="reset-email" class="image-replace email">E-mail</label>
-                  <input id="reset-email" type="email" placeholder="ایمیل" class="full-width has-padding has-border">
-                  <span class="error-message">An account with this email does not exist!
-                  </span>
-                </p>
-                <p class="fieldset">
-                  <input type="submit" value="Reset password" class="full-width has-padding">
-                </p>
-              </form>
-              <p class="form-bottom-message">
-                <a href="#0">Back to log-in</a>
-              </p>
-            </div>
-            <a href="#0" class="close-form">Close</a></div>
-          </div>-->
-                <!---->
-
-                <!-- partial:index.partial.html -->
                 <nav class="main-nav">
                     <ul>
                         <li><a class="signup" href="#0">ثبت نام   </a></li>
@@ -217,11 +136,15 @@
                 <!-- partial -->
             </div>
         </div>
+
+
+        <!---------------------->
+
         <div class="col col-sm col-md-12 col-lg col-xl-12 header-main-bottom-pages delete-padding">
             <div class="margin-top">
                 <div class="col col-sm col-md-12 col-lg col-xl header-main-bottom-search flex">
                     <div class="col col-sm col-md-2 col-lg col-xl-2 logo-site">
-                        <img src="img/header/payjoy.png">
+                        <img src="/img/header/payjoy.png">
                     </div>
                     <div class="logo-site-border">
                         <span> | </span>
@@ -233,8 +156,8 @@
                         <div class="col-xs col col-sm col-md-12 col-lg col-xl delete-padding">
                             <div class="search-box">
                                 <form class="search-form">
-                                    <input class="form-control" placeholder="جستجو : محصول , گروه محصول" type="text">
-                                    <button class="btn btn-link search-btn">
+                                    <input class="form-control" v-model="title" @keypress.enter="search" placeholder="جستجو : محصول , گروه محصول" type="text">
+                                    <button @click="search" class="btn btn-link search-btn">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </form>
@@ -252,13 +175,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col col-sm col-md-12 col-lg col-xl header-main-bottom-span delete-res">
-                <a href="index.html"><span class="text-main title-4">  پیشنهاد محصول </span></a>
-                <a href=""><span class="text-main title-4"> جدیدترین آموزش ها </span></a>
-                <a href=""><span class="text-main title-4"> جدیدترین محصولات </span></a>
-                <a href=""><span class="text-main title-4"> نقاشی روی پارچه </span></a>
-                <a href=""><span class="text-main title-4"> زیورالات رینی </span></a>
-                <a href=""><span class="text-main title-4"> کلاس های اموزشی </span></a>
+            <div class="col col-sm col-md-12 col-lg col-xl header-main-bottom-span table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
+                <a v-if="router === 'index'" v-for="item in main_categories"  :href="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></a>
+                <router-link v-if="router === 'products'" v-for="item in main_categories" v-bind:key="item.id"  :to="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></router-link>
+            </div>
+            <div class="col col-sm col-xs col-md col-lg col-xl-12 header-main-bottom-slideshow">
             </div>
         </div>
     </div>
@@ -266,7 +187,95 @@
 
 <script>
     export default {
-        name: "another-header"
+        name: "another-header" ,
+
+        created() {
+            this.getCat();
+            this.specifyTheRoute();
+        } ,
+
+        data() {
+            return {
+                main_categories: [] ,
+                router: '' ,
+                secondary_cats: [] ,
+                main_id: '' ,
+                title: ''
+            }
+        } ,
+
+        watch: {
+            '$route' (to , from) {
+                if (to.params.id)
+                {
+                    // this.productsByCat(this.$route.params.id , this.param);
+                    this.main_id = to.params.id;
+                    this.get_second(this.main_id);
+                }
+            }
+        } ,
+
+        methods: {
+            search() {
+               if (this.router === 'products')
+               {
+                   this.$router.push({ path: `/products/search/${this.title}` })
+               }
+                if (this.router === 'index')
+                {
+                    window.location = `/products/search/${this.title}`;
+                }
+            } ,
+            get_second(id) {
+                this.secondary_cats = [];
+                this.main_categories.forEach(item => {
+                    if (id == item.id)
+                    {
+                        this.secondary_cats = item
+                    }
+                });
+                this.$emit('first-emit-cat' , this.secondary_cats);
+            } ,
+
+            specifyTheRoute() {
+                if (this.$route.params.id)
+                {
+                    // this.productsByCat(this.$route.params.id , this.param);
+                    this.main_id = this.$route.params.id;
+                }
+                //
+                // if (this.$route.params.title)
+                // {
+                //     this.search(this.$route.params.title , this.param);
+                // }
+                //
+                // if (this.$route.params.sec)
+                // {
+                //     this.productsBySec(this.$route.params.main,this.$route.params.sec , this.param);
+                //     this.findBrands(this.$route.params.main);
+                // }
+               if (this.$route.name === 'product')
+               {
+                   this.router = 'products'
+               }
+               else if (this.$route.path === '/')
+               {
+                   this.router = 'index'
+               }
+            } ,
+            getCat() {
+                axios({
+                    method: 'get' ,
+                    url: '/api/menu'
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.main_categories = res.data;
+                        this.get_second(this.main_id);
+                    })
+                    .catch(err => console.log(err.response))
+            } ,
+        }
     }
 </script>
 
