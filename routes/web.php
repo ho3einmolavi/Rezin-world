@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'MainController@index');
 
+
 Route::get('/products/category/{any}' , 'MainController@mainCat')->name('main');
 Route::get('/products/category/{any}/second/{any1}' , 'MainController@mainCat')->name('second')->where(['any' => '.*' , 'any1' => '.*']);
 Route::get('/products/search/{any}' , 'MainController@mainCat')->name('search')->where('any' , '.*');

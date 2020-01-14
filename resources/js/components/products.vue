@@ -177,20 +177,17 @@
                     </div>
                     <!--end-slide-1-->
 
-                    <div class="col-xs col-sm col-12 col-md col-lg col-xl-12 pagination delete-padding-right z-index">
-                        <ul>
-                            <li class="previous"><a href="#fakelink" class="fas fa-chevron-left"></a></li>
-                            <li class="active"><a href="#fakelink">1</a></li>
-                            <li class=""><a href="#fakelink">2</a></li>
-                            <li class=""><a href="#fakelink">3</a></li>
-                            <li class=""><a href="#fakelink">4</a></li>
-                            <li class=""><a href="#fakelink">5</a></li>
-                            <li class=""><a href="#fakelink">6</a></li>
-                            <li class=""><a href="#fakelink">7</a></li>
-                            <li class=""><a href="#fakelink">8</a></li>
-                            <li class="next"><a href="#fakelink" class="fas fa-chevron-right"></a></li>
-                        </ul>
+                    <!--pagination-->
+                    <div class="col col-sm col-xs col-md- col-lg- col-xl-12 pagination-admin">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item" v-bind:class="[{disabled: !pagination.prev}]"><a class="page-link" @click="fetchProducts(pagination.prev)">قبلی</a></li>
+                                <li class="page-item"><a class="page-link" >{{pagination.current}} از {{pagination.last}}</a></li>
+                                <li class="page-item" v-bind:class="[{disabled: !pagination.next}]"><a class="page-link" @click="fetchProducts(pagination.next)">بعدی</a></li>
+                            </ul>
+                        </nav>
                     </div>
+
 
                 </div>
                 <div class="col col-sm col-xs col-md- col-lg- col-xl-12 adds-box delete-padding">
@@ -345,7 +342,9 @@
                 secondary_cats: [] ,
                 products: [] ,
                 ok: '' ,
-                param: 'newest'
+                param: 'newest' ,
+                pagination: [] ,
+                searchflag: 0
             }
         } ,
 
@@ -359,12 +358,13 @@
 
                else if (to.params.title)
                {
+
                    this.search(to.params.title , this.param);
                }
 
                else
                {
-                   this.productsBySec(to.params.main, this.$route.params.sec, this.param);
+                   this.productsBySec(to.params.main, to.params.sec, this.param);
                    // this.findBrands(this.$route.params.main);
                }
            }
@@ -392,7 +392,83 @@
         } ,
 
         methods: {
+            makePagination(obj) {
+                this.pagination = {
+                    next: obj.next_page_url,
+                    last: obj.last_page,
+                    prev: obj.prev_page_url,
+                    current: obj.current_page
+                };
+
+                console.log(this.pagination)
+            } ,
+
+            fetchProducts(url) {
+                if (this.searchflag)
+                {
+                    axios({
+                        url: `${url}` ,
+                        method: 'post' ,
+                        data: {
+                            title: this.$route.params.title
+                        }
+                    })
+                        .then(res => {
+                            this.ok = 1;
+                            console.log(res);
+                            this.orderedProducts(res.data.data);
+                            this.makePagination(res.data);
+                        })
+                        .catch(err => {
+                            console.log(err.response);
+                            this.ok = 0;
+                            this.products = [];
+                            this.pro = [];
+                        })
+                }
+                else
+                {
+                    axios({
+                        url: `${url}` ,
+                        method: 'get' ,
+                    })
+                        .then(res => {
+                            this.ok = 1;
+                            console.log(res);
+                            this.orderedProducts(res.data.data);
+                            this.makePagination(res.data);
+                        })
+                        .catch(err => {
+                            console.log(err.response);
+                            this.ok = 0;
+                            this.products = [];
+                            this.pro = [];
+                        })
+                }
+
+            } ,
+            orderedProducts(obj) {
+
+               let arr = [];
+               this.products = [];
+
+               for (let i = 0, k = 0; i < Math.ceil(obj.length / 4); i++ , k += 4)
+               {
+                   arr = [];
+                   for (let j = k; j < k + 4 ; j++)
+                   {
+
+                        if (obj[j])
+                        {
+                            arr.push(obj[j]);
+                            this.products[i] = arr;
+                        }
+                   }
+               }
+            } ,
+
             productsBySec(main , sec , param) {
+                this.searchflag = 0;
                 axios({
                     url: `/api/filters/category/${main}/${sec}/${param}` ,
                     method: 'get' ,
@@ -400,8 +476,8 @@
                     .then(res => {
                         this.ok = 1;
                         console.log(res);
-                        this.products = res.data;
-
+                        this.orderedProducts(res.data.data);
+                        this.makePagination(res.data);
                     })
                     .catch(err => {
                         console.log(err.response);
@@ -411,6 +487,7 @@
                     })
             } ,
             search(title , param) {
+                this.searchflag = 1;
                 axios({
                     url: `/api/search/${param}` ,
                     method: 'post' ,
@@ -421,7 +498,8 @@
                     .then(res => {
                         this.ok = 1;
                         console.log(res);
-                        this.products = res.data;
+                        this.orderedProducts(res.data.data);
+                        this.makePagination(res.data);
                     })
                     .catch(err => {
                         console.log(err.response);
@@ -431,6 +509,7 @@
                     })
             },
             productsByCat(id , param) {
+                this.searchflag = 0;
                 axios({
                     url: `/api/filters/category/${id}/${param}` ,
                     method: 'get' ,
@@ -438,7 +517,8 @@
                     .then(res => {
                         this.ok = 1;
                         console.log(res);
-                        this.products = res.data;
+                        this.orderedProducts(res.data.data);
+                        this.makePagination(res.data);
                     })
                     .catch(err => {
                         console.log(err.response);

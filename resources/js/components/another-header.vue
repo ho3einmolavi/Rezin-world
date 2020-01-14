@@ -12,7 +12,7 @@
                 </label>
                 <nav class="nav-nav">
                     <ul>
-                        <li><a href="index.html" class="ttogle">صفحه اصلی </a></li>
+                        <li><a href="/" class="ttogle">صفحه اصلی </a></li>
                         <li><a href="login.html" class="ttogle">ورود </a></li>
                         <li><a href="register.html" class="ttogle">ثبت نام</a></li>
                         <li><a href="index.html" class="ttogle">محاسبه قیمت </a></li>
@@ -28,7 +28,7 @@
                 <img src="img/header/payjoy.png">
             </div>
             <div class="col-xs-6 col-5 col-sm-6 col-md-8 col-lg col-xl-10 header-main-top-right delete-res">
-                <a href="index.html"><span class="text-main title-4">  صفحه اصلی </span></a>
+                <a href="/"><span class="text-main title-4">  صفحه اصلی </span></a>
                 <a href="product-html"><span class="text-main title-4"> دسته بندی ها </span></a>
                 <a href=""><span class="text-main title-4"> تعرفه ها  </span></a>
                 <a href=""><span class="text-main title-4">  وبلاگ </span></a>
@@ -139,7 +139,6 @@
 
 
         <!---------------------->
-
         <div class="col col-sm col-md-12 col-lg col-xl-12 header-main-bottom-pages delete-padding">
             <div class="margin-top">
                 <div class="col col-sm col-md-12 col-lg col-xl header-main-bottom-search flex">
@@ -177,6 +176,7 @@
             </div>
             <div class="col col-sm col-md-12 col-lg col-xl header-main-bottom-span table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
                 <a v-if="router === 'index'" v-for="item in main_categories"  :href="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></a>
+                <a v-if="router === 'admin'" v-for="item in main_categories"  :href="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></a>
                 <router-link v-if="router === 'products'" v-for="item in main_categories" v-bind:key="item.id"  :to="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></router-link>
             </div>
             <div class="col col-sm col-xs col-md col-lg col-xl-12 header-main-bottom-slideshow">
@@ -211,6 +211,10 @@
                     // this.productsByCat(this.$route.params.id , this.param);
                     this.main_id = to.params.id;
                     this.get_second(this.main_id);
+                }
+                if (to.params.sec)
+                {
+                    this.main_id = to.params.main;
                 }
             }
         } ,
@@ -249,11 +253,10 @@
                 //     this.search(this.$route.params.title , this.param);
                 // }
                 //
-                // if (this.$route.params.sec)
-                // {
-                //     this.productsBySec(this.$route.params.main,this.$route.params.sec , this.param);
-                //     this.findBrands(this.$route.params.main);
-                // }
+                if (this.$route.params.sec)
+                {
+                    this.main_id = this.$route.params.main;
+                }
                if (this.$route.name === 'product')
                {
                    this.router = 'products'
@@ -261,6 +264,10 @@
                else if (this.$route.path === '/')
                {
                    this.router = 'index'
+               }
+               else if (this.$route.name === 'admin')
+               {
+                   this.router = 'admin'
                }
             } ,
             getCat() {

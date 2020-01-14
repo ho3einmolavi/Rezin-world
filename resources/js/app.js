@@ -31,13 +31,17 @@ Vue.component('index-information', require('./components/index-information.vue')
 Vue.component('app', require('./components/app.vue').default);
 Vue.component('products', require('./components/products.vue').default);
 Vue.component('another-header', require('./components/another-header.vue').default);
-
+Vue.component('admin', require('./components/admin.vue').default);
+Vue.component('admin-dashboard-res', require('./components/admin-dashboard-res.vue').default);
+Vue.component('admin-dashboard', require('./components/admin-dashboard.vue').default);
+Vue.component('add-products', require('./components/add-products.vue').default);
 
 const routes = [
     // {path: '/products' , component:require('./components/products.vue').default},
     {path: '/products/category/:id' ,name:'product' , meta:{title: 'محصولات'} ,component:require('./components/products.vue').default } ,
     {path: '/products/search/:title',name:'product' , meta:{title: 'محصولات'} ,component:require('./components/products.vue').default } ,
     {path: '/products/category/:main/second/:sec',name:'product' , meta:{title: 'محصولات'} ,component:require('./components/products.vue').default } ,
+    {path: '/admin/add-product',name:'admin',component:require('./components/add-products.vue').default } ,
 ];
 
 /**

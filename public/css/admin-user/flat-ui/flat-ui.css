@@ -732,7 +732,7 @@ fieldset[disabled] .btn-default.active {
 
 .btn-primary {
   color: white;
-  background-color: #128681;
+  background-color: #ff7a76 !important;
   font-family: irs;
 }
 
@@ -2481,7 +2481,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
 }
 
 .pagination li.active > a, .pagination li.active > span {
-  background-color: #ff7a76;
+  background-color:#ff7a76;
   color: white;
   border-color: #dee2e5;
 }
@@ -2491,7 +2491,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
 }
 
 .pagination li.active.previous > a, .pagination li.active.previous > a:hover, .pagination li.active.previous > a:focus, .pagination li.active.previous > span, .pagination li.active.previous > span:hover, .pagination li.active.previous > span:focus, .pagination li.active.next > a, .pagination li.active.next > a:hover, .pagination li.active.next > a:focus, .pagination li.active.next > span, .pagination li.active.next > span:hover, .pagination li.active.next > span:focus {
-  background-color: #ff7a76;
+  background-color: #128681;
   color: white;
 }
 
@@ -2569,8 +2569,8 @@ fieldset[disabled] .input-group-btn .btn-default.active {
   display: inline-block;
   background: transparent;
   border: none;
-  border-left: 2px solid white;
-  color: #ff7a76;
+  border-left: 2px solid #e4e7ea;
+  color: white;
   font-size: 14px;
   line-height: 16px;
   min-height: 41px;
@@ -2584,13 +2584,13 @@ fieldset[disabled] .input-group-btn .btn-default.active {
 .pagination li > a:hover, .pagination li > a:focus,
 .pagination li > span:hover,
 .pagination li > span:focus {
-  background-color: #ff7a76;
+  background-color: #128681;
   color: white;
 }
 
 .pagination li > a:active,
 .pagination li > span:active {
-  background-color: #ff7a76;
+  background-color: #1abc9c;
   color: white;
 }
 

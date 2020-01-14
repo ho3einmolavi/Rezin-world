@@ -244,33 +244,34 @@ class ProductController extends Controller
 
         if ($param == 'newest')
         {
-            $cat = $cat->products()->orderBy('id' , 'DESC')->get();
+            $cat = $cat->products()->orderBy('id' , 'DESC');
         }
 
         else if ($param == 'cheaper')
         {
-            $cat = $cat->products()->orderBy('final_price' , 'ASC')->get();
+            $cat = $cat->products()->orderBy('final_price' , 'ASC');
         }
 
         else if ($param == 'the-most-expensive')
         {
-            $cat = $cat->products()->orderBy('final_price' , 'DESC')->get();
+            $cat = $cat->products()->orderBy('final_price' , 'DESC');
         }
 
-        else $cat = $cat->products;
+        else $cat = $cat->products();
 
-        $LNG = ceil(count($cat) / 4);
-        $arr = [];
-        for ($i = 0, $k = 0; $i < $LNG; $i++, $k += 4) {
-            for ($j = $k; $j < $k + 4; $j++)
-            {
-                if (isset($cat[$j]))
-                {
-                    $arr[$i][] = $cat[$j];
-                }
-            }
-        }
-        return response()->json($arr);
+//        $LNG = ceil(count($cat) / 4);
+//        $arr = [];
+//        for ($i = 0, $k = 0; $i < $LNG; $i++, $k += 4) {
+//            for ($j = $k; $j < $k + 4; $j++)
+//            {
+//                if (isset($cat[$j]))
+//                {
+//                    $arr[$i][] = $cat[$j];
+//                }
+//            }
+//        }
+
+        return response()->json($cat->paginate(12));
     }
 
     public function search(Request $request , Product $product , $param)
@@ -289,36 +290,36 @@ class ProductController extends Controller
 
         if ($param == 'newest')
         {
-            $product = $product->orderBy('id' , 'DESC')->get();
+            $product = $product->orderBy('id' , 'DESC');
         }
 
         else if ($param == 'cheaper')
         {
-            $product = $product->orderBy('final_price' , 'ASC')->get();
+            $product = $product->orderBy('final_price' , 'ASC');
         }
 
         else if ($param == 'the-most-expensive')
         {
-            $product = $product->orderBy('final_price' , 'DESC')->get();
+            $product = $product->orderBy('final_price' , 'DESC');
         }
 
-        else $product = $product->latest()->get();
+        else $product = $product->latest();
 
 
-        $LNG = ceil(count($product) / 4);
-        $arr = [];
-        for ($i = 0, $k = 0; $i < $LNG; $i++, $k += 4) {
-            for ($j = $k; $j < $k + 4; $j++)
-            {
-                if (isset($product[$j]))
-                {
-                    $arr[$i][] = $product[$j];
-                }
-            }
-        }
+//        $LNG = ceil(count($product) / 4);
+//        $arr = [];
+//        for ($i = 0, $k = 0; $i < $LNG; $i++, $k += 4) {
+//            for ($j = $k; $j < $k + 4; $j++)
+//            {
+//                if (isset($product[$j]))
+//                {
+//                    $arr[$i][] = $product[$j];
+//                }
+//            }
+//        }
 
         //return results
-        return response()->json($arr);
+        return response()->json($product->paginate(12));
     }
 
     public function productsBySecondCat($main , $sec , $param)
@@ -337,35 +338,33 @@ class ProductController extends Controller
 
         if ($param == 'newest')
         {
-            $products = $products->orderBy('id' , 'DESC')->get();
+            $products = $products->orderBy('id' , 'DESC');
         }
 
         else if ($param == 'cheaper')
         {
-            $products = $products->orderBy('final_price' , 'ASC')->get();
+            $products = $products->orderBy('final_price' , 'ASC');
         }
 
         else if ($param == 'the-most-expensive')
         {
-            $products = $products->orderBy('final_price' , 'DESC')->get();
+            $products = $products->orderBy('final_price' , 'DESC');
         }
 
-        else $products = $products->get();
-
-        $LNG = ceil(count($products) / 4);
-        $arr = [];
-        for ($i = 0, $k = 0; $i < $LNG; $i++, $k += 4) {
-            for ($j = $k; $j < $k + 4; $j++)
-            {
-                if (isset($products[$j]))
-                {
-                    $arr[$i][] = $products[$j];
-                }
-            }
-        }
+//        $LNG = ceil(count($products) / 4);
+//        $arr = [];
+//        for ($i = 0, $k = 0; $i < $LNG; $i++, $k += 4) {
+//            for ($j = $k; $j < $k + 4; $j++)
+//            {
+//                if (isset($products[$j]))
+//                {
+//                    $arr[$i][] = $products[$j];
+//                }
+//            }
+//        }
 
         //return results
-        return response()->json($arr);
+        return response()->json($products->paginate(12));
     }
 
     public function newProductsForApp()

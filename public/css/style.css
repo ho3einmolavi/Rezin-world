@@ -13,6 +13,10 @@ body{
 	padding:0px;
 	direction:rtl;
 }
+.custom-file-label {
+	line-height: 1.7 !important;
+	padding: .375rem 4.75rem !important;
+}
 /*//////////[delete-padding-of-bootstrap]////////////////////*/
 .delete-padding{
 	padding-right: 0px !important;
@@ -526,6 +530,13 @@ display: none;
 }
 /*//////////////////product/////////////////////*/
 /*////product-rezin/////*/
+
+.pagination-admin {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
 .product-rezin-all{
 	height: auto;
 }
