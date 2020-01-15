@@ -5,8 +5,10 @@
  */
 require('./bootstrap');
 import Vue from 'vue'
-
 import VueRouter from 'vue-router'
+import Toasted from 'vue-toasted';
+
+Vue.use(Toasted);
 
 Vue.use(VueRouter);
 
@@ -35,13 +37,40 @@ Vue.component('admin', require('./components/admin.vue').default);
 Vue.component('admin-dashboard-res', require('./components/admin-dashboard-res.vue').default);
 Vue.component('admin-dashboard', require('./components/admin-dashboard.vue').default);
 Vue.component('add-products', require('./components/add-products.vue').default);
+Vue.component('add-category', require('./components/add-category.vue').default);
+Vue.component('add-discount', require('./components/add-discount.vue').default);
+Vue.component('add-slide-show', require('./components/add-slide-show.vue').default);
+Vue.component('edit-product', require('./components/edit-product.vue').default);
+Vue.component('category-list', require('./components/category-list.vue').default);
+Vue.component('users', require('./components/users.vue').default);
+Vue.component('orders-list', require('./components/orders-list.vue').default);
+Vue.component('admin-order-details', require('./components/admin-order-details.vue').default);
+Vue.component('products-list', require('./components/products-list.vue').default);
+Vue.component('setting', require('./components/setting.vue').default);
+Vue.component('edit-baners', require('./components/edit-baners.vue').default);
+Vue.component('admin-content', require('./components/admin-content.vue').default);
+
+
+
 
 const routes = [
     // {path: '/products' , component:require('./components/products.vue').default},
     {path: '/products/category/:id' ,name:'product' , meta:{title: 'محصولات'} ,component:require('./components/products.vue').default } ,
     {path: '/products/search/:title',name:'product' , meta:{title: 'محصولات'} ,component:require('./components/products.vue').default } ,
     {path: '/products/category/:main/second/:sec',name:'product' , meta:{title: 'محصولات'} ,component:require('./components/products.vue').default } ,
+    {path: '/product/:productID' ,name: 'admin', component:require('./components/edit-product.vue').default } ,
+    {path: '/admin/categories-list',name:'admin',component:require('./components/category-list.vue').default } ,
     {path: '/admin/add-product',name:'admin',component:require('./components/add-products.vue').default } ,
+    {path: '/admin/add-category',name:'admin',component:require('./components/add-category.vue').default } ,
+    {path: '/admin/add-discount',name:'admin',component:require('./components/add-discount.vue').default } ,
+    {path: '/admin/add-slideShow',name:'admin',component:require('./components/add-slide-show.vue').default } ,
+    {path: '/admin/users',name:'admin',component:require('./components/users.vue').default } ,
+    {path: '/admin/orders-list',name:'admin',component:require('./components/orders-list.vue').default } ,
+    {path: '/admin/adminOrdersDetails/:ID',name:'admin',component:require('./components/admin-order-details.vue').default } ,
+    {path: '/admin/products-list',name:'admin',component:require('./components/products-list.vue').default } ,
+    {path: '/admin/setting',name:'admin',component:require('./components/setting.vue').default } ,
+    {path: '/admin/edit-baners',name:'admin',component:require('./components/edit-baners.vue').default } ,
+
 ];
 
 /**

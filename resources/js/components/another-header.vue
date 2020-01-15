@@ -223,11 +223,26 @@
             search() {
                if (this.router === 'products')
                {
-                   this.$router.push({ path: `/products/search/${this.title}` })
+                   if (this.title === '')
+                   {
+                       this.$router.push({ path: `/products/search/_` })
+                   }
+                   else
+                   {
+                       this.$router.push({ path: `/products/search/${this.title}` })
+                   }
+
                }
                 if (this.router === 'index')
                 {
-                    window.location = `/products/search/${this.title}`;
+                    if (this.title === '')
+                    {
+                        window.location = `/products/search/_`;
+                    }
+                    else
+                    {
+                        window.location = `/products/search/${this.title}`;
+                    }
                 }
             } ,
             get_second(id) {
@@ -278,6 +293,7 @@
                     .then(res => {
                         console.log(res);
                         this.main_categories = res.data;
+                        this.$emit('mainCategories' , this.main_categories);
                         this.get_second(this.main_id);
                     })
                     .catch(err => console.log(err.response))

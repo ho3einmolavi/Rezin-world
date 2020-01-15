@@ -163,7 +163,7 @@
                                         <div class="col col-sm col-xs col-md- col-lg- col-xl-9 product-page-left-slider-inside-box-bottom-bottom-price delete-padding">
                                             <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-off">
                                                 <span class="price-none text-black title-4">{{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</span>
-                                                <span class="box-offer"> %{{(1 - product.discount) * 100}} </span>
+                                                <span class="box-offer"> %{{Math.round((1 - product.discount) * 100)}} </span>
                                             </div>
                                             <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-none">
                                                 <span class="">  {{product.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}<span class=""> تومان  </span> </span>
@@ -173,7 +173,6 @@
                                 </div>
                             </a>
                         </div>
-
                     </div>
                     <!--end-slide-1-->
 
@@ -320,8 +319,6 @@
                 <!--end-slide-4-->
             </div>
 
-
-
             <!--end-product-main-->
 
         </div>
@@ -399,8 +396,6 @@
                     prev: obj.prev_page_url,
                     current: obj.current_page
                 };
-
-                console.log(this.pagination)
             } ,
 
             fetchProducts(url) {

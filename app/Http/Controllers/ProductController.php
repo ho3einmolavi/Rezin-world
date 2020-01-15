@@ -90,8 +90,9 @@ class ProductController extends Controller
     {
         $validata = Validator::make($request->all() , [
             'title' => 'required' ,
-            'third_category_id' => 'required' ,
+            'secondary_category_id' => 'required' ,
             'price' => 'required' ,
+            'discount' => 'nullable|numeric|min:0|max:1'
         ]);
 
         if ($validata->fails())
@@ -99,7 +100,7 @@ class ProductController extends Controller
             return new JsonResponse($validata->errors()->all() , 400);
         }
 
-        $cat = ThirdCategory::find($request->third_category_id);
+        $cat = SecondaryCategory::find($request->secondary_category_id);
         if (! is_null($cat))
         {
             if ($request->has('product_img') && $request->product_img != null && $request->product_img != '')
@@ -115,8 +116,7 @@ class ProductController extends Controller
                     'discount' => $request->discount ,
                     'brand_id' => $request->brand_id ,
                     'main_category_id' => $cat->main->id ,
-                    'secondary_category_id' => $cat->second->id,
-                    'third_category_id' => $cat->id ,
+                    'secondary_category_id' => $cat->id,
                     'description' => $request->description ,
                     'product_img' => $name2 ,
                 ]);
@@ -131,8 +131,7 @@ class ProductController extends Controller
                     'discount' => $request->discount ,
                     'brand_id' => $request->brand_id ,
                     'main_category_id' => $cat->main->id ,
-                    'secondary_category_id' => $cat->second->id,
-                    'third_category_id' => $cat->id ,
+                    'secondary_category_id' => $cat->id,
                     'description' => $request->description ,
                 ]);
             }

@@ -1,22 +1,30 @@
 <template>
     <div>
-        <another-header></another-header>
-        <section>
-            <center>
-                <div class="col-xs col-sm col col-md col-lg col-xl-12 dashboard-page flex">
-                    <admin-dashboard></admin-dashboard>
-                    <admin-dashboard-res></admin-dashboard-res>
-                    <router-view></router-view>
-                </div>
-            </center>
-        </section>
+        <another-header @mainCategories="get_second($event)"></another-header>
+        <admin-content :main="mainCat"></admin-content>
         <main-footer></main-footer>
     </div>
 </template>
 
 <script>
     export default {
-        name: "admin"
+        name: "admin" ,
+
+        data() {
+            return {
+                mainCat: []
+            }
+        } ,
+
+        methods: {
+            get_second(event) {
+                event.forEach(item => {
+                    item.second.forEach( value => {
+                        this.mainCat.push(value)
+                    })
+                });
+            }
+        }
     }
 </script>
 

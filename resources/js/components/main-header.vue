@@ -518,13 +518,21 @@
         data() {
             return {
                 main_categories: [] ,
-                title: ''
+                title: '_'
             }
         } ,
 
         methods: {
             search() {
-                window.location = `/products/search/${this.title}`
+                if (this.title === '')
+                {
+                    window.location = `/products/search/_`
+                }
+                else
+                {
+                    window.location = `/products/search/${this.title}`
+                }
+
             } ,
             getCat() {
                 axios({
