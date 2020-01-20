@@ -18,8 +18,8 @@
 
                     <div class="form-group col-xs col-sm col-10 col-md col-lg col-xl-12">
                         <label for="inputState1">دسته بندی محصول</label>
-                        <select id="inputState1" class="form-control form-option select-size" v-model="main_id">
-                            <option v-for="item in thirds" v-bind:key="item.id" :value="item.id">
+                        <select id="inputState1" @click="getCategorybrands(main_id)" class="form-control form-option select-size" v-model="main_id">
+                            <option v-for="item in second_categories" v-bind:key="item.id" :value="item">
                                 {{item.name}}
                             </option>
                         </select>
@@ -27,7 +27,7 @@
                     <div class="form-group col-xs col-sm col-10 col-md col-lg col-xl-12">
                         <label for="inputState">برند محصول را انتخاب کنید</label>
                         <select id="inputState" class="form-control form-option select-size" v-model="brand_id">
-                            <option v-for="br in brands" v-bind:key="br.id" :value="br.id">{{br.name}}</option>
+                            <option v-for="br in category_brands" v-bind:key="br.id" :value="br.id">{{br.name}}</option>
                         </select>
                     </div>
                     <div class="form-group col-xs col-sm col-10 col-md col-lg col-xl-12">
@@ -51,6 +51,9 @@
 
                     <button class="btn btn-primary" type="button" v-on:click="edit($route.params.productID)" style="margin-top: 30px;font-size: 13px;margin-right: 20px;"> افزودن محصول </button>
                 </form>
+                <div class="progress" style="margin-top: 10px">
+                    <div class="progress-bar" role="progressbar" :style="'width:'+ percent + '%'" :aria-valuenow="percent" aria-valuemin="0" aria-valuemax="100">{{percent}}%</div>
+                </div>
             </div>
         </div>
     </div>
@@ -63,16 +66,17 @@
         created() {
             console.log("add-product-content component");
             this.get_brands();
-            this.get_third_cats();
             this.get_product(this.$route.params.productID);
 
         } ,
 
+        props: ['second_categories'] ,
+
         data() {
             return {
-                thirds: [] ,
+                percent: 0 ,
                 brands: [] ,
-                main_id: '' ,
+                main_id: '',
                 title: '' ,
                 description: '' ,
                 price: '' ,
@@ -80,6 +84,7 @@
                 discount: '' ,
                 number: '' ,
                 img: '' ,
+                category_brands: [] ,
                 product: {
                     title: '' ,
                     description: '' ,
@@ -91,17 +96,27 @@
         } ,
 
         methods: {
+            getCategorybrands(category) {
+                this.category_brands = [];
+                this.brands.forEach(item => {
+                    if (item.main_category_id === category.main_category_id)
+                    {
+                        this.category_brands.push(item)
+                    }
+                })
+            } ,
             handle() {
                 this.img = this.$refs.img.files[0];
             } ,
             edit(id) {
+                this.percent = 0;
                 let file = this.img;
                 if (file !== '' && file !== null)
                 {
                     let data = new FormData();
                     data.append('title' , this.product.title);
                     data.append('description' , this.product.description);
-                    data.append('third_category_id' , this.main_id);
+                    data.append('secondary_category_id' , this.main_id.id);
                     data.append('price' , this.product.price);
                     data.append('brand_id' , this.brand_id);
                     data.append('discount' , (100 - this.discount) / 100);
@@ -110,11 +125,14 @@
                     axios({
                         url: `/api/product/edit/${id}` ,
                         method: 'post' ,
-                        data: data
+                        data: data ,
+                        onUploadProgress: uploadEvent => {
+                            this.percent = Math.round(uploadEvent.loaded / uploadEvent.total * 100);
+                        }
                     })
                         .then(res => {
                             console.log(res);
-                            this.brands = res.data;
+                            this.product = res.data;
                             this.$toasted.success('تغییرات با موفقیت اعمال شد' , {
                                 position: 'bottom-center' ,
                                 theme: 'bubble' ,
@@ -124,12 +142,14 @@
                         })
                         .catch(err => {
                             console.log(err.response);
-                            this.$toasted.error(err.response.data.toString()  , {
-                                position: 'bottom-center' ,
-                                theme: 'bubble' ,
-                                fitToScreen: true ,
-                                className: ['your-custom-class']
-                            }).goAway(4000);
+                            err.response.data.forEach(error => {
+                                this.$toasted.error(error  , {
+                                    position: 'bottom-center' ,
+                                    theme: 'bubble' ,
+                                    fitToScreen: true ,
+                                    className: ['your-custom-class']
+                                }).goAway(4000);
+                            })
                         });
                     this.brands = [];
                 }
@@ -141,16 +161,19 @@
                         data: {
                             title:this.product.title ,
                             description: this.product.description ,
-                            third_category_id: this.main_id ,
+                            secondary_category_id: this.main_id.id ,
                             price: this.product.price ,
                             brand_id: this.brand_id ,
                             discount: (100 - this.discount) / 100 ,
                             number: this.product.number ,
+                        } ,
+                        onUploadProgress: uploadEvent => {
+                            this.percent = Math.round(uploadEvent.loaded / uploadEvent.total * 100);
                         }
                     })
                         .then(res => {
                             console.log(res);
-                            this.brands = res.data;
+                            this.product = res.data;
                             this.$toasted.success('تغییرات با موفقیت اعمال شد' , {
                                 position: 'bottom-center' ,
                                 theme: 'bubble' ,
@@ -160,12 +183,14 @@
                         })
                         .catch(err => {
                             console.log(err.response);
-                            this.$toasted.error(err.response.data.toString() , {
-                                position: 'bottom-center' ,
-                                theme: 'bubble' ,
-                                fitToScreen: true ,
-                                className: ['your-custom-class']
-                            }).goAway(3000);
+                            err.response.data.forEach(error => {
+                                this.$toasted.error(error  , {
+                                    position: 'bottom-center' ,
+                                    theme: 'bubble' ,
+                                    fitToScreen: true ,
+                                    className: ['your-custom-class']
+                                }).goAway(4000);
+                            });
                             this.brands = [];
                         })
                 }
@@ -194,19 +219,6 @@
                     .then(res => {
                         console.log(res);
                         this.product = res.data;
-                    })
-                    .catch(err => {
-                        console.log(err.response);
-                    })
-            } ,
-            get_third_cats() {
-                axios({
-                    url: '/api/all/third' ,
-                    method: 'get' ,
-                })
-                    .then(res => {
-                        console.log(res);
-                        this.thirds = res.data;
                     })
                     .catch(err => {
                         console.log(err.response);

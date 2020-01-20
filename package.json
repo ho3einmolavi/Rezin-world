@@ -24,6 +24,8 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "jalali-moment": "^3.3.3",
+        "vue-persian-datetime-picker": "^2.1.2",
         "vue-router": "^3.1.3",
         "vue-toasted": "^1.1.27"
     }

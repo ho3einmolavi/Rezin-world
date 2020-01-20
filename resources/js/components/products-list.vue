@@ -14,7 +14,7 @@
 
 
             <ol v-if="ok === 1" id="selectable" class="col-xs col-sm col- col-md col-lg col-xl-12 delete-padding-left">
-                <li class="ui-state-default user-list-info-box flex" v-for="product in products" v-bind:key="product.id">
+                <li v-bind:class="[{ 'slide-red' : product.slideShow , 'text-white': product.slideShow}]" class="ui-state-default user-list-info-box flex" v-for="product in products" v-bind:key="product.id">
                     <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-image">
                         <img :src="'/images/products/' + product.product_img">
                     </div>
@@ -22,21 +22,23 @@
                         <span class="text-span text-gray-p"> {{product.title}}  </span>
                     </div>
                     <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-city">
-                        <span class="text-span  text-gray-p">{{product.price}} تومان  </span>
+                        <span class="text-span  text-gray-p">{{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان  </span>
                     </div>
-                    <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-number">
-                        <span class="text-span text-gray-p"> میوه و تره بار  </span>
-                    </div>
+
                     <div class="col-xs col-sm col- col-md col-lg col-xl-3 user-list-info-box-email">
-                        <span class="text-span text-gray-p"> موجودی در انبار </span>
+                        <span class="text-span text-gray-p" v-if="product.number"> موجود در انبار </span>
+                        <span class="text-span" style="color: red" v-else> ناموجود </span>
                     </div>
 
                     <div class="col-xs col-sm col- col-md col-lg col-xl-2 table-data-feature flex">
-                        <router-link :to="'/product/'+product.id" id="error23" class="item delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="حذف ">
+                        <router-link :to="'/product/'+product.id" id="error23" class="item delete" data-toggle="tooltip" data-placement="top" title="جزئیات" data-original-title="حذف ">
                             <i class="fas fa-ellipsis-h"></i>
                         </router-link>
-                        <a v-on:click="delete_product(product.id)" id="error2" class="item delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="حذف ">
+                        <a v-on:click="delete_product(product.id)" id="error2" class="item delete" data-toggle="tooltip" data-placement="top" title="حذف" data-original-title="حذف ">
                             <i class="fas fa-trash-alt"></i>
+                        </a>
+                        <a  v-on:click="add_slideShow(product.id)" id="errdor2" class="item delete" data-toggle="tooltip" data-placement="top" title="افزودن به اسلاید شو" data-original-title="حذف ">
+                            <i class="fas fa-check-circle"></i>
                         </a>
                     </div>
                 </li>
@@ -62,11 +64,39 @@
             return {
                 products: [],
                 query: '',
-                ok: ''
+                ok: '' ,
+
             }
         },
 
         methods: {
+            add_slideShow(id) {
+                axios({
+                    url: `/api/addtoslideshow/${id}`,
+                    method: 'get',
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.showProducts();
+                        this.$toasted.success(res.data.message , {
+                            position: 'bottom-center' ,
+                            theme: 'bubble' ,
+                            fitToScreen: true ,
+                            className: ['your-custom-class']
+                        }).goAway(1500);
+                    })
+                    .catch(err => {
+                        console.log(err.response);
+                        err.response.data.forEach(item => {
+                            this.$toasted.error(item.toString() , {
+                                position: 'bottom-center' ,
+                                theme: 'bubble' ,
+                                fitToScreen: true ,
+                                className: ['your-custom-class']
+                            }).goAway(3000);
+                        });
+                    })
+            } ,
             showProducts() {
                 axios({
                     url: '/api/index',
@@ -132,5 +162,7 @@
 </script>
 
 <style scoped>
-
+    .slide-red {
+        background-color: #ff7a76 ;
+    }
 </style>

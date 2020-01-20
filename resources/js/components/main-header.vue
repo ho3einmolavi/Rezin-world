@@ -274,7 +274,7 @@
 
 
                         <!--slide-1-->
-                        <figure>
+                        <figure v-for="item in slides">
                             <figcaption>
                                 <div class="div-star">
                                     <!---->
@@ -297,15 +297,15 @@
                                     </div>
                                     <!---->
                                 </div>
-                                <div class="div-subject"><span class="title-4 text-black"> رنگ رزین  </span> </div>
+                                <div class="div-subject"><span class="title-4 text-black"> {{item.title}}  </span> </div>
                                 <div class="div-best"><span class="title-4 text-black">(با بهترین کیفیت)</span></div>
                                 <div class="div-des"><span class="title-4 text-black">با ما در رزین ولد همراه باشید   </span></div>
                                 <div class="col col-sm col-xs col-md col-lg col-xl-12 div-price flex">
                                     <div class="col col-sm col-xs col-md col-lg col-xl-6 div-price-right">
-                                        <span class="title-4 text-black"> 21/000 </span>
+                                        <span class="title-4 text-black"> {{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} </span>
                                     </div>
                                     <div class="col col-sm col-xs col-md col-lg col-xl-6 div-price-left">
-                                        <span><b> 18/000 </b><span class="title-4 text-black"> تومان </span> </span>
+                                        <span><b> {{item.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} </b><span class="title-4 text-black"> تومان </span> </span>
                                     </div>
                                 </div>
                                 <div class="col col-sm col-xs col-md col-lg col-xl-12 div-buy flex">
@@ -322,175 +322,10 @@
                                 </div>
                             </figcaption>
                             <div class="img-slide">
-                                <img src="img/slideshow-header/index3.jpg">
+                                <img :src="'/images/products/' + item.product_img">
                             </div>
                         </figure>
                         <!--end-slide-1-->
-
-
-                        <!--slide-2-->
-                        <figure>
-                            <figcaption>
-                                <div class="div-star">
-                                    <!---->
-                                    <div class="stars" data-stars="1">
-                                        <svg height="20" width="18" class="star rating" data-rating="1">
-                                            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
-                                        </svg>
-                                        <svg height="20" width="18" class="star rating" data-rating="2">
-                                            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
-                                        </svg>
-                                        <svg height="20" width="18" class="star rating" data-rating="3">
-                                            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
-                                        </svg>
-                                        <svg height="20" width="18" class="star rating" data-rating="4">
-                                            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
-                                        </svg>
-                                        <svg height="20" width="18" class="star rating" data-rating="5">
-                                            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
-                                        </svg>
-                                    </div>
-                                    <!---->
-                                </div>
-                                <div class="div-subject"><span class="title-4 text-black"> سبز یشمی </span> </div>
-                                <div class="div-best"><span class="title-4 text-black">(با بهترین کیفیت)</span></div>
-                                <div class="div-des"><span class="title-4 text-black">با ما در رزین ولد همراه باشید   </span></div>
-                                <div class="col col-sm col-xs col-md col-lg col-xl-12 div-price flex">
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-6 div-price-right">
-                                        <span class="title-4 text-black"> 21/000 </span>
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-6 div-price-left">
-                                        <span><b> 15/000 </b><span class="title-4 text-black"> تومان </span> </span>
-                                    </div>
-                                </div>
-                                <div class="col col-sm col-xs col-md col-lg col-xl-12 div-buy flex">
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-6 div-buy-right">
-                                        <div class="div-buy-right-input">
-                                            <span> محصول </span>
-                                        </div>
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-6 div-buy-left">
-                                        <div class="div-buy-left-input">
-                                            <span>خرید محصول  </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </figcaption>
-                            <div class="img-slide">
-                                <img src="img/slideshow-header/index2.jpg">
-                            </div>
-                        </figure>
-                        <!--end-slide-2-->
-
-
-
-                        <!--slide-3-->
-                        <figure>
-                            <figcaption>
-                                <div class="div-star">
-                                    <!---->
-                                    <div class="stars" data-stars="1">
-                                        <svg height="20" width="18" class="star rating" data-rating="1">
-                                            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
-                                        </svg>
-                                        <svg height="20" width="18" class="star rating" data-rating="2">
-                                            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
-                                        </svg>
-                                        <svg height="20" width="18" class="star rating" data-rating="3">
-                                            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
-                                        </svg>
-                                        <svg height="20" width="18" class="star rating" data-rating="4">
-                                            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
-                                        </svg>
-                                        <svg height="20" width="18" class="star rating" data-rating="5">
-                                            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
-                                        </svg>
-                                    </div>
-                                    <!---->
-                                </div>
-                                <div class="div-subject"><span class="title-4 text-black">رزین ولد ساخت ایران  </span> </div>
-                                <div class="div-best"><span class="title-4 text-black">(با بهترین کیفیت)</span></div>
-                                <div class="div-des"><span class="title-4 text-black">با ما در رزین ولد همراه باشید   </span></div>
-                                <div class="col col-sm col-xs col-md col-lg col-xl-12 div-price flex">
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-6 div-price-right">
-                                        <span class="title-4 text-black"> 21/000 </span>
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-6 div-price-left">
-                                        <span><b> 30/000 </b><span class="title-4 text-black"> تومان </span> </span>
-                                    </div>
-                                </div>
-                                <div class="col col-sm col-xs col-md col-lg col-xl-12 div-buy flex">
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-6 div-buy-right">
-                                        <div class="div-buy-right-input">
-                                            <span> محصول </span>
-                                        </div>
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-6 div-buy-left">
-                                        <div class="div-buy-left-input">
-                                            <span>خرید محصول  </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </figcaption>
-                            <div class="img-slide">
-                                <img src="img/slideshow-header/index4.jpg">
-                            </div>
-                        </figure>
-                        <!--end-slide-3-->
-
-
-                        <!--slide-4-->
-                        <figure>
-                            <figcaption>
-                                <div class="div-star">
-                                    <!---->
-                                    <div class="stars" data-stars="1">
-                                        <svg height="20" width="18" class="star rating" data-rating="1">
-                                            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
-                                        </svg>
-                                        <svg height="20" width="18" class="star rating" data-rating="2">
-                                            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
-                                        </svg>
-                                        <svg height="20" width="18" class="star rating" data-rating="3">
-                                            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
-                                        </svg>
-                                        <svg height="20" width="18" class="star rating" data-rating="4">
-                                            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
-                                        </svg>
-                                        <svg height="20" width="18" class="star rating" data-rating="5">
-                                            <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
-                                        </svg>
-                                    </div>
-                                    <!---->
-                                </div>
-                                <div class="div-subject"><span class="title-4 text-black">رزین ولد ساخت ایران  </span> </div>
-                                <div class="div-best"><span class="title-4 text-black">(با بهترین کیفیت)</span></div>
-                                <div class="div-des"><span class="title-4 text-black">با ما در رزین ولد همراه باشید   </span></div>
-                                <div class="col col-sm col-xs col-md col-lg col-xl-12 div-price flex">
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-6 div-price-right">
-                                        <span class="title-4 text-black"> 21/000 </span>
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-6 div-price-left">
-                                        <span><b> 22/000 </b><span class="title-4 text-black"> تومان </span> </span>
-                                    </div>
-                                </div>
-                                <div class="col col-sm col-xs col-md col-lg col-xl-12 div-buy flex">
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-6 div-buy-right">
-                                        <div class="div-buy-right-input">
-                                            <span> محصول </span>
-                                        </div>
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-6 div-buy-left">
-                                        <div class="div-buy-left-input">
-                                            <span>خرید محصول  </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </figcaption>
-                            <div class="img-slide">
-                                <img src="img/slideshow-header/index.jpg">
-                            </div>
-                        </figure>
                         <!--end-slide-4-->
 
 
@@ -513,16 +348,29 @@
 
         created() {
             this.getCat();
+            this.get_slides();
         } ,
 
         data() {
             return {
                 main_categories: [] ,
-                title: '_'
+                title: '_' ,
+                slides: [] ,
             }
         } ,
 
         methods: {
+            get_slides() {
+                axios({
+                    method: 'get' ,
+                    url: '/api/slideShow'
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.slides = res.data;
+                    })
+                    .catch(err => console.log(err.response))
+            } ,
             search() {
                 if (this.title === '')
                 {

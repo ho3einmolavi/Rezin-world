@@ -145,8 +145,8 @@
                     <!--slide-1-->
                     <div v-for="item in products" v-bind:key="item.id" class="col col-sm col-xs col-md-12 col-lg-12 col-xl-12 product-page-left-slider-inside flex table-responsive-md table-responsive-lg table-responsive-xl">
 
-                        <div v-for="product in item" class="col col-sm col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box delete-padding">
-                            <a href="#">
+                        <div v-for="product in item"  class="col col-sm col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box delete-padding">
+                            <a :href="'/single/' + product.id">
                                 <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-top">
                                     <img :src="'/images/products/' + product.product_img">
                                 </div>

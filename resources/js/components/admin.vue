@@ -1,7 +1,7 @@
 <template>
     <div>
         <another-header @mainCategories="get_second($event)"></another-header>
-        <admin-content :main="mainCat"></admin-content>
+        <admin-content :allCats="allCats" :main="mainCat"></admin-content>
         <main-footer></main-footer>
     </div>
 </template>
@@ -12,7 +12,8 @@
 
         data() {
             return {
-                mainCat: []
+                mainCat: [] ,
+                allCats: [] ,
             }
         } ,
 
@@ -23,6 +24,7 @@
                         this.mainCat.push(value)
                     })
                 });
+                this.allCats = event
             }
         }
     }

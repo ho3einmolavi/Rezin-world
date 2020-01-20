@@ -9,7 +9,6 @@
             <router-link to="/admin/add-product" class="list-group-item list-group-item-action"><i class="fab fa-adversal"></i> افزودن محصولات <i class="fas fa-angle-left icon-left"></i></router-link>
             <router-link to="/admin/add-discount" class="list-group-item list-group-item-action"><i class="fas fa-align-right"></i> افزودن کد تخفیف <i class="fas fa-angle-left icon-left"></i></router-link>
             <router-link to="/admin/add-category" class="list-group-item list-group-item-action"><i class="fas fa-align-center"></i> افزودن  دسته بندی<i class="fas fa-angle-left icon-left"></i></router-link>
-            <router-link to="/admin/add-slideShow" class="list-group-item list-group-item-action"><i class="fas fa-sliders-h"></i> افزودن اسلایدشو<i class="fas fa-angle-left icon-left"></i></router-link>
             <router-link to="/admin/edit-baners" class="list-group-item list-group-item-action"><i class="fas fa-sliders-h"></i> ویرایش بنر ها<i class="fas fa-angle-left icon-left"></i></router-link>
             <!--<a href="" class="list-group-item list-group-item-action active lga-color">پروفایل کاربری  </a>-->
             <!--<a href="messages.html" class="list-group-item list-group-item-action"><i class="fas fa-envelope-open"></i>صندوق پیام ها  <i class="fas fa-angle-left icon-left"></i></a>-->

@@ -1,0 +1,518 @@
+<template>
+    <div class="col col-sm col-xs col-md col-lg col-xl-12 body-main delete-padding">
+        <div class="col col-sm col-xs col-md-12 col-lg-12 col-xl-12 product-main-Location flex">
+            <span class="title-4 text-black"> صفحه اصلی  </span>
+            <span class="text-black"><i class="fas fa-angle-left"></i></span>
+            <span class="title-4 text-black"> محصولات </span>
+        </div>
+        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main flex">
+            <div class="col col-sm col-xs col-md-4 col-lg-4 col-xl-4 card-main-right">
+                <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-right-like">
+                    <span>  265 </span>
+                    <span><i class="fas fa-heart"></i></span>
+                </div>
+                <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-right-img">
+                    <div class="card-main-right-img-inside">
+                        <!--gallery-->
+                        <div class="mySlides" style="width: 345px;">
+                            <div class="numbertext">1 / 6</div>
+                            <img src="/img/gallery/cS-1.png">
+                        </div>
+
+                        <div class="mySlides" style="width: 345px;">
+                            <div class="numbertext">2 / 6</div>
+                            <img src="/img/gallery/cS-2.png">
+                        </div>
+
+                        <div class="mySlides" style="width: 345px;">
+                            <div class="numbertext">3 / 6</div>
+                            <img src="/img/gallery/cS-3.png">
+                        </div>
+
+                        <div class="mySlides" style="width: 345px;">
+                            <div class="numbertext">4 / 6</div>
+                            <img src="/img/gallery/cS-6.png">
+                        </div>
+
+                        <div class="mySlides" style="width: 345px;">
+                            <div class="numbertext">5 / 6</div>
+                            <img src="/img/gallery/cS-5.png">
+                        </div>
+
+
+                        <a class="prev" onclick="plusSlides(-1)">❮</a>
+                        <a class="next" onclick="plusSlides(1)">❯</a>
+
+
+                        <div class="row images-inside">
+                            <div class="column">
+                                <img class="demo cursor" src="/img/gallery/cS-1.png" onclick="currentSlide(1)" alt="The Woods">
+                            </div>
+                            <div class="column">
+                                <img class="demo cursor" src="/img/gallery/cS-2.png" onclick="currentSlide(2)" alt="Cinque Terre">
+                            </div>
+                            <div class="column">
+                                <img class="demo cursor" src="/img/gallery/cS-3.png" onclick="currentSlide(3)" alt="Mountains and fjords">
+                            </div>
+                            <div class="column">
+                                <img class="demo cursor" src="/img/gallery/cS-6.png" onclick="currentSlide(4)" alt="Northern Lights">
+                            </div>
+                            <div class="column">
+                                <img class="demo cursor" src="/img/gallery/cS-5.png" onclick="currentSlide(5)" alt="Nature and sunrise">
+                            </div>
+                        </div>
+                        <!--end-gallery-->
+                    </div>
+                </div>
+            </div>
+            <div class="col col-sm col-xs col-md-8 col-lg-8 col-xl-8 card-main-left">
+                <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-subject flex">
+                    <div class="col col-sm col-xs col-md col-lg col-xl-8 card-main-left-subject-right">
+                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-subject-right-top">
+                            <span class="title-2"> {{product.title}}  </span>
+                        </div>
+                    </div>
+                    <div class="col col-sm col-xs col-md col-lg col-xl-4 card-main-left-subject-left">
+                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-subject-left-top">
+                            <div class="stars" data-stars="5">
+                                <svg height="20" width="18" class="star rating" data-rating="1">
+                                    <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
+                                </svg>
+                                <svg height="20" width="18" class="star rating" data-rating="2">
+                                    <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
+                                </svg>
+                                <svg height="20" width="18" class="star rating" data-rating="3">
+                                    <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
+                                </svg>
+                                <svg height="20" width="18" class="star rating" data-rating="4">
+                                    <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
+                                </svg>
+                                <svg height="20" width="18" class="star rating" data-rating="5">
+                                    <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-subject-left-bottom">
+                            <a href="#"><span class="share text-black"><i class="fas fa-share-alt"></i></span></a>
+                            <span class="title-4 text-black">  اشتراک گذاری  </span>
+                        </div>
+                    </div>
+                </div>
+                <hr class="hr-page-card">
+                <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-like">
+                    <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-like-top flex">
+                        <div class="col col-sm col-xs col-md-4 col-lg-4 col-xl-4 card-main-left-like-top-right">
+                            <span class="text-black title-4"> قیمت محصول </span>
+                        </div>
+                        <div class="col col-sm col-xs col-md-8 col-lg-8 col-xl-8 card-main-left-like-top-left">
+                            <span class="text-black title-4"> تعداد محصول </span>
+                        </div>
+                    </div>
+                    <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-like-between flex">
+                        <div class="col col-sm col-xs col-md-4 col-lg col-xl-4 card-main-left-like-between-right">
+                            <span> {{product.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} <span> تومان </span> </span>
+                            <span class="offer-number"> {{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</span>
+                        </div>
+                        <div class="col col-sm col-xs col-md-8 col-lg col-xl-8 card-main-left-like-between-left flex">
+                            <div class="col col-sm col-xs col-md col-lg col-xl-3 card-main-left-like-between-left-number">
+                                <!---->
+                                <div class="wrapper">
+                                    <div class="control" id="minus">-</div>
+                                    <div id="number">0</div>
+                                    <div class="control" id="plus">+</div>
+                                </div>
+                                <!---->
+                            </div>
+                            <div class="col col-sm col-xs col-md col-lg col-xl-2 card-main-left-like-between-left-like">
+                                <div class="like-icon">
+                                    <i class="far fa-heart"></i>
+                                </div>
+                            </div>
+
+                            <div class="col col-sm col-xs col-md col-lg col-xl-7 card-main-left-like-between-left-buy">
+                                <div class="buy-icon">
+                                    <a href="#"><span class="title-4"> لینک خرید محصول </span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-like-end">
+                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-like-end-inside">
+                            <span class="text-black"><i class="fas fa-calendar-alt"></i></span>
+                            <span class="text-black title-4"> 1398/12/03 </span>
+                        </div>
+                    </div>
+
+                    <!--res-->
+                    <div class="col col-sm col-xs col-md col-lg col-xl-7 card-main-left-like-between-left-buy-res">
+                        <div class="buy-icon-res">
+                            <a href="#"><span class="title-4"> لینک خرید محصول </span></a>
+                        </div>
+                        <div></div></div>
+                    <!--end-res-->
+
+                </div>
+                <hr class="hr-page-card">
+                <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des flex">
+                    <div class="col col-sm col-xs col-md col-lg col-xl-3 card-main-left-des-right">
+                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-right-inside">
+                            <span class="text-black title-4"> رنگ محصول </span>
+                        </div>
+                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-right-inside">
+                            <span class="text-black title-4"> رنگ محصول </span>
+                        </div>
+                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-right-inside">
+                            <span class="text-black title-4"> رنگ محصول </span>
+                        </div>
+                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-right-inside">
+                            <span class="text-black title-4"> رنگ محصول </span>
+                        </div>
+                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-right-inside">
+                            <span class="text-black title-4"> رنگ محصول </span>
+                        </div>
+                    </div>
+                    <div class="col col-sm col-xs col-md col-lg col-xl-9 card-main-left-des-left">
+                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-left-inside">
+                            <span class="text-black title-4"> خاکستری تیره  </span>
+                        </div>
+                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-left-inside">
+                            <span class="text-black title-4"> خاکستری تیره  </span>
+                        </div>
+                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-left-inside">
+                            <span class="text-black title-4"> خاکستری تیره  </span>
+                        </div>
+                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-left-inside">
+                            <span class="text-black title-4"> خاکستری تیره  </span>
+                        </div>
+                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-left-inside">
+                            <span class="text-black title-4"> خاکستری تیره  </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--tab-comment-->
+        <div class="col col-sm col-xs col-md col-lg col-xl-12 tab-comment">
+            <!-- partial:index.partial.html -->
+            <!-- TAB CONTROLLERS -->
+            <input id="panel-1-ctrl" class="panel-radios" type="radio" name="tab-radios" checked>
+            <input id="panel-2-ctrl" class="panel-radios" type="radio" name="tab-radios">
+            <input id="panel-3-ctrl" class="panel-radios" type="radio" name="tab-radios">
+
+
+            <!-- TABS LIST -->
+            <ul id="tabs-list">
+                <!-- MENU TOGGLE -->
+                <label id="open-nav-label" for="nav-ctrl"></label>
+                <li id="li-for-panel-1">
+                    <label class="panel-label" for="panel-1-ctrl">  مشخصات محصول  </label>
+                </li>
+               <li id="li-for-panel-2">
+                    <label class="panel-label" for="panel-2-ctrl">  نظرات مشتریان  </label>
+                </li>
+                <li id="li-for-panel-3">
+                    <label class="panel-label" for="panel-3-ctrl">   پرسش های عمومی  </label>
+                </li>
+
+                <label id="close-nav-label" for="nav-ctrl">Close</label>
+            </ul>
+
+            <!-- THE PANELS -->
+            <article id="panels">
+                <div class="container">
+
+                    <section id="panel-1">
+                            <main>
+                                <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product flex table-responsive-md table-responsive-lg table-responsive-xl">
+                                    <div class="col col-sm col-xs col-md col-lg col-xl-3 details-product-right">
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
+                                            <div class="details-text">
+                                                <span class="text-black title-4"> رنگ برنج  </span>
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
+                                            <div class="details-text">
+                                                <span class="text-black title-4"> نوع برنج </span>
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
+                                            <div class="details-text">
+                                                <span class="text-black title-4">عنوان برنج </span>
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
+                                            <div class="details-text">
+                                                <span class="text-black title-4"> اندازه دانه</span>
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
+                                            <div class="details-text">
+                                                <span class="text-black title-4">  اندازه دانه  </span>
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
+                                            <div class="details-text">
+                                                <span class="text-black title-4">وزن </span>
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
+                                            <div class="details-text">
+                                                <span class="text-black title-4"> توضیحات نوع برنج</span>
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
+                                            <div class="details-text">
+                                                <span class="text-black title-4">شماره پروانه بهداشت </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col col-sm col-xs col-md col-lg col-xl-9 details-product-left">
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
+                                            <div class="details-text-des">
+                                                <span class="text-black title-4"> سفید  </span>
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
+                                            <div class="details-text-des">
+                                                <span class="text-black title-4"> ساده</span>
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
+                                            <div class="details-text-des">
+                                                <span class="text-black title-4">هاشمی </span>
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
+                                            <div class="details-text-des">
+                                                <span class="text-black title-4"> دانه کامل  </span>
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
+                                            <div class="details-text-des">
+                                                <span class="text-black title-4"> 10 کیلوگرم  </span>
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
+                                            <div class="details-text-des">
+                                                <span class="text-black title-4">  5 تا 10 کیلوگرم </span></div>
+                                        </div>
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
+                                            <div class="details-text-des">
+                                                <span class="text-black title-4">  برنج ایرانی هاشمی </span>
+                                            </div>
+                                        </div>
+                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
+                                            <div class="details-text-des">
+                                                <span class="text-black title-4">  8375706981 </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </main>
+                        </section>
+
+
+                    <section id="panel-2">
+                        <main>
+                            <div class="text-comment">
+                                <form class="comment-inside" id="addComment">
+                                    <textarea cols="90" name="body" id="body" form="usrform" placeholder="نظر خود را درباره این  محصول بنویسید ..." rows="2"></textarea>
+                                    <button type="button" class="send-Comment" onclick="addComment()">ارسال دیدگاه</button>
+                                </form>
+                            </div>
+
+
+                            <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer flex">
+                                <div class="col col-sm-3 col-xs col-md-3 col-lg-3 col-xl-2 comment-customer-right">
+                                    <div class="customer-img">
+                                        <img src="img/comments/user-1.png">
+                                    </div>
+                                </div>
+                                <div class="col col-sm col-xs col-md col-lg col-xl-10 comment-customer-left">
+                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-name">
+                                        <span class="text-black title-4"> میترا محمدبیگی  </span>
+                                    </div>
+                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-des">
+                                        <span class="text-black title-4"> با توجه به آپدیت جدید اینستاگرام، در حال آپدیت و بهبود سرعت سرویس های لایک و فالوور هستیم، تا مانند همیشه اینستالایکر پرسرعت ترین سرویس ایران باشد.  </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer flex margin-top-big">
+                                <div class="col col-sm-3 col-xs col-md-3 col-lg-3 col-xl-2 comment-customer-right">
+                                    <div class="customer-img">
+                                        <img src="img/comments/user-1.png">
+                                    </div>
+                                </div>
+                                <div class="col col-sm col-xs col-md col-lg col-xl-10 comment-customer-left">
+                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-name">
+                                        <span class="text-black title-4"> میترا محمدبیگی  </span>
+                                    </div>
+                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-des">
+                                        <span class="text-black title-4"> با توجه به آپدیت جدید اینستاگرام، در حال آپدیت و بهبود سرعت سرویس های لایک و فالوور هستیم، تا مانند همیشه اینستالایکر پرسرعت ترین سرویس ایران باشد.  </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer flex margin-top-big">
+                                <div class="col col-sm-3 col-xs col-md-3 col-lg-3 col-xl-2 comment-customer-right">
+                                    <div class="customer-img">
+                                        <img src="img/comments/user-1.png">
+                                    </div>
+                                </div>
+                                <div class="col col-sm col-xs col-md col-lg col-xl-10 comment-customer-left">
+                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-name">
+                                        <span class="text-black title-4"> میترا محمدبیگی  </span>
+                                    </div>
+                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-des">
+                                        <span class="text-black title-4"> با توجه به آپدیت جدید اینستاگرام، در حال آپدیت و بهبود سرعت سرویس های لایک و فالوور هستیم، تا مانند همیشه اینستالایکر پرسرعت ترین سرویس ایران باشد.  </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer flex margin-top-big">
+                                <div class="col col-sm-3 col-xs col-md-3 col-lg-3 col-xl-2 comment-customer-right">
+                                    <div class="customer-img">
+                                        <img src="img/comments/user-1.png">
+                                    </div>
+                                </div>
+                                <div class="col col-sm col-xs col-md col-lg col-xl-10 comment-customer-left">
+                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-name">
+                                        <span class="text-black title-4"> میترا محمدبیگی  </span>
+                                    </div>
+                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-des">
+                                        <span class="text-black title-4"> با توجه به آپدیت جدید اینستاگرام، در حال آپدیت و بهبود سرعت سرویس های لایک و فالوور هستیم، تا مانند همیشه اینستالایکر پرسرعت ترین سرویس ایران باشد.  </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </main>
+                    </section>
+
+                    <section id="panel-3">
+                        <main>
+                            <div class="col-xs col-sm col- col-md col-lg col-xl-12 content-faq">
+                                <section class="col-xs col-sm col- col-md col-lg col-xl-10 faq">
+                                    <div class="faq-items">
+                                        <ul id="basics" class="faq-group">
+                                            <li class="faq-title"><h2>پرسش های عمومی </h2></li>
+                                            <li>
+                                                <a class="trigger colorgray" href="#0">چگونه یک وکیل  ماهر انتخاب کنم؟</a>
+                                                <div class="faq-content">
+                                                    <p>عازم کجا هستید؟ هیچ فرقی نمی‌کند. این حق شماست که سفری باکیفیت، آسان و مطمئن را تجربه کنید. علی‌بابا اینجاست تا تجربه‌ای شایسته از یک سفر به‌یادماندنی را ایجاد کند، تجربه‎‌ای که برازنده منزلت شما باشد. سفر باید آسان باشد، مطمئن و به‌صرفه؛ و همه اینها در علی‌بابا خلاصه شده است. از هر کجا به هر کجا، با هواپیما یا قطار، سیستمی یا چارتر، کاری یا تفریحی. سبد خدمات علی‌بابا کامل است و ما پاسخگوی همه نیازهای شما هستیم. علی‌بابا همسفر حرفه‌ای‌هاست، و این تجربه‌ی حرفه‌ای در همه مراحل سفر همراه شماست.از زمانی که قصد سفرکرده‌اید تا خرید بلیط تا پشتیبانی 24 ساعته توسط یک تیم 150 نفره، و حتی تا زمانی که برنامه‌هایتان تغییر کرده و قصد استرداد بلیطرا دارید. همه چیز با چند کلیک ساده اتفاق می‌افتد. علی‌بابا برندی از هلدینگ پرافتخار توشا (توسعه تجربه شایسته سفر) است، سامانه‌ای که به‌واسطه  </p>
+                                                </div> <!-- faq-content -->
+                                            </li>
+
+                                            <li>
+                                                <a class="trigger colorgray" href="#0">چگونه وکیل برای دعاوی کیفری پیدا کنیم؟</a>
+                                                <div class="faq-content">
+                                                    <p>عازم کجا هستید؟ هیچ فرقی نمی‌کند. این حق شماست که سفری باکیفیت، آسان و مطمئن را تجربه کنید. علی‌بابا اینجاست تا تجربه‌ای شایسته از یک سفر به‌یادماندنی را ایجاد کند، تجربه‎‌ای که برازنده منزلت شما باشد. سفر باید آسان باشد، مطمئن و به‌صرفه؛ و همه اینها در علی‌بابا خلاصه شده است. از هر کجا به هر کجا، با هواپیما یا قطار، سیستمی یا چارتر، کاری یا تفریحی. سبد خدمات علی‌بابا کامل است و ما پاسخگوی همه نیازهای شما هستیم. علی‌بابا همسفر حرفه‌ای‌هاست، و این تجربه‌ی حرفه‌ای در همه مراحل سفر همراه شماست.از زمانی که قصد سفرکرده‌اید تا خرید بلیط تا پشتیبانی 24 ساعته توسط یک تیم 150 نفره، و حتی تا زمانی که برنامه‌هایتان تغییر کرده و قصد استرداد بلیطرا دارید. همه چیز با چند کلیک ساده اتفاق می‌افتد. علی‌بابا برندی از هلدینگ پرافتخار توشا (توسعه تجربه شایسته سفر) است، سامانه‌ای که به‌واسطه </p>
+                                                </div> <!-- faq-content -->
+                                            </li>
+
+                                            <li>
+                                                <a class="trigger colorgray" href="#0">چگونه میتوان آدرس وکلای ماهر را پیدا کرد</a>
+                                                <div class="faq-content">
+                                                    <p>عازم کجا هستید؟ هیچ فرقی نمی‌کند. این حق شماست که سفری باکیفیت، آسان و مطمئن را تجربه کنید. علی‌بابا اینجاست تا تجربه‌ای شایسته از یک سفر به‌یادماندنی را ایجاد کند، تجربه‎‌ای که برازنده منزلت شما باشد. سفر باید آسان باشد، مطمئن و به‌صرفه؛ و همه اینها در علی‌بابا خلاصه شده است. از هر کجا به هر کجا، با هواپیما یا قطار، سیستمی یا چارتر، کاری یا تفریحی. سبد خدمات علی‌بابا کامل است و ما پاسخگوی همه نیازهای شما هستیم. علی‌بابا همسفر حرفه‌ای‌هاست، و این تجربه‌ی حرفه‌ای در همه مراحل سفر همراه شماست.از زمانی که قصد سفرکرده‌اید تا خرید بلیط تا پشتیبانی 24 ساعته توسط یک تیم 150 نفره، و حتی تا زمانی که برنامه‌هایتان تغییر کرده و قصد استرداد بلیطرا دارید. همه چیز با چند کلیک ساده اتفاق می‌افتد. علی‌بابا برندی از هلدینگ پرافتخار توشا (توسعه تجربه شایسته سفر) است، سامانه‌ای که به‌واسطه پ</p>
+                                                </div> <!-- faq-content -->
+                                            </li>
+
+                                            <li>
+                                                <a class="trigger colorgray" href="#0">چگونه میتوان وقت مشاوره گرفت؟</a>
+                                                <div class="faq-content">
+                                                    <p>عازم کجا هستید؟ هیچ فرقی نمی‌کند. این حق شماست که سفری باکیفیت، آسان و مطمئن را تجربه کنید. علی‌بابا اینجاست تا تجربه‌ای شایسته از یک سفر به‌یادماندنی را ایجاد کند، تجربه‎‌ای که برازنده منزلت شما باشد. سفر باید آسان باشد، مطمئن و به‌صرفه؛ و همه اینها در علی‌بابا خلاصه شده است. از هر کجا به هر کجا، با هواپیما یا قطار، سیستمی یا چارتر، کاری یا تفریحی. سبد خدمات علی‌بابا کامل است و ما پاسخگوی همه نیازهای شما هستیم. علی‌بابا همسفر حرفه‌ای‌هاست، و این تجربه‌ی حرفه‌ای در همه مراحل سفر همراه شماست.از زمانی که قصد سفرکرده‌اید تا خرید بلیط تا پشتیبانی 24 ساعته توسط یک تیم 150 نفره، و حتی تا زمانی که برنامه‌هایتان تغییر کرده و قصد استرداد بلیطرا دارید. همه چیز با چند کلیک ساده اتفاق می‌افتد. علی‌بابا برندی از هلدینگ پرافتخار توشا (توسعه تجربه شایسته سفر) است، سامانه‌ای که به‌واسطه </p>
+                                                </div> <!-- faq-content -->
+                                            </li>
+                                        </ul> <!-- faq-group -->
+
+
+
+
+
+                                        <!-- faq-group -->
+
+                                        <ul id="privacy" class="faq-group">
+                                            <li class="faq-title"><h2>قوانین</h2></li>
+                                            <li>
+                                                <a class="trigger colorgray" href="#0">چگونه یک وکیل  ماهر انتخاب کنم؟</a>
+                                                <div class="faq-content">
+                                                    <p>عازم کجا هستید؟ هیچ فرقی نمی‌کند. این حق شماست که سفری باکیفیت، آسان و مطمئن را تجربه کنید. علی‌بابا اینجاست تا تجربه‌ای شایسته از یک سفر به‌یادماندنی را ایجاد کند، تجربه‎‌ای که برازنده منزلت شما باشد. سفر باید آسان باشد، مطمئن و به‌صرفه؛ و همه اینها در علی‌بابا خلاصه شده است. از هر کجا به هر کجا، با هواپیما یا قطار، سیستمی یا چارتر، کاری یا تفریحی. سبد خدمات علی‌بابا کامل است و ما پاسخگوی همه نیازهای شما هستیم. علی‌بابا همسفر حرفه‌ای‌هاست، و این تجربه‌ی حرفه‌ای در همه مراحل سفر همراه شماست.از زمانی که قصد سفرکرده‌اید تا خرید بلیط تا پشتیبانی 24 ساعته توسط یک تیم 150 نفره، و حتی تا زمانی که برنامه‌هایتان تغییر کرده و قصد استرداد بلیطرا دارید. همه چیز با چند کلیک ساده اتفاق می‌افتد. علی‌بابا برندی از هلدینگ پرافتخار توشا (توسعه تجربه شایسته سفر) است، سامانه‌ای که به‌واسطه </p>
+                                                </div> <!-- faq-content -->
+                                            </li>
+
+                                            <li>
+                                                <a class="trigger colorgray" href="#0">چگونه یک وکیل  ماهر انتخاب کنم؟</a>
+                                                <div class="faq-content">
+                                                    <p>عازم کجا هستید؟ هیچ فرقی نمی‌کند. این حق شماست که سفری باکیفیت، آسان و مطمئن را تجربه کنید. علی‌بابا اینجاست تا تجربه‌ای شایسته از یک سفر به‌یادماندنی را ایجاد کند، تجربه‎‌ای که برازنده منزلت شما باشد. سفر باید آسان باشد، مطمئن و به‌صرفه؛ و همه اینها در علی‌بابا خلاصه شده است. از هر کجا به هر کجا، با هواپیما یا قطار، سیستمی یا چارتر، کاری یا تفریحی. سبد خدمات علی‌بابا کامل است و ما پاسخگوی همه نیازهای شما هستیم. علی‌بابا همسفر حرفه‌ای‌هاست، و این تجربه‌ی حرفه‌ای در همه مراحل سفر همراه شماست.از زمانی که قصد سفرکرده‌اید تا خرید بلیط تا پشتیبانی 24 ساعته توسط یک تیم 150 نفره، و حتی تا زمانی که برنامه‌هایتان تغییر کرده و قصد استرداد بلیطرا دارید. همه چیز با چند کلیک ساده اتفاق می‌افتد. علی‌بابا برندی از هلدینگ پرافتخار توشا (توسعه تجربه شایسته سفر) است، سامانه‌ای که به‌واسطه </p>
+                                                </div> <!-- faq-content -->
+                                            </li>
+
+                                            <li>
+                                                <a class="trigger colorgray" href="#0">چگونه یک وکیل  ماهر انتخاب کنم؟</a>
+                                                <div class="faq-content">
+                                                    <p>عازم کجا هستید؟ هیچ فرقی نمی‌کند. این حق شماست که سفری باکیفیت، آسان و مطمئن را تجربه کنید. علی‌بابا اینجاست تا تجربه‌ای شایسته از یک سفر به‌یادماندنی را ایجاد کند، تجربه‎‌ای که برازنده منزلت شما باشد. سفر باید آسان باشد، مطمئن و به‌صرفه؛ و همه اینها در علی‌بابا خلاصه شده است. از هر کجا به هر کجا، با هواپیما یا قطار، سیستمی یا چارتر، کاری یا تفریحی. سبد خدمات علی‌بابا کامل است و ما پاسخگوی همه نیازهای شما هستیم. علی‌بابا همسفر حرفه‌ای‌هاست، و این تجربه‌ی حرفه‌ای در همه مراحل سفر همراه شماست.از زمانی که قصد سفرکرده‌اید تا خرید بلیط تا پشتیبانی 24 ساعته توسط یک تیم 150 نفره، و حتی تا زمانی که برنامه‌هایتان تغییر کرده و قصد استرداد بلیطرا دارید. همه چیز با چند کلیک ساده اتفاق می‌افتد. علی‌بابا برندی از هلدینگ پرافتخار توشا (توسعه تجربه شایسته سفر) است، سامانه‌ای که به‌واسطه </p>
+                                                </div> <!-- faq-content -->
+                                            </li>
+
+                                            <li>
+                                                <a class="trigger colorgray" href="#0">چگونه یک وکیل  ماهر انتخاب کنم؟</a>
+                                                <div class="faq-content">
+                                                    <p>عازم کجا هستید؟ هیچ فرقی نمی‌کند. این حق شماست که سفری باکیفیت، آسان و مطمئن را تجربه کنید. علی‌بابا اینجاست تا تجربه‌ای شایسته از یک سفر به‌یادماندنی را ایجاد کند، تجربه‎‌ای که برازنده منزلت شما باشد. سفر باید آسان باشد، مطمئن و به‌صرفه؛ و همه اینها در علی‌بابا خلاصه شده است. از هر کجا به هر کجا، با هواپیما یا قطار، سیستمی یا چارتر، کاری یا تفریحی. سبد خدمات علی‌بابا کامل است و ما پاسخگوی همه نیازهای شما هستیم. علی‌بابا همسفر حرفه‌ای‌هاست، و این تجربه‌ی حرفه‌ای در همه مراحل سفر همراه شماست.از زمانی که قصد سفرکرده‌اید تا خرید بلیط تا پشتیبانی 24 ساعته توسط یک تیم 150 نفره، و حتی تا زمانی که برنامه‌هایتان تغییر کرده و قصد استرداد بلیطرا دارید. همه چیز با چند کلیک ساده اتفاق می‌افتد. علی‌بابا برندی از هلدینگ پرافتخار توشا (توسعه تجربه شایسته سفر) است، سامانه‌ای که به‌واسطه </p>
+                                                </div> <!-- faq-content -->
+                                            </li>
+                                        </ul> <!-- faq-group -->
+
+                                    </div> <!-- faq-items -->
+                                    <a href="#0" class="cd-close-panel">Close</a>
+
+
+                                </section>
+                            </div>
+                        </main>
+                    </section>
+                </div>
+            </article>
+
+        </div>
+        <!-- partial -->
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "single-product-feature" ,
+
+
+        created() {
+            this.get_product(this.$route.params.productID);
+        } ,
+
+        data() {
+            return {
+                product: []
+            }
+        } ,
+
+        methods: {
+           get_product(id) {
+               axios({
+                   url: `/api/product/${id}` ,
+                   method: 'get' ,
+               })
+                   .then(res => {
+                       console.log(res);
+                       this.product = res.data;
+                   })
+                   .catch(err => {
+                       console.log(err.response);
+                   })
+           }
+        } ,
+    }
+</script>
+
+<style scoped>
+
+</style>

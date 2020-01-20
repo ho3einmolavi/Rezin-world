@@ -11,9 +11,6 @@
                 <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-number">
                     <span class="text-span text-gray-p"> دسته بندی اصلی </span>
                 </div>
-                <div class="col-xs col-sm col- col-md col-lg col-xl-4 user-list-info-box-email">
-                    <span class="text-span text-gray-p"> توضیحات توضیحات توضیحات  توضیحات توضیحات</span>
-                </div>
                 <div class="col-xs col-sm col- col-md col-lg col-xl-2 table-data-feature flex">
                     <a @click="click1(cat.id)" class="item confirm tablinks" data-toggle="tooltip" data-placement="top" title="" data-original-title="تایید">
                         <i class="fas fa-arrows-alt-h"></i>
@@ -36,9 +33,6 @@
                     </div>
                     <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-number">
                         <span class="text-span text-white"> دسته بندی دوم </span>
-                    </div>
-                    <div class="col-xs col-sm col- col-md col-lg col-xl-4 user-list-info-box-email">
-                        <span class="text-span text-white"> توضیحات توضیحات توضیحات  توضیحات توضیحات</span>
                     </div>
                     <div class="col-xs col-sm col- col-md col-lg col-xl-2 table-data-feature flex">
                         <a id="error2" @click="delete_main('secondary_categories' , item.id)" class="item delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="حذف ">

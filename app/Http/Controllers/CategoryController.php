@@ -105,23 +105,9 @@ class CategoryController extends Controller
 
         if (! $request->has('mother') || $request->mother == '')
         {
-            if ($request->has('img'))
-            {
-                $image = $request->file('img');
-                $name = $image->getClientOriginalName();
-                $image->move(public_path('/images/category') , $name);
-            } else $name = null;
-            if ($request->has('icon'))
-            {
-                $image1 = $request->file('icon');
-                $name1 = $image1->getClientOriginalName();
-                $image1->move(public_path('/images/icon') , $name1);
-            } else $name1 = null;
-
             $cat = MainCategory::create([
                 'name' => $request->name ,
-                'img' => $name ,
-                'icon' => $name1
+                'keywords' => $request->keywords
             ]);
         }
         else
@@ -129,16 +115,7 @@ class CategoryController extends Controller
             $cat = MainCategory::where('name' , $request->mother)->first();
             if (!$cat)
             {
-                $cat = SecondaryCategory::where('name' , $request->mother)->first();
-                if ($cat)
-                {
-                    $cat = ThirdCategory::create([
-                        'name' => $request->name ,
-                        'main_category_id' => $cat->main_category_id ,
-                        'secondary_category_id' => $cat->id
-                    ]);
-                }
-                else return \response()->json('something went wrong in CategoryController' , 400);
+                return response()->json('دسته بندی اصلی پیدا نشد' , 404);
             }
             else
             {

@@ -177,6 +177,7 @@
             <div class="col col-sm col-md-12 col-lg col-xl header-main-bottom-span table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
                 <a v-if="router === 'index'" v-for="item in main_categories"  :href="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></a>
                 <a v-if="router === 'admin'" v-for="item in main_categories"  :href="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></a>
+                <a v-if="router === 'single'" v-for="item in main_categories"  :href="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></a>
                 <router-link v-if="router === 'products'" v-for="item in main_categories" v-bind:key="item.id"  :to="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></router-link>
             </div>
             <div class="col col-sm col-xs col-md col-lg col-xl-12 header-main-bottom-slideshow">
@@ -272,10 +273,17 @@
                 {
                     this.main_id = this.$route.params.main;
                 }
+
                if (this.$route.name === 'product')
                {
                    this.router = 'products'
                }
+
+                else if (this.$route.name === 'single')
+                {
+                    this.router = 'single'
+                }
+
                else if (this.$route.path === '/')
                {
                    this.router = 'index'

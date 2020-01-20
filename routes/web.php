@@ -34,6 +34,12 @@ Route::get('/products/search/{any}' , 'MainController@mainCat')->name('search')-
 //    return view('products');
 //})->where('any', '.*');
 
+
+Route::get('/single/{any}' , function () {
+    return view('single');
+})->where('any', '.*');
+
+
 Route::get('/card/{any}' , function () {
     return view('products');
 })->where('any', '.*');

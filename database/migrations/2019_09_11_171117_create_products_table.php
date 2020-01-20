@@ -23,11 +23,15 @@ class CreateProductsTable extends Migration
             $table->text('brand_id')->nullable();
             $table->string('available')->nullable();
             $table->string('discount')->default(1)->nullable();
+            $table->boolean('slideShow')->default(0)->nullable();
             $table->bigInteger('main_category_id')->nullable();
             $table->bigInteger('secondary_category_id')->nullable();
-            $table->bigInteger('third_category_id')->nullable();
             $table->text('description')->nullable();
             $table->string('product_img')->nullable();
+            $table->string('product_img1')->nullable();
+            $table->string('product_img2')->nullable();
+            $table->string('product_img3')->nullable();
+            $table->string('product_img4')->nullable();
             $table->timestamps();
         });
     }

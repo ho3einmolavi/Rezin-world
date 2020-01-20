@@ -18,8 +18,8 @@
 
                     <div class="form-group col-xs col-sm col-10 col-md col-lg col-xl-12">
                         <label for="inputState1">دسته بندی محصول</label>
-                        <select id="inputState1" class="form-control form-option select-size" v-model="main_id">
-                            <option v-for="item in second_categories" v-bind:key="item.id" :value="item.id">
+                        <select id="inputState1" @click="getCategorybrands(main_id)" class="form-control form-option select-size" v-model="main_id">
+                            <option v-for="item in second_categories" v-bind:key="item.id" :value="item">
                                 {{item.name}}
                             </option>
                         </select>
@@ -27,7 +27,7 @@
                     <div class="form-group col-xs col-sm col-10 col-md col-lg col-xl-12">
                         <label for="inputState">برند محصول را انتخاب کنید</label>
                         <select id="inputState" class="form-control form-option select-size" v-model="brand_id">
-                            <option v-for="br in brands" v-bind:key="br.id" :value="br.id">{{br.name}}</option>
+                            <option v-for="br in category_brands" v-bind:key="br.id" :value="br.id">{{br.name}}</option>
                         </select>
                     </div>
                     <div class="form-group col-xs col-sm col-10 col-md col-lg col-xl-12">
@@ -64,9 +64,7 @@
 
         created() {
             console.log("add-product-content component");
-            // this.get_brands();
-           //this.get_second_cats();
-
+            this.get_brands();
         } ,
 
         // mounted() {
@@ -78,6 +76,7 @@
 
         data() {
             return {
+                category_brands: [] ,
                 percent: 0 ,
                 brands: [] ,
                 main_id: '' ,
@@ -92,6 +91,15 @@
         } ,
 
         methods: {
+            getCategorybrands(category) {
+                this.category_brands = [];
+                this.brands.forEach(item => {
+                    if (item.main_category_id === category.main_category_id)
+                    {
+                        this.category_brands.push(item)
+                    }
+                })
+            } ,
             handle() {
                 this.img = this.$refs.img.files[0];
             } ,
@@ -103,7 +111,7 @@
                     let data = new FormData();
                     data.append('title' , this.title);
                     data.append('description' , this.description);
-                    data.append('secondary_category_id' , this.main_id);
+                    data.append('secondary_category_id' , this.main_id.id);
                     data.append('price' , this.price);
                     data.append('brand_id' , this.brand_id);
                     data.append('discount' , (100 - this.discount) / 100);
@@ -151,7 +159,7 @@
                         data: {
                             title:this.title ,
                             description: this.description ,
-                            secondary_category_id: this.main_id ,
+                            secondary_category_id: this.main_id.id ,
                             price: this.price ,
                             brand_id: this.brand_id ,
                             discount: (100 - this.discount) / 100 ,

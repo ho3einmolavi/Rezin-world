@@ -69,13 +69,12 @@ Route::get('/index' , 'ProductController@index');
 Route::post('/product/edit/{id}' , 'ProductController@edit');
 Route::post('/store' , 'ProductController@store');
 Route::get('/mostSale' , 'ProductController@mostSale');
+Route::get('/addtoslideshow/{id}' , 'ProductController@addToSlideShow');
+Route::get('/slideShow' , 'ProductController@getSlideShow');
 Route::post('/filters/brands' , 'ProductController@filterByBrands');
 Route::get('/filters/category/{id}/{param}' , 'ProductController@filterByCategory');
 Route::get('/filters/category/{main}/{sec}/{param}' , 'ProductController@productsBySecondCat');
 
-//slideShows
-Route::post('/create/slideshow' , 'SlideshowController@create');
-Route::get('/show/slideshow' , 'SlideshowController@show');
 
 //search
 Route::post('/search/{table}/{param}' , 'searchController@search');

@@ -19,12 +19,22 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'first_name' => $faker->name,
+        'last_name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'api_token' => Str::random(191),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-//        'remember_token' => Str::random(10),
+        'phone_number' => '09'.$faker->numberBetween(100000000 , 999999999),
+        'password' => bcrypt('123456789'), // password
+        'api_token' => Str::random(256),
+        'state' => $faker->city ,
+        'city' => $faker->city ,
+        'address' => $faker->address
+    ];
+});
+
+$factory->define(\App\Brand::class, function (Faker $faker) {
+    return [
+        'name' => $faker->userName,
+        'main_category_id' => $faker->numberBetween(1, 9) ,
     ];
 });
 
@@ -32,7 +42,6 @@ $factory->define(User::class, function (Faker $faker) {
 $factory->define(\App\MainCategory::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'discount_id' => $faker->numberBetween(1 , 7)
     ];
 });
 
@@ -43,24 +52,16 @@ $factory->define(\App\SecondaryCategory::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(\App\ThirdCategory::class, function (Faker $faker) {
-    return [
-        'name' => $faker->name,
-        'main_category_id' => $faker->numberBetween(1 , 9) ,
-        'secondary_category_id' => $faker->numberBetween(1 , 9)
-    ];
-});
-
 $factory->define(\App\Product::class, function (Faker $faker) {
     return [
         'title' => $faker->name,
         'main_category_id' => $faker->numberBetween(1 , 9) ,
         'secondary_category_id' => $faker->numberBetween(1 , 9),
-        'third_category_id' => $faker->numberBetween(1 , 9),
         'price' => $faker->numberBetween(1000 , 10000) ,
         'final_price' => $faker->numberBetween(1000 , 10000) ,
         'brand_id' => $faker->numberBetween(1 , 9),
         'product_img' => 'large3.png' ,
-        'description' => $faker->text
+        'description' => $faker->text ,
+        'number' => 100
     ];
 });

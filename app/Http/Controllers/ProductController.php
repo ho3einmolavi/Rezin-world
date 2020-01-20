@@ -19,7 +19,10 @@ class ProductController extends Controller
     public function edit($id , Request $request)
     {
         $validata = Validator::make($request->all() , [
-            'third_category_id' => 'required' ,
+            'title' => 'required' ,
+            'secondary_category_id' => 'required' ,
+            'price' => 'required' ,
+            'discount' => 'nullable|numeric|min:0|max:1'
         ]);
 
         if ($validata->fails())
@@ -27,7 +30,7 @@ class ProductController extends Controller
             return new JsonResponse($validata->errors()->all() , 400);
         }
         $product = Product::find($id);
-        $cat = ThirdCategory::find($request->third_category_id);
+        $cat = SecondaryCategory::find($request->secondary_category_id);
 
         if ($request->has('product_img') && $request->product_img != null && $request->product_img != '')
         {
@@ -42,8 +45,7 @@ class ProductController extends Controller
                 'discount' => $request->discount ,
                 'brand_id' => $request->brand_id ,
                 'main_category_id' => $cat->main->id ,
-                'secondary_category_id' => $cat->second->id,
-                'third_category_id' => $request->third_category_id ,
+                'secondary_category_id' => $request->secondary_category_id ,
                 'description' => $request->description ,
                 'product_img' => $name2 ,
             ]);
@@ -58,13 +60,47 @@ class ProductController extends Controller
                 'discount' => $request->discount ,
                 'brand_id' => $request->brand_id ,
                 'main_category_id' => $cat->main->id ,
-                'secondary_category_id' => $cat->second->id,
-                'third_category_id' => $cat->id ,
+                'secondary_category_id' => $request->secondary_category_id ,
                 'description' => $request->description ,
             ]);
         }
 
         return response()->json($product);
+    }
+
+    public function addToSlideShow($id)
+    {
+        $product = Product::find($id);
+        if ($product)
+        {
+            if ($product->slideShow)
+            {
+                $product->update([
+                    'slideShow' => 0
+                ]);
+            }
+            else
+            {
+                $product->update([
+                    'slideShow' => 1
+                ]);
+            }
+
+            return response()->json([
+                'message' => 'تغییرات اعمال شد' ,
+                'product' => $product
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'محصول پیدا نشد' ,
+        ] , 404);
+    }
+
+    public function getSlideShow()
+    {
+        $products = Product::where('slideShow' , 1)->get();
+        return response()->json($products);
     }
 
     public function show($id)
@@ -74,7 +110,6 @@ class ProductController extends Controller
         $products['category'] = [
             'main' => $products->main->name ,
             'secondary' => $products->second->name ,
-            'third' => $products->third->name ,
         ];
 
         return response()->json($products);

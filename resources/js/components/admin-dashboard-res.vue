@@ -7,7 +7,6 @@
             <router-link to="/admin/add-product" class="list-group-item list-group-item-action"><i class="fab fa-adversal"></i></router-link>
             <router-link to="/admin/add-category" class="list-group-item list-group-item-action"><i class="fas fa-align-center"></i></router-link>
             <router-link to="/admin/add-discount" class="list-group-item list-group-item-action"><i class="fas fa-align-right"></i></router-link>
-            <router-link to="/admin/add-slideShow" class="list-group-item list-group-item-action"><i class="fas fa-sliders-h"></i></router-link>
             <!--<a href="messages.html" class="list-group-item list-group-item-action"><i class="fas fa-envelope-open"></i></a>-->
             <!--<a href="change-password.html" class="list-group-item list-group-item-action"><i class="fas fa-unlock-alt"></i></a>-->
             <router-link to="/admin/users" class="list-group-item list-group-item-action"><i class="fas fa-list-ul"></i></router-link>
