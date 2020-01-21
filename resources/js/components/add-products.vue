@@ -43,10 +43,28 @@
                         <input type="number" v-model="number" class="form-control" id="inputname21" placeholder="تعداد موجودی را وارد کنید">
                     </div>
 
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile" ref="img" v-on:change="handle()">
-                        <label class="custom-file-label" for="customFile" style="margin-right: 15px;margin-top: 10px;">انتخاب عکس</label>
+                    <!--<div class="custom-file">-->
+                        <!--<input type="file" multiple class="custom-file-input" id="customFile" ref="img" v-on:change="handle()">-->
+                        <!--&lt;!&ndash;<label class="custom-file-label" for="customFile" style="margin-right: 15px;margin-top: 10px;">انتخاب عکس</label>&ndash;&gt;-->
+                    <!--</div>-->
+                    <h6> حداکثر 5 عکس میتوانید آپلود کنید</h6>
+                    <div class="add-image col-xs col-sm col-10 col-md col-lg col-xl-12 flex">
+                        <div class="add-image-inside col-xs col-sm col-10 col-md col-lg col-xl-3">
+                            <span class="btn btn-success fileinput-button">
+                                  <i class="glyphicon glyphicon-plus"></i>
+                                  <span>Add files...</span>
+                                  <input type="file" ref="img" @change="handle" multiple="">
+                            </span>
+
+                        </div>
+                        <div v-if="img.length" v-for="image in imageUrl" class="add-image-1 col-xs col-sm col-10 col-md col-lg col-xl-2 delete-padding">
+                            <img :src="image" alt="">
+                        </div>
+
                     </div>
+
+
+
 
                     <button class="btn btn-primary" type="button" v-on:click="store" style="margin-top: 30px;font-size: 13px;margin-right: 20px;"> افزودن محصول </button>
                 </form>
@@ -67,16 +85,13 @@
             this.get_brands();
         } ,
 
-        // mounted() {
-        //    this.get_second_cats()
-        // } ,
-
 
         props: ['second_categories'] ,
 
         data() {
             return {
                 category_brands: [] ,
+                imageUrl: [] ,
                 percent: 0 ,
                 brands: [] ,
                 main_id: '' ,
@@ -86,7 +101,8 @@
                 brand_id: '' ,
                 discount: 0 ,
                 number: 1 ,
-                img: ''
+                img: [] ,
+                files: []
             }
         } ,
 
@@ -100,15 +116,29 @@
                     }
                 })
             } ,
+
+
             handle() {
-                this.img = this.$refs.img.files[0];
+                this.img = this.$refs.img.files;
+
+                if (this.img.length <= 5 && this.img.length >= 1)
+                {
+                    for (let i = 0; i < this.img.length; i++) {
+                        this.imageUrl.push(URL.createObjectURL(this.img[i]));
+                        this.files.push(this.img[i]);
+                    }
+                }
+
             } ,
             store() {
                 this.percent = 0;
-                let file = this.img;
-                if (file !== '' && file !== null)
+                let data = new FormData();
+                if (this.files !== '' && this.files !== null)
                 {
-                    let data = new FormData();
+                    for (let i = 0; i <this.files.length; i++) {
+                        data.append('files[]' , this.files[i]);
+                    }
+
                     data.append('title' , this.title);
                     data.append('description' , this.description);
                     data.append('secondary_category_id' , this.main_id.id);
@@ -116,54 +146,16 @@
                     data.append('brand_id' , this.brand_id);
                     data.append('discount' , (100 - this.discount) / 100);
                     data.append('number' , this.number);
-                    data.append('product_img' , file);
+
                     axios({
                         url: '/api/store' ,
                         method: 'post' ,
                         data: data ,
-                        onUploadProgress: uploadEvent => {
-                            this.percent = Math.round(uploadEvent.loaded / uploadEvent.total * 100);
-                        }
-                    })
-                        .then(res => {
-                            console.log(res);
-                            this.brands = res.data;
-                            this.$toasted.success('محصول با موفقیت اضافه شد' , {
-                                position: 'bottom-center' ,
-                                theme: 'bubble' ,
-                                fitToScreen: true ,
-                                className: ['your-custom-class']
-                            }).goAway(1500);
-                        })
-                        .catch(err => {
-                            console.log(err.response);
-                            err.response.data.forEach(item => {
-                                this.$toasted.error(item.toString() , {
-                                    position: 'bottom-center' ,
-                                    theme: 'bubble' ,
-                                    fitToScreen: true ,
-                                    className: ['your-custom-class']
-                                }).goAway(3000);
-                            });
-                            this.brands = [];
-                        })
-                }
-                else
-                {
-                    axios({
-                        url: '/api/store' ,
-                        method: 'post' ,
-                        onUploadProgress: uploadEvent => {
-                            this.percent = Math.round(uploadEvent.loaded / uploadEvent.total * 100);
+                        headers: {
+                            'Content-type': 'multipart/form-data'
                         } ,
-                        data: {
-                            title:this.title ,
-                            description: this.description ,
-                            secondary_category_id: this.main_id.id ,
-                            price: this.price ,
-                            brand_id: this.brand_id ,
-                            discount: (100 - this.discount) / 100 ,
-                            number: this.number ,
+                        onUploadProgress: uploadEvent => {
+                            this.percent = Math.round(uploadEvent.loaded / uploadEvent.total * 100);
                         }
                     })
                         .then(res => {
@@ -189,7 +181,6 @@
                             this.brands = [];
                         })
                 }
-
             } ,
             get_brands() {
                 axios({
@@ -210,5 +201,69 @@
 </script>
 
 <style scoped>
+    .add-image-inside {
+        height: 50px;
+        background-color: ;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
 
+    .add-image {
+        height: 100px;
+        background-color:;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .add-image-1{
+        width: 75px;
+        height: 100px;
+        border:1px solid #ff7a76;
+        background-color: #fff;
+        margin-right:10px;
+    }
+
+    .add-image-1 img{
+        width: 75px;
+        height: 100px;
+    }
+    .fileinput-button {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+    }
+    .btn-success {
+        color: #fff;
+        background-color: #ff7a76;
+        border-color: #ff7a76;
+    }
+
+    .glyphicon {
+        position: relative;
+        top: 1px;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings' , irs;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .fileinput-button input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        opacity: 0;
+        -ms-filter: 'alpha(opacity=0)';
+        font-size: 200px !important;
+        direction: ltr;
+        cursor: pointer;
+    }
+
+    input[type=file] {
+        display: block;
+    }
 </style>

@@ -14,52 +14,20 @@
                 <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-right-img">
                     <div class="card-main-right-img-inside">
                         <!--gallery-->
-                        <div class="mySlides" style="width: 345px;">
-                            <div class="numbertext">1 / 6</div>
-                            <img src="/img/gallery/cS-1.png">
+                        <div v-for="(img , index) in product.images" class="mySlides" style="width: 345px;">
+                            <div class="numbertext">{{index + 1}} / {{product.images.length}}</div>
+                            <img :src="'/images/products/' + img">
                         </div>
-
-                        <div class="mySlides" style="width: 345px;">
-                            <div class="numbertext">2 / 6</div>
-                            <img src="/img/gallery/cS-2.png">
-                        </div>
-
-                        <div class="mySlides" style="width: 345px;">
-                            <div class="numbertext">3 / 6</div>
-                            <img src="/img/gallery/cS-3.png">
-                        </div>
-
-                        <div class="mySlides" style="width: 345px;">
-                            <div class="numbertext">4 / 6</div>
-                            <img src="/img/gallery/cS-6.png">
-                        </div>
-
-                        <div class="mySlides" style="width: 345px;">
-                            <div class="numbertext">5 / 6</div>
-                            <img src="/img/gallery/cS-5.png">
-                        </div>
-
 
                         <a class="prev" onclick="plusSlides(-1)">❮</a>
                         <a class="next" onclick="plusSlides(1)">❯</a>
 
 
                         <div class="row images-inside">
-                            <div class="column">
-                                <img class="demo cursor" src="/img/gallery/cS-1.png" onclick="currentSlide(1)" alt="The Woods">
+                            <div v-for="(img , index) in product.images" class="column">
+                                <img class="demo cursor" :src="'/images/products/' + img" @click="currentSlide(index + 1)" alt="The Woods">
                             </div>
-                            <div class="column">
-                                <img class="demo cursor" src="/img/gallery/cS-2.png" onclick="currentSlide(2)" alt="Cinque Terre">
-                            </div>
-                            <div class="column">
-                                <img class="demo cursor" src="/img/gallery/cS-3.png" onclick="currentSlide(3)" alt="Mountains and fjords">
-                            </div>
-                            <div class="column">
-                                <img class="demo cursor" src="/img/gallery/cS-6.png" onclick="currentSlide(4)" alt="Northern Lights">
-                            </div>
-                            <div class="column">
-                                <img class="demo cursor" src="/img/gallery/cS-5.png" onclick="currentSlide(5)" alt="Nature and sunrise">
-                            </div>
+
                         </div>
                         <!--end-gallery-->
                     </div>

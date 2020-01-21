@@ -16,7 +16,7 @@
             <ol v-if="ok === 1" id="selectable" class="col-xs col-sm col- col-md col-lg col-xl-12 delete-padding-left">
                 <li v-bind:class="[{ 'slide-red' : product.slideShow , 'text-white': product.slideShow}]" class="ui-state-default user-list-info-box flex" v-for="product in products" v-bind:key="product.id">
                     <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-image">
-                        <img :src="'/images/products/' + product.product_img">
+                        <img :src="'/images/products/' + product.images[0]">
                     </div>
                     <div class="col-xs col-sm col- col-md col-lg col-xl-1 user-list-info-box-name">
                         <span class="text-span text-gray-p"> {{product.title}}  </span>

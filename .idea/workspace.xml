@@ -2,56 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d2abc762-6a64-465c-967a-fac0ee5ee29d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Brand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Discount.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/BrandController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/DiscountController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/SpecialDiscountController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/SpecialDiscount.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_09_25_082330_create_discounts_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_09_26_140810_create_brands_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_12_17_225924_create_special_discounts_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/single-newest-products.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/single-product-feature.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/single-same-products.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/single.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/single.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Ho3ein.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Ho3ein.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/rezin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/rezin.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_01_113138_create_main_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_09_01_113138_create_main_categories_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2019_09_11_171117_create_products_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_09_11_171117_create_products_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/products/1026034-mortal-kombat-scorpion-wallpapers-2880x1800-phone.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/products/30040_ps4wallpapers-com-59d66b9b9c361-spiderman-4k-logo-background-4k-1535915583.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/products/85327.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/products/red.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/add-category.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/add-category.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/add-discount.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/add-discount.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/add-products.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/add-products.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/add-slide-show.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin-content.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin-content.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin-dashboard-res.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin-dashboard-res.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin-dashboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin-dashboard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/admin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/another-header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/another-header.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/category-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/category-list.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/edit-product.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/edit-product.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/main-header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/main-header.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/products-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/products-list.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/products.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/products.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/fa/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/fa/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/single-product-feature.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/single-product-feature.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,9 +34,10 @@
     <session id="1915813477">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
+          <entry key="project.closed" value="11" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
+          <entry key="project.open.time.145" value="1" />
           <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.28" value="1" />
@@ -76,7 +45,7 @@
           <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -84,24 +53,24 @@
           <entry key="css" value="11" />
           <entry key="env" value="2" />
           <entry key="html" value="16" />
-          <entry key="js" value="9" />
+          <entry key="js" value="10" />
           <entry key="json" value="3" />
-          <entry key="php" value="99" />
+          <entry key="php" value="106" />
           <entry key="png" value="2" />
-          <entry key="vue" value="83" />
+          <entry key="vue" value="89" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key=".env file" value="2" />
-          <entry key="Blade" value="14" />
+          <entry key="Blade" value="16" />
           <entry key="CSS" value="11" />
           <entry key="HTML" value="16" />
           <entry key="Image" value="2" />
           <entry key="JSON" value="3" />
-          <entry key="JavaScript" value="9" />
-          <entry key="PHP" value="85" />
-          <entry key="Vue.js" value="83" />
+          <entry key="JavaScript" value="10" />
+          <entry key="PHP" value="90" />
+          <entry key="Vue.js" value="89" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -109,20 +78,20 @@
           <entry key="css" value="114" />
           <entry key="env" value="12" />
           <entry key="html" value="33" />
-          <entry key="js" value="270" />
-          <entry key="php" value="2385" />
-          <entry key="vue" value="5108" />
+          <entry key="js" value="328" />
+          <entry key="php" value="2971" />
+          <entry key="vue" value="6552" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key=".env file" value="12" />
-          <entry key="Blade" value="748" />
+          <entry key="Blade" value="759" />
           <entry key="CSS" value="114" />
           <entry key="HTML" value="33" />
-          <entry key="JavaScript" value="270" />
-          <entry key="PHP" value="1637" />
-          <entry key="Vue.js" value="5108" />
+          <entry key="JavaScript" value="328" />
+          <entry key="PHP" value="2212" />
+          <entry key="Vue.js" value="6552" />
         </counts>
       </usages-collector>
     </session>
@@ -132,65 +101,100 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/single-product-feature.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-136">
-              <caret line="112" column="105" selection-start-line="112" selection-start-column="105" selection-end-line="112" selection-end-column="105" />
+            <state relative-caret-position="-616">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#ul#0;n#div#2;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#section#0;n#div#0;n#article#0;n#div#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#section#0;n#article#0;n#div#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#section#1;n#article#0;n#div#2;n#div#0;n#template#0;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/another-header.vue">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3808">
-              <caret line="283" column="41" selection-start-line="283" selection-start-column="41" selection-end-line="283" selection-end-column="41" />
+            <state relative-caret-position="130">
+              <caret line="99" column="34" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
+              <folding>
+                <element signature="e#302#2360#0#PHP" />
+                <element signature="e#2366#3028#0#PHP" />
+                <element signature="e#3034#3180#0#PHP" />
+                <element signature="e#3186#3453#0#PHP" />
+                <element signature="e#3956#6383#0#PHP" />
+                <element signature="e#5877#6775#0#PHP" />
+                <element signature="e#6781#7582#0#PHP" />
+                <element signature="e#7588#8065#0#PHP" />
+                <element signature="e#8562#9882#0#PHP" />
+                <element signature="e#9127#10405#0#PHP" />
+                <element signature="e#10411#11705#0#PHP" />
+                <element signature="e#11711#11852#0#PHP" />
+                <element signature="e#11858#12017#0#PHP" />
+                <element signature="e#12023#12825#0#PHP" />
+                <element signature="e#12831#13957#0#PHP" />
+                <element signature="e#13963#15158#0#PHP" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/products.vue">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/main-header.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="168" column="135" selection-start-line="168" selection-start-column="87" selection-end-line="168" selection-end-column="135" />
+            <state relative-caret-position="396">
+              <caret line="324" column="78" selection-start-line="324" selection-start-column="78" selection-end-line="324" selection-end-column="78" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/products.blade.php">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/resources/js/components/products-list.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="18" column="73" selection-start-line="18" selection-start-column="73" selection-end-line="18" selection-end-column="73" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_09_11_171117_create_products_table.php">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/products.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="33" column="40" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
+            <state relative-caret-position="501">
+              <caret line="83" column="52" selection-start-line="83" selection-start-column="52" selection-end-line="83" selection-end-column="52" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/add-products.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="364">
-              <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+              <caret line="49" column="57" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="57" />
+              <folding>
+                <element signature="e#4707#5007#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/single.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
+            <state relative-caret-position="700">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_09_11_171117_create_products_table.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="672">
+              <caret line="29" column="25" lean-forward="true" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -198,8 +202,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/single.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+            <state relative-caret-position="112">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -207,20 +211,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/api.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
+            <state relative-caret-position="340">
               <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/edit-product.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="199" column="14" selection-start-line="199" selection-start-column="14" selection-end-line="210" selection-end-column="22" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -253,6 +245,9 @@
       <find>مش</find>
       <find>gall</find>
       <find>کد</find>
+      <find>my</find>
+      <find>ui-state-default user-list-info-box-add</find>
+      <find>card-main-righ</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -266,7 +261,6 @@
         <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
         <option value="D:/rezin world/p-m/admin-user/admin/add-product.html" />
         <option value="$PROJECT_DIR$/public/css/filter-price/filter-price.css" />
-        <option value="$PROJECT_DIR$/resources/views/admin.blade.php" />
         <option value="$PROJECT_DIR$/public/css/flat-ui/flat-ui.css" />
         <option value="D:/rezin world/p-m/admin-user/admin/add-category.html" />
         <option value="D:/rezin world/p-m/admin-user/admin/add-coupons.html" />
@@ -282,7 +276,6 @@
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/resources/js/components/edit-product.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/add-products.vue" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/DiscountController.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_09_01_113138_create_main_categories_table.php" />
@@ -293,25 +286,27 @@
         <option value="$PROJECT_DIR$/resources/js/components/admin.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/add-category.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/category-list.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/products-list.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/admin-dashboard.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/admin-dashboard-res.vue" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/main-header.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/single-content.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/single-same-products.vue" />
         <option value="D:/rezin world/p-m/single.html" />
         <option value="$PROJECT_DIR$/resources/js/components/single-newest-products.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/single.vue" />
-        <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/resources/views/single.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/products.vue" />
         <option value="$PROJECT_DIR$/database/factories/UserFactory.php" />
         <option value="$PROJECT_DIR$/resources/js/components/another-header.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/single-product-feature.vue" />
+        <option value="$PROJECT_DIR$/resources/views/admin.blade.php" />
+        <option value="$PROJECT_DIR$/resources/js/app.js" />
+        <option value="$PROJECT_DIR$/resources/views/single.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_09_11_171117_create_products_table.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/main-header.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/products-list.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/single-product-feature.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/add-products.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/products.vue" />
       </list>
     </option>
   </component>
@@ -426,10 +421,9 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1295" />
-    <option name="height" value="1000" />
+    <option name="x" value="-199" />
+    <option name="width" value="1163" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -437,7 +431,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -489,6 +482,24 @@
             <path>
               <item name="rezin" type="b2602c69:ProjectViewProjectNode" />
               <item name="rezin" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rezin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rezin" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rezin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rezin" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="products" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rezin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rezin" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -507,31 +518,13 @@
             <path>
               <item name="rezin" type="b2602c69:ProjectViewProjectNode" />
               <item name="rezin" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="lang" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rezin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rezin" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="lang" type="462c0819:PsiDirectoryNode" />
-              <item name="fa" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rezin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rezin" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rezin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rezin" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -543,11 +536,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ho3ein\Desktop\rezin\public\images\products" />
       <recent name="C:\Users\Ho3ein\Desktop\rezin\database\migrations" />
       <recent name="C:\Users\Ho3ein\Desktop\rezin\app" />
       <recent name="C:\Users\Ho3ein\Desktop\rezin\app\Http\Controllers" />
       <recent name="C:\Users\Ho3ein\Desktop\rezin\resources\lang" />
-      <recent name="C:\Users\Ho3ein\Desktop\rezin\public\css" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -582,18 +575,19 @@
       <workItem from="1579333116739" duration="59000" />
       <workItem from="1579424192709" duration="7005000" />
       <workItem from="1579505666207" duration="634000" />
-      <workItem from="1579511917244" duration="13472000" />
+      <workItem from="1579511917244" duration="14072000" />
+      <workItem from="1579587599646" duration="23168000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92489000" />
+    <option name="totallyTimeSpent" value="116257000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2624161" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26107383" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -605,7 +599,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32561505" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3299566" />
@@ -644,9 +638,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_12_17_225924_create_special_discounts_table.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/SpecialDiscount.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -687,13 +678,7 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_09_01_113310_create_secondary_categories_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#7#45#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CategoryController.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -781,26 +766,9 @@
     <entry file="file://$PROJECT_DIR$/resources/js/components/index-content.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Slideshow.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_09_25_085103_create_slideshows_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-411" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SlideshowController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-420" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/add-products.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="138" column="54" selection-start-line="138" selection-start-column="54" selection-end-line="146" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Slideshow.php" />
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_09_25_085103_create_slideshows_table.php" />
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SlideshowController.php" />
     <entry file="file://$PROJECT_DIR$/resources/js/components/admin-dashboard.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -828,30 +796,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/products-list.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="24" column="125" selection-start-line="24" selection-start-column="77" selection-end-line="24" selection-end-column="125" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/main-header.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="307" column="117" selection-start-line="307" selection-start-column="117" selection-end-line="307" selection-end-column="117" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/single-content.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="1" column="4" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/single-content.vue" />
     <entry file="file://$PROJECT_DIR$/resources/js/components/single-same-products.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
@@ -876,20 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-894">
           <caret line="64" column="77" selection-start-line="64" selection-start-column="73" selection-end-line="64" selection-end-column="77" />
-          <folding>
-            <element signature="n#div#2;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#3;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="76" column="30" selection-start-line="76" selection-start-column="30" selection-end-line="76" selection-end-column="30" />
-          <folding>
-            <element signature="e#246#267#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -900,43 +831,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/single.blade.php">
+    <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="499">
-          <caret line="63" column="18" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
+        <state relative-caret-position="364">
+          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
+    <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="99" column="32" selection-start-line="99" selection-start-column="20" selection-end-line="99" selection-end-column="32" />
-          <folding>
-            <element signature="e#302#2360#0#PHP" />
-            <element signature="e#2366#3028#0#PHP" />
-            <element signature="e#3034#3180#0#PHP" />
-            <element signature="e#3186#3453#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/single.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        <state relative-caret-position="1428">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/edit-product.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
+        <state relative-caret-position="5572">
           <caret line="199" column="14" selection-start-line="199" selection-start-column="14" selection-end-line="210" selection-end-column="22" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -947,52 +858,126 @@
     <entry file="file://$PROJECT_DIR$/resources/views/products.blade.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/DatabaseSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/factories/UserFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/another-header.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3808">
+        <state relative-caret-position="569">
           <caret line="283" column="41" selection-start-line="283" selection-start-column="41" selection-end-line="283" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/products.vue">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="168" column="135" selection-start-line="168" selection-start-column="87" selection-end-line="168" selection-end-column="135" />
+        <state relative-caret-position="532">
+          <caret line="73" column="13" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/single-product-feature.vue">
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-136">
-          <caret line="112" column="105" selection-start-line="112" selection-start-column="105" selection-end-line="112" selection-end-column="105" />
+        <state relative-caret-position="308">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="7" selection-end-line="19" selection-end-column="8" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#ul#0;n#div#2;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#section#0;n#div#0;n#article#0;n#div#2;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#section#0;n#article#0;n#div#2;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#section#1;n#article#0;n#div#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#246#267#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/single.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="700">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_09_11_171117_create_products_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="33" column="40" selection-start-line="33" selection-start-column="40" selection-end-line="33" selection-end-column="40" />
+        <state relative-caret-position="672">
+          <caret line="29" column="25" lean-forward="true" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="99" column="34" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
+          <folding>
+            <element signature="e#302#2360#0#PHP" />
+            <element signature="e#2366#3028#0#PHP" />
+            <element signature="e#3034#3180#0#PHP" />
+            <element signature="e#3186#3453#0#PHP" />
+            <element signature="e#3956#6383#0#PHP" />
+            <element signature="e#5877#6775#0#PHP" />
+            <element signature="e#6781#7582#0#PHP" />
+            <element signature="e#7588#8065#0#PHP" />
+            <element signature="e#8562#9882#0#PHP" />
+            <element signature="e#9127#10405#0#PHP" />
+            <element signature="e#10411#11705#0#PHP" />
+            <element signature="e#11711#11852#0#PHP" />
+            <element signature="e#11858#12017#0#PHP" />
+            <element signature="e#12023#12825#0#PHP" />
+            <element signature="e#12831#13957#0#PHP" />
+            <element signature="e#13963#15158#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/main-header.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="324" column="78" selection-start-line="324" selection-start-column="78" selection-end-line="324" selection-end-column="78" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/products-list.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="18" column="73" selection-start-line="18" selection-start-column="73" selection-end-line="18" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/single.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/single-product-feature.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-616">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#ul#0;n#div#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#section#0;n#div#0;n#article#0;n#div#2;n#div#0;n#template#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/add-products.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="49" column="57" selection-start-line="49" selection-start-column="57" selection-end-line="49" selection-end-column="57" />
+          <folding>
+            <element signature="e#4707#5007#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/products.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="83" column="52" selection-start-line="83" selection-start-column="52" selection-end-line="83" selection-end-column="52" />
         </state>
       </provider>
     </entry>

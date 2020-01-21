@@ -100,6 +100,11 @@ class ProductController extends Controller
     public function getSlideShow()
     {
         $products = Product::where('slideShow' , 1)->get();
+        foreach ($products as $product)
+        {
+            $product['images'] = explode(',' , $product['product_img']);
+            unset($product['product_img']);
+        }
         return response()->json($products);
     }
 
@@ -112,12 +117,24 @@ class ProductController extends Controller
             'secondary' => $products->second->name ,
         ];
 
+        $products['images'] = explode(',' , $products['product_img']);
+        unset($products['product_img']);
+        unset($products['main']);
+        unset($products['second']);
+
         return response()->json($products);
     }
 
     public function index()
     {
         $products = Product::latest('id')->get();
+
+        foreach ($products as $product)
+        {
+            $product['images'] = explode(',' , $product['product_img']);
+            unset($product['product_img']);
+        }
+
         return response()->json($products);
     }
 
@@ -127,7 +144,7 @@ class ProductController extends Controller
             'title' => 'required' ,
             'secondary_category_id' => 'required' ,
             'price' => 'required' ,
-            'discount' => 'nullable|numeric|min:0|max:1'
+            'discount' => 'nullable|numeric|min:0|max:1' ,
         ]);
 
         if ($validata->fails())
@@ -138,46 +155,52 @@ class ProductController extends Controller
         $cat = SecondaryCategory::find($request->secondary_category_id);
         if (! is_null($cat))
         {
-            if ($request->has('product_img') && $request->product_img != null && $request->product_img != '')
-            {
-                $image2 = $request->file('product_img');
-                $name2 = $image2->getClientOriginalName();
-                $image2->move(public_path('/images/products') , $name2);
-                $product = Product::create([
-                    'title' => $request->title ,
-                    'price' => $request->price ,
-                    'final_price' => $request->price * $request->discount ,
-                    'number' => $request->number ,
-                    'discount' => $request->discount ,
-                    'brand_id' => $request->brand_id ,
-                    'main_category_id' => $cat->main->id ,
-                    'secondary_category_id' => $cat->id,
-                    'description' => $request->description ,
-                    'product_img' => $name2 ,
-                ]);
-            }
-            else
-            {
-                $product = Product::create([
-                    'title' => $request->title ,
-                    'price' => $request->price ,
-                    'final_price' => $request->price * $request->discount ,
-                    'number' => $request->number ,
-                    'discount' => $request->discount ,
-                    'brand_id' => $request->brand_id ,
-                    'main_category_id' => $cat->main->id ,
-                    'secondary_category_id' => $cat->id,
-                    'description' => $request->description ,
-                ]);
-            }
 
+                foreach ($request->file('files') as $key => $file)
+                {
+                    $name2 = $file->getClientOriginalName();
+                    $name2 = time().'_'.$name2;;
+                    $file->move(public_path('/images/products') , $name2);
+                    $names[] = $name2;
+                }
+                $product = Product::create([
+                    'title' => $request->title ,
+                    'price' => $request->price ,
+                    'final_price' => $request->price * $request->discount ,
+                    'number' => $request->number ,
+                    'discount' => $request->discount ,
+                    'brand_id' => $request->brand_id ,
+                    'main_category_id' => $cat->main->id ,
+                    'secondary_category_id' => $cat->id,
+                    'description' => $request->description ,
+                    'product_img' => implode(',' , $names) ,
+                ]);
+
+//            else
+//            {
+//                $product = Product::create([
+//                    'title' => $request->title ,
+//                    'price' => $request->price ,
+//                    'final_price' => $request->price * $request->discount ,
+//                    'number' => $request->number ,
+//                    'discount' => $request->discount ,
+//                    'brand_id' => $request->brand_id ,
+//                    'main_category_id' => $cat->main->id ,
+//                    'secondary_category_id' => $cat->id,
+//                    'description' => $request->description ,
+//                ]);
+//            }
         }
+
         else
         {
             return response()->json('دسته بندی برای این محصول یافت نشد' , 404);
         }
 
-        return response()->json($product);
+        return response()->json([
+            'status' => 'product is added' ,
+            'product' => $product
+        ]);
     }
 
     public function filters($param)
@@ -276,36 +299,56 @@ class ProductController extends Controller
             return response()->json('محصولی برای این دسته بندی یافت نشد' ,  404);
         }
 
+//        foreach ($cat->products as $product)
+//        {
+//            $product['images'] = explode(',' , $product['product_img']);
+//            unset($product['product_img']);
+//        }
+
+
+
         if ($param == 'newest')
         {
-            $cat = $cat->products()->orderBy('id' , 'DESC');
+            $cat = $cat->products()->orderBy('id' , 'DESC')->paginate(12);
+            foreach ($cat as $product)
+            {
+                $product['images'] = explode(',' , $product['product_img']);
+                unset($product['product_img']);
+            }
         }
 
         else if ($param == 'cheaper')
         {
-            $cat = $cat->products()->orderBy('final_price' , 'ASC');
+            $cat = $cat->products()->orderBy('final_price' , 'ASC')->paginate(12);
+            foreach ($cat as $product)
+            {
+                $product['images'] = explode(',' , $product['product_img']);
+                unset($product['product_img']);
+            }
         }
 
         else if ($param == 'the-most-expensive')
         {
-            $cat = $cat->products()->orderBy('final_price' , 'DESC');
+            $cat = $cat->products()->orderBy('final_price' , 'DESC')->paginate(12);
+            foreach ($cat as $product)
+            {
+                $product['images'] = explode(',' , $product['product_img']);
+                unset($product['product_img']);
+            }
         }
 
-        else $cat = $cat->products();
+        else
+        {
+            $cat = $cat->products()->paginate(12);
 
-//        $LNG = ceil(count($cat) / 4);
-//        $arr = [];
-//        for ($i = 0, $k = 0; $i < $LNG; $i++, $k += 4) {
-//            for ($j = $k; $j < $k + 4; $j++)
-//            {
-//                if (isset($cat[$j]))
-//                {
-//                    $arr[$i][] = $cat[$j];
-//                }
-//            }
-//        }
-
-        return response()->json($cat->paginate(12));
+            foreach ($cat as $product)
+            {
+                $product['images'] = explode(',' , $product['product_img']);
+                unset($product['product_img']);
+            }
+        }
+//
+        return response()->json($cat);
     }
 
     public function search(Request $request , Product $product , $param)

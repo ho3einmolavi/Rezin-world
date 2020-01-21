@@ -8,8 +8,20 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Toasted from 'vue-toasted';
 import VuePersianDatetimePicker from 'vue-persian-datetime-picker';
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 
+const options = {
+    confirmButtonColor: '#41b882',
+    cancelButtonColor: '#ff7674',
+    // customClass: {
+    //     'font-family': irs
+    // }
+};
+
+
+Vue.use(VueSweetalert2, options);
 Vue.component('date-picker', VuePersianDatetimePicker);
 Vue.use(Toasted);
 Vue.use(VueRouter);

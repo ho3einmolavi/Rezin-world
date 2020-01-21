@@ -2,12 +2,15 @@
   <dictionary name="Ho3ein">
     <words>
       <w>addtoslideshow</w>
+      <w>autocapitalize</w>
       <w>baner</w>
       <w>baners</w>
+      <w>categorybrands</w>
       <w>getcode</w>
       <w>nullable</w>
       <w>searchflag</w>
       <w>slideshow</w>
+      <w>swal</w>
       <w>validata</w>
     </words>
   </dictionary>

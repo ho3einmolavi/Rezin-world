@@ -322,7 +322,7 @@
                                 </div>
                             </figcaption>
                             <div class="img-slide">
-                                <img :src="'/images/products/' + item.product_img">
+                                <img :src="'/images/products/' + item.images[0]">
                             </div>
                         </figure>
                         <!--end-slide-1-->

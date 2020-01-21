@@ -27,11 +27,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('main_category_id')->nullable();
             $table->bigInteger('secondary_category_id')->nullable();
             $table->text('description')->nullable();
-            $table->string('product_img')->nullable();
-            $table->string('product_img1')->nullable();
-            $table->string('product_img2')->nullable();
-            $table->string('product_img3')->nullable();
-            $table->string('product_img4')->nullable();
+            $table->text('product_img')->nullable();
             $table->timestamps();
         });
     }

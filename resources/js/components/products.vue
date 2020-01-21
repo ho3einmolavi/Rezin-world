@@ -68,40 +68,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col col-sm col-xs col-md-12 col-lg-12 col-xl-12 product-page-right-main-four delete-padding">
-                    <ul class="dropdown-list-container">
-                        <li class="dropdown-list">
-                            <a href="#" dropdown-prop="title">محصولات تایید شده <i class="dropdown-icon"></i></a>
-                            <ul class="dropdown-list-items">
-                                <label><input type="checkbox" name="checkbox" value="1">رنگ اول
-                                </label><br>
-                                <label><input type="checkbox" name="checkbox" value="1">رنگ دوم
-                                </label><br>
-                                <label><input type="checkbox" name="checkbox" value="1">رنگ سوم
-                                </label><br>
-                                <label><input type="checkbox" name="checkbox" value="1">رنگ چهارم
-                                </label><br>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col col-sm col-xs col-md-12 col-lg-12 col-xl-12 product-page-right-main-four delete-padding">
-                    <ul class="dropdown-list-container">
-                        <li class="dropdown-list">
-                            <a href="#" dropdown-prop="title">محصولات تایید شده <i class="dropdown-icon"></i></a>
-                            <ul class="dropdown-list-items">
-                                <label><input type="checkbox" name="checkbox" value="1">رنگ اول
-                                </label><br>
-                                <label><input type="checkbox" name="checkbox" value="1">رنگ دوم
-                                </label><br>
-                                <label><input type="checkbox" name="checkbox" value="1">رنگ سوم
-                                </label><br>
-                                <label><input type="checkbox" name="checkbox" value="1">رنگ چهارم
-                                </label><br>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+
                 <div class="col col-sm col-xs col-md col-lg col-xl-12 filter-price">
                     <!---->
                     <div class="col col-sm col-xs col-md col-lg col-xl-12 filter-price-text">
@@ -115,7 +82,6 @@
                                 <input type="range" min="100" max="500" value="500" id="upper">
                             </div>
                             <div class="price-wrap">
-                                <!--<span class="price-title">FILTER</span>-->
                                 <div class="price-wrap-1">
                                     <input id="one">
                                     <label for="one">$</label>
@@ -148,7 +114,7 @@
                         <div v-for="product in item"  class="col col-sm col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box delete-padding">
                             <a :href="'/single/' + product.id">
                                 <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-top">
-                                    <img :src="'/images/products/' + product.product_img">
+                                    <img :src="'/images/products/' + product.images[0]">
                                 </div>
                                 <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom delete-padding">
                                     <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-top delete-padding">

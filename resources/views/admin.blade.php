@@ -18,20 +18,22 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="../css/bootstrap/bootstrap.css" type="text/css">
-    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css" type="text/css">
 
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="../../css/style.css">
-    <link rel="stylesheet" type="text/css" href="../../css/menu-res/menu-res.css">
-    <link rel="stylesheet" type="text/css" href="../css/admin-user/style-dashboard.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/menu-res/menu-res.css">
+    <link rel="stylesheet" type="text/css" href="/css/admin-user/style-dashboard.css">
+    <link rel="stylesheet" type="text/css" href="/css/gallery/gallery.css">
+
     <!--select2-->
     <link href="css/select2.min.css" rel="stylesheet">
     <!-- Loading Flat UI -->
     <link href="../css/flat-ui/flat-ui.css" rel="stylesheet">
     <!--date-base-data-->
     <link rel="stylesheet" href="css/date-base-data/export.css" type="text/css" media="all" />
-    <link rel="stylesheet" type="text/css" href="../../css/login-register/login-register.css">
+    <link rel="stylesheet" type="text/css" href="/css/login-register/login-register.css">
 </head>
 <body>
 
@@ -53,21 +55,23 @@
 
 <!--------toggle----------->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-<script  src="js/admin-user/toggle.js"></script>
+<script  src="/js/admin-user/toggle.js"></script>
 <!--------------chart------------->
 <script src='https://code.jquery.com/jquery-1.11.2.min.js'></script>
-<script  src="../js/admin-user/chart.js"></script>
+<script  src="/js/admin-user/chart.js"></script>
 <!----------megamenu---------->
-<script src="../js/mega-menu.js"></script>
+<script src="/js/mega-menu.js"></script>
 <!-----------select2-------------->
-<script src="../js/select2.min.js"></script>
+<script src="/js/select2.min.js"></script>
 <!--date-base-data-->
-<script src="js/date-base-data/amcharts.js"></script>
-<script src="js/date-base-data/serial.js"></script>
-<script src="js/date-base-data/export.min.js"></script>
-<script src="js/date-base-data/light.js"></script>
+<script src="/js/date-base-data/amcharts.js"></script>
+<script src="/js/date-base-data/serial.js"></script>
+<script src="/js/date-base-data/export.min.js"></script>
+<script src="/js/gallery/gallery.js"></script>
+
+<script src="/js/date-base-data/light.js"></script>
 <!--login-register-->
-<script src="../../js/login-register/login-register.js"></script>
+<script src="/js/login-register/login-register.js"></script>
 </body>
 
 </html>
