@@ -52,6 +52,14 @@ $factory->define(\App\SecondaryCategory::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(\App\Comment::class, function (Faker $faker) {
+    return [
+        'body' => $faker->name,
+        'user_id' => $faker->numberBetween(1 , 9) ,
+        'product_id' => $faker->numberBetween(1 , 200)
+    ];
+});
+
 $factory->define(\App\Product::class, function (Faker $faker) {
     return [
         'title' => $faker->name,

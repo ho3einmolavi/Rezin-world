@@ -175,10 +175,8 @@
                 </div>
             </div>
             <div class="col col-sm col-md-12 col-lg col-xl header-main-bottom-span table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
-                <a v-if="router === 'index'" v-for="item in main_categories"  :href="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></a>
-                <a v-if="router === 'admin'" v-for="item in main_categories"  :href="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></a>
-                <a v-if="router === 'single'" v-for="item in main_categories"  :href="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></a>
-                <router-link v-if="router === 'products'" v-for="item in main_categories" v-bind:key="item.id"  :to="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></router-link>
+                <a v-if="router === 0" v-for="item in main_categories"  :href="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></a>
+                <router-link v-if="router === 1" v-for="item in main_categories" v-bind:key="item.id"  :to="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></router-link>
             </div>
             <div class="col col-sm col-xs col-md col-lg col-xl-12 header-main-bottom-slideshow">
             </div>
@@ -222,28 +220,13 @@
 
         methods: {
             search() {
-               if (this.router === 'products')
-               {
-                   if (this.title === '')
-                   {
-                       this.$router.push({ path: `/products/search/_` })
-                   }
-                   else
-                   {
-                       this.$router.push({ path: `/products/search/${this.title}` })
-                   }
-
-               }
-                if (this.router === 'index')
+                if (this.title === '')
                 {
-                    if (this.title === '')
-                    {
-                        window.location = `/products/search/_`;
-                    }
-                    else
-                    {
-                        window.location = `/products/search/${this.title}`;
-                    }
+                    window.location = `/products/search/_`;
+                }
+                else
+                {
+                    window.location = `/products/search/${this.title}`;
                 }
             } ,
             get_second(id) {
@@ -276,21 +259,11 @@
 
                if (this.$route.name === 'product')
                {
-                   this.router = 'products'
+                   this.router = 1
                }
-
-                else if (this.$route.name === 'single')
-                {
-                    this.router = 'single'
-                }
-
-               else if (this.$route.path === '/')
+                else
                {
-                   this.router = 'index'
-               }
-               else if (this.$route.name === 'admin')
-               {
-                   this.router = 'admin'
+                   this.router = 0
                }
             } ,
             getCat() {

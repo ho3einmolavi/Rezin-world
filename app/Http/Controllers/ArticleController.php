@@ -39,8 +39,10 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $validata = Validator::make($request->all() , [
-            'title' => 'required' ,
+            'title' => 'required|unique:articles' ,
             'body' => 'required' ,
+            'keywords' => 'required' ,
+            'cover' => 'nullable|image' ,
         ]);
 
         if ($validata->fails())
@@ -48,10 +50,29 @@ class ArticleController extends Controller
             return new JsonResponse($validata->errors()->all() , 400);
         }
 
-        $article = Article::create([
-            'title' => $request->title ,
-            'body' => $request->body ,
-        ]);
+        if ($request->hasFile('cover'))
+        {
+            $file = $request->file('cover');
+            $name2 = $file->getClientOriginalName();
+            $name2 = time().'_'.$name2;;
+            $file->move(public_path('/images/articles') , $name2);
+
+            $article = Article::create([
+                'title' => $request->title ,
+                'body' => $request->body ,
+                'keywords' => $request->keywords ,
+                'cover' => $name2 ,
+            ]);
+        }
+        else
+        {
+            $article = Article::create([
+                'title' => $request->title ,
+                'body' => $request->body ,
+                'keywords' => $request->keywords ,
+                'cover' => 'default.png'
+            ]);
+        }
 
         return response()->json($article);
     }

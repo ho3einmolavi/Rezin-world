@@ -32,11 +32,15 @@ class ProductController extends Controller
         $product = Product::find($id);
         $cat = SecondaryCategory::find($request->secondary_category_id);
 
-        if ($request->has('product_img') && $request->product_img != null && $request->product_img != '')
+        if ($request->hasFile('files'))
         {
-            $image2 = $request->file('product_img');
-            $name2 = $image2->getClientOriginalName();
-            $image2->move(public_path('/images/products') , $name2);
+            foreach ($request->file('files') as $key => $file)
+            {
+                $name2 = $file->getClientOriginalName();
+                $name2 = time().'_'.$name2;;
+                $file->move(public_path('/images/products') , $name2);
+                $names[] = $name2;
+            }
             $product->update([
                 'title' => $request->title ,
                 'price' => $request->price ,
@@ -47,7 +51,7 @@ class ProductController extends Controller
                 'main_category_id' => $cat->main->id ,
                 'secondary_category_id' => $request->secondary_category_id ,
                 'description' => $request->description ,
-                'product_img' => $name2 ,
+                'product_img' => implode(',' , $names) ,
             ]);
         }
         else
@@ -127,7 +131,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::latest('id')->get();
+        $products = Product::orderBy('slideShow' , 'DESC')->get();
 
         foreach ($products as $product)
         {
@@ -155,43 +159,43 @@ class ProductController extends Controller
         $cat = SecondaryCategory::find($request->secondary_category_id);
         if (! is_null($cat))
         {
-
-                foreach ($request->file('files') as $key => $file)
+                if ($request->hasFile('files'))
                 {
-                    $name2 = $file->getClientOriginalName();
-                    $name2 = time().'_'.$name2;;
-                    $file->move(public_path('/images/products') , $name2);
-                    $names[] = $name2;
-                }
-                $product = Product::create([
-                    'title' => $request->title ,
-                    'price' => $request->price ,
-                    'final_price' => $request->price * $request->discount ,
-                    'number' => $request->number ,
-                    'discount' => $request->discount ,
-                    'brand_id' => $request->brand_id ,
-                    'main_category_id' => $cat->main->id ,
-                    'secondary_category_id' => $cat->id,
-                    'description' => $request->description ,
-                    'product_img' => implode(',' , $names) ,
-                ]);
-
-//            else
-//            {
-//                $product = Product::create([
-//                    'title' => $request->title ,
-//                    'price' => $request->price ,
-//                    'final_price' => $request->price * $request->discount ,
-//                    'number' => $request->number ,
-//                    'discount' => $request->discount ,
-//                    'brand_id' => $request->brand_id ,
-//                    'main_category_id' => $cat->main->id ,
-//                    'secondary_category_id' => $cat->id,
-//                    'description' => $request->description ,
-//                ]);
-//            }
+                        foreach ($request->file('files') as $key => $file)
+                        {
+                            $name2 = $file->getClientOriginalName();
+                            $name2 = time().'_'.$name2;;
+                            $file->move(public_path('/images/products') , $name2);
+                            $names[] = $name2;
+                        }
+                        $product = Product::create([
+                            'title' => $request->title ,
+                            'price' => $request->price ,
+                            'final_price' => $request->price * $request->discount ,
+                            'number' => $request->number ,
+                            'discount' => $request->discount ,
+                            'brand_id' => $request->brand_id ,
+                            'main_category_id' => $cat->main->id ,
+                            'secondary_category_id' => $cat->id,
+                            'description' => $request->description ,
+                            'product_img' => implode(',' , $names) ,
+                        ]);
+                 }
+                 else
+                 {
+                     $product = Product::create([
+                         'title' => $request->title ,
+                         'price' => $request->price ,
+                         'final_price' => $request->price * $request->discount ,
+                         'number' => $request->number ,
+                         'discount' => $request->discount ,
+                         'brand_id' => $request->brand_id ,
+                         'main_category_id' => $cat->main->id ,
+                         'secondary_category_id' => $cat->id,
+                         'description' => $request->description ,
+                     ]);
+                 }
         }
-
         else
         {
             return response()->json('دسته بندی برای این محصول یافت نشد' , 404);

@@ -44,9 +44,19 @@
                     </div>
 
 
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFile" ref="img" v-on:change="handle()">
-                        <label class="custom-file-label" for="customFile" style="margin-right: 15px;margin-top: 10px;">انتخاب عکس</label>
+                    <h6> حداکثر 5 عکس میتوانید آپلود کنید</h6>
+                    <div class="add-image col-xs col-sm col-10 col-md col-lg col-xl-12 flex">
+                        <div class="add-image-inside col-xs col-sm col-10 col-md col-lg col-xl-3">
+                            <span class="btn btn-success fileinput-button">
+                                  <i class="glyphicon glyphicon-plus"></i>
+                                  <span>Add files...</span>
+                                  <input type="file" ref="img" @change="handle" multiple="">
+                            </span>
+
+                        </div>
+                        <div v-if="img.length" v-for="image in imageUrl" class="add-image-1 col-xs col-sm col-10 col-md col-lg col-xl-2 delete-padding">
+                            <img :src="image" alt="">
+                        </div>
                     </div>
 
                     <button class="btn btn-primary" type="button" v-on:click="edit($route.params.productID)" style="margin-top: 30px;font-size: 13px;margin-right: 20px;"> افزودن محصول </button>
@@ -77,8 +87,10 @@
                 percent: 0 ,
                 brands: [] ,
                 main_id: '',
+                files: [] ,
                 title: '' ,
                 description: '' ,
+                imageUrl: [] ,
                 price: '' ,
                 brand_id: '' ,
                 discount: '' ,
@@ -106,14 +118,29 @@
                 })
             } ,
             handle() {
-                this.img = this.$refs.img.files[0];
+                this.img = this.$refs.img.files;
+
+                if (this.imageUrl.length <= 4 )
+                {
+                    if (this.img.length <= 5)
+                    {
+                        for (let i = 0; i < this.img.length; i++)
+                        {
+                            this.imageUrl.push(URL.createObjectURL(this.img[i]));
+                            this.files.push(this.img[i]);
+                        }
+                    }
+                }
             } ,
             edit(id) {
                 this.percent = 0;
-                let file = this.img;
-                if (file !== '' && file !== null)
+                let data = new FormData();
+                if (this.img !== '' && this.img !== null)
                 {
-                    let data = new FormData();
+                    for (let i = 0; i <this.files.length; i++) {
+                        data.append('files[]' , this.files[i]);
+                    }
+
                     data.append('title' , this.product.title);
                     data.append('description' , this.product.description);
                     data.append('secondary_category_id' , this.main_id.id);
@@ -121,7 +148,7 @@
                     data.append('brand_id' , this.brand_id);
                     data.append('discount' , (100 - this.discount) / 100);
                     data.append('number' , this.product.number);
-                    data.append('product_img' , file);
+
                     axios({
                         url: `/api/product/edit/${id}` ,
                         method: 'post' ,
@@ -229,5 +256,69 @@
 </script>
 
 <style scoped>
+    .add-image-inside {
+        height: 50px;
+        background-color: ;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
 
+    .add-image {
+        height: 100px;
+        background-color:;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .add-image-1{
+        width: 75px;
+        height: 100px;
+        border:1px solid #ff7a76;
+        background-color: #fff;
+        margin-right:10px;
+    }
+
+    .add-image-1 img{
+        width: 75px;
+        height: 100px;
+    }
+    .fileinput-button {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+    }
+    .btn-success {
+        color: #fff;
+        background-color: #ff7a76;
+        border-color: #ff7a76;
+    }
+
+    .glyphicon {
+        position: relative;
+        top: 1px;
+        display: inline-block;
+        font-family: 'Glyphicons Halflings' , irs;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .fileinput-button input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        opacity: 0;
+        -ms-filter: 'alpha(opacity=0)';
+        font-size: 200px !important;
+        direction: ltr;
+        cursor: pointer;
+    }
+
+    input[type=file] {
+        display: block;
+    }
 </style>

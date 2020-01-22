@@ -18,10 +18,10 @@ class Product extends Model
         return $this->belongsTo(SecondaryCategory::class , 'secondary_category_id');
     }
 
-    public function third()
-    {
-        return $this->belongsTo(ThirdCategory::class , 'third_category_id');
-    }
+   public function comments()
+   {
+       return $this->hasMany(Comment::class);
+   }
 
     public function orders()
     {

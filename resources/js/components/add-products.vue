@@ -60,10 +60,7 @@
                         <div v-if="img.length" v-for="image in imageUrl" class="add-image-1 col-xs col-sm col-10 col-md col-lg col-xl-2 delete-padding">
                             <img :src="image" alt="">
                         </div>
-
                     </div>
-
-
 
 
                     <button class="btn btn-primary" type="button" v-on:click="store" style="margin-top: 30px;font-size: 13px;margin-right: 20px;"> افزودن محصول </button>
@@ -119,16 +116,18 @@
 
 
             handle() {
-                this.img = this.$refs.img.files;
+                   this.img = this.$refs.img.files;
 
-                if (this.img.length <= 5 && this.img.length >= 1)
-                {
-                    for (let i = 0; i < this.img.length; i++) {
-                        this.imageUrl.push(URL.createObjectURL(this.img[i]));
-                        this.files.push(this.img[i]);
+                    if (this.imageUrl.length <= 4 )
+                    {
+                        if (this.img.length <= 5)
+                        {
+                            for (let i = 0; i < this.img.length; i++) {
+                                this.imageUrl.push(URL.createObjectURL(this.img[i]));
+                                this.files.push(this.img[i]);
+                            }
+                        }
                     }
-                }
-
             } ,
             store() {
                 this.percent = 0;

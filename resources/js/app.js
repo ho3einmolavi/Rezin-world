@@ -10,11 +10,20 @@ import Toasted from 'vue-toasted';
 import VuePersianDatetimePicker from 'vue-persian-datetime-picker';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+// Install BootstrapVue
+Vue.use(BootstrapVue);
+// Optionally install the BootstrapVue icon components plugin
+Vue.use(IconsPlugin);
 
 
 const options = {
     confirmButtonColor: '#41b882',
     cancelButtonColor: '#ff7674',
+    className: 'your-custom-class'
     // customClass: {
     //     'font-family': irs
     // }
@@ -66,7 +75,9 @@ Vue.component('single', require('./components/single.vue').default);
 Vue.component('single-product-feature', require('./components/single-product-feature.vue').default);
 Vue.component('single-same-products', require('./components/single-same-products.vue').default);
 Vue.component('single-newest-products', require('./components/single-newest-products.vue').default);
-
+Vue.component('comments-list', require('./components/comments-list.vue').default);
+Vue.component('add-post', require('./components/add-post.vue').default);
+Vue.component('articles', require('./components/articles.vue').default);
 
 
 
@@ -86,6 +97,9 @@ const routes = [
     {path: '/admin/products-list',name:'admin',component:require('./components/products-list.vue').default } ,
     {path: '/admin/setting',name:'admin',component:require('./components/setting.vue').default } ,
     {path: '/admin/edit-baners',name:'admin',component:require('./components/edit-baners.vue').default } ,
+    {path: '/admin/comments',name:'admin',component:require('./components/comments-list.vue').default } ,
+    {path: '/admin/articles',name:'admin',component:require('./components/articles.vue').default } ,
+    {path: '/admin/add-post',name:'admin',component:require('./components/add-post.vue').default } ,
     {path: '/single/:productID',name:'single',component:require('./components/single.vue').default } ,
 
 ];

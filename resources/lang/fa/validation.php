@@ -143,5 +143,6 @@ return array(
         "secondary_category_id" => "دسته بندی" ,
         "discount" => "تخفیف" ,
         "expire" => "تاریخ انقضا" ,
+        "keywords" => "کلمات کلیدی" ,
     ),
 );

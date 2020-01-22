@@ -61,8 +61,9 @@
                             </div>
                         </div>
                         <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-subject-left-bottom">
-                            <a href="#"><span class="share text-black"><i class="fas fa-share-alt"></i></span></a>
-                            <span class="title-4 text-black">  اشتراک گذاری  </span>
+                            <!--<a href="whatsapp://send?text=The text to share!" data-action="share/whatsapp/share">Share via Whatsapp</a>-->
+                            <a @click="shareLinkOnWhatsapp" ><span class="share text-black"><i class="fas fa-share-alt"></i></span></a>
+                            <span style="cursor: pointer;" class="title-4 text-black" @click="shareLinkOnWhatsapp">  اشتراک گذاری  </span>
                         </div>
                     </div>
                 </div>
@@ -286,76 +287,30 @@
                         <main>
                             <div class="text-comment">
                                 <form class="comment-inside" id="addComment">
-                                    <textarea cols="90" name="body" id="body" form="usrform" placeholder="نظر خود را درباره این  محصول بنویسید ..." rows="2"></textarea>
-                                    <button type="button" class="send-Comment" onclick="addComment()">ارسال دیدگاه</button>
+                                    <textarea cols="90" name="body" v-model="body" id="body" form="usrform" placeholder="نظر خود را درباره این  محصول بنویسید ..." rows="2"></textarea>
+                                    <button type="button" class="send-Comment" @click="addComment()">ارسال دیدگاه</button>
                                 </form>
                             </div>
 
 
-                            <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer flex">
+
+
+                            <div v-for="item in comments" class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer flex margin-top-big">
                                 <div class="col col-sm-3 col-xs col-md-3 col-lg-3 col-xl-2 comment-customer-right">
                                     <div class="customer-img">
-                                        <img src="img/comments/user-1.png">
+                                        <img src="/img/comments/user-1.png">
                                     </div>
                                 </div>
                                 <div class="col col-sm col-xs col-md col-lg col-xl-10 comment-customer-left">
                                     <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-name">
-                                        <span class="text-black title-4"> میترا محمدبیگی  </span>
+                                        <span class="text-black title-4" v-if="item.user">{{item.user.first_name}} {{item.user.last_name}}  </span>
+                                        <span class="text-black title-4" v-else>مهمان </span>
                                     </div>
                                     <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-des">
-                                        <span class="text-black title-4"> با توجه به آپدیت جدید اینستاگرام، در حال آپدیت و بهبود سرعت سرویس های لایک و فالوور هستیم، تا مانند همیشه اینستالایکر پرسرعت ترین سرویس ایران باشد.  </span>
+                                        <span class="text-black title-4"> {{item.body}}  </span>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer flex margin-top-big">
-                                <div class="col col-sm-3 col-xs col-md-3 col-lg-3 col-xl-2 comment-customer-right">
-                                    <div class="customer-img">
-                                        <img src="img/comments/user-1.png">
-                                    </div>
-                                </div>
-                                <div class="col col-sm col-xs col-md col-lg col-xl-10 comment-customer-left">
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-name">
-                                        <span class="text-black title-4"> میترا محمدبیگی  </span>
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-des">
-                                        <span class="text-black title-4"> با توجه به آپدیت جدید اینستاگرام، در حال آپدیت و بهبود سرعت سرویس های لایک و فالوور هستیم، تا مانند همیشه اینستالایکر پرسرعت ترین سرویس ایران باشد.  </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer flex margin-top-big">
-                                <div class="col col-sm-3 col-xs col-md-3 col-lg-3 col-xl-2 comment-customer-right">
-                                    <div class="customer-img">
-                                        <img src="img/comments/user-1.png">
-                                    </div>
-                                </div>
-                                <div class="col col-sm col-xs col-md col-lg col-xl-10 comment-customer-left">
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-name">
-                                        <span class="text-black title-4"> میترا محمدبیگی  </span>
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-des">
-                                        <span class="text-black title-4"> با توجه به آپدیت جدید اینستاگرام، در حال آپدیت و بهبود سرعت سرویس های لایک و فالوور هستیم، تا مانند همیشه اینستالایکر پرسرعت ترین سرویس ایران باشد.  </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer flex margin-top-big">
-                                <div class="col col-sm-3 col-xs col-md-3 col-lg-3 col-xl-2 comment-customer-right">
-                                    <div class="customer-img">
-                                        <img src="img/comments/user-1.png">
-                                    </div>
-                                </div>
-                                <div class="col col-sm col-xs col-md col-lg col-xl-10 comment-customer-left">
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-name">
-                                        <span class="text-black title-4"> میترا محمدبیگی  </span>
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 comment-customer-left-des">
-                                        <span class="text-black title-4"> با توجه به آپدیت جدید اینستاگرام، در حال آپدیت و بهبود سرعت سرویس های لایک و فالوور هستیم، تا مانند همیشه اینستالایکر پرسرعت ترین سرویس ایران باشد.  </span>
-                                    </div>
-                                </div>
-                            </div>
-
                         </main>
                     </section>
 
@@ -455,15 +410,66 @@
 
         created() {
             this.get_product(this.$route.params.productID);
+            this.getComments(this.$route.params.productID);
         } ,
 
         data() {
             return {
-                product: []
+                product: [] ,
+                body: '' ,
+                comments: []
             }
         } ,
 
         methods: {
+            shareLinkOnWhatsapp() {
+                window.location=`https://wa.me/?text=${window.location.href}`
+            } ,
+            getComments(id) {
+                axios({
+                    url: `/api/comments/${id}` ,
+                    method: 'get' ,
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.comments = res.data;
+                    })
+                    .catch(err => {
+                        console.log(err.response);
+                    })
+            } ,
+            addComment() {
+                axios({
+                    url: `/api/store/comment` ,
+                    method: 'post' ,
+                    data: {
+                        body: this.body ,
+                        product_id: this.$route.params.productID
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.$swal('نظر شما با موفقیت ثبت شد' , 'با تشکر' , 'success' ,
+                            {
+                                customClass: {
+                                    title: 'title-font' ,
+                                    text: 'text-font' ,
+                                }
+                            });
+                        this.body = '';
+                    })
+                    .catch(err => {
+                        console.log(err.response);
+                        err.response.data.forEach(item => {
+                            this.$toasted.error(item.toString() , {
+                                position: 'bottom-center' ,
+                                theme: 'bubble' ,
+                                fitToScreen: true ,
+                                className: ['your-custom-class']
+                            }).goAway(3000);
+                        });
+                    })
+            } ,
            get_product(id) {
                axios({
                    url: `/api/product/${id}` ,

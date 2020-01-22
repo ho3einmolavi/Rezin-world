@@ -9,12 +9,15 @@
             <router-link to="/admin/add-product" class="list-group-item list-group-item-action"><i class="fab fa-adversal"></i> افزودن محصولات <i class="fas fa-angle-left icon-left"></i></router-link>
             <router-link to="/admin/add-discount" class="list-group-item list-group-item-action"><i class="fas fa-align-right"></i> افزودن کد تخفیف <i class="fas fa-angle-left icon-left"></i></router-link>
             <router-link to="/admin/add-category" class="list-group-item list-group-item-action"><i class="fas fa-align-center"></i> افزودن  دسته بندی<i class="fas fa-angle-left icon-left"></i></router-link>
+            <router-link to="/admin/add-post" class="list-group-item list-group-item-action"><i class="fas fa-align-center"></i> افزودن  مقاله<i class="fas fa-angle-left icon-left"></i></router-link>
+            <router-link to="/admin/articles" class="list-group-item list-group-item-action"><i class="fas fa-align-center"></i> مقالات<i class="fas fa-angle-left icon-left"></i></router-link>
             <router-link to="/admin/edit-baners" class="list-group-item list-group-item-action"><i class="fas fa-sliders-h"></i> ویرایش بنر ها<i class="fas fa-angle-left icon-left"></i></router-link>
             <!--<a href="" class="list-group-item list-group-item-action active lga-color">پروفایل کاربری  </a>-->
             <!--<a href="messages.html" class="list-group-item list-group-item-action"><i class="fas fa-envelope-open"></i>صندوق پیام ها  <i class="fas fa-angle-left icon-left"></i></a>-->
             <!--<a href="change-password.html" class="list-group-item list-group-item-action"><i class="fas fa-unlock-alt"></i>تغییر رمز عبور  <i class="fas fa-angle-left icon-left"></i></a>-->
             <a href="" class="list-group-item list-group-item-action active lga-color"> مشتری ها </a>
             <router-link to="/admin/users" class="list-group-item list-group-item-action"><i class="fas fa-list-ul"></i> لیست مشتری ها <i class="fas fa-angle-left icon-left"></i></router-link>
+            <router-link to="/admin/comments" class="list-group-item list-group-item-action"><i class="fas fa-list-ul"></i> لیست نظرات <i class="fas fa-angle-left icon-left"></i></router-link>
             <router-link to="/admin/orders-list" class="list-group-item list-group-item-action"><i class="fas fa-dollar-sign"></i>  لیست  سفارشات <i class="fas fa-angle-left icon-left"></i></router-link>
             <!--<a href="#" class="list-group-item list-group-item-action disabled"><i class="fas fa-list-ol"></i> آمار فروش <i class="fas fa-angle-left icon-left"></i></a>-->
             <!--<router-link to="/admin/add-dis" class="list-group-item list-group-item-action disabled"><i class="far fa-list-alt"></i> افزودن کد تخفیف <i class="fas fa-angle-left icon-left"></i></router-link>-->

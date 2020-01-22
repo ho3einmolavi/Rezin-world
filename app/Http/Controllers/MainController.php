@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use App\MainCategory;
 use App\SecondaryCategory;
 use App\Setting;
 use App\ThirdCategory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Route;
+use Morilog\Jalali\Jalalian;
 
 class MainController extends Controller
 {
@@ -67,12 +69,17 @@ class MainController extends Controller
                'keywords' => request()->route('any')
            ]);
        }
+    }
 
-
-//        $name =  Route::current();
-//
-//
-//        return new JsonResponse($name);
+    public function article()
+    {
+        $article = Article::where('title' , request()->route('title'))->first();
+        return view('article' , [
+            'article' => $article ,
+            'user' => $article->user ,
+            'date' => Jalalian::forge($article->created_at)->format('%A, %d %B %y') ,
+            'time' =>  Jalalian::fromDateTime($article->created_at)->format('H:i')
+        ]);
     }
 
 }

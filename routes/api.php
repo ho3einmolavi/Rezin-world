@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+$middleware = ['api'];
+if (\request()->header('Authorization'))
+    $middleware = array_merge(['auth:api']);
 
 // categories
 Route::get('/mainCat' , 'CategoryController@main');
@@ -87,6 +89,13 @@ Route::get('/check/order/{id}' , 'OrderController@show')->middleware('auth:api')
 Route::get('/user/orders' , 'OrderController@userOrders')->middleware('auth:api');
 Route::post('/find/products/order' , 'OrderController@find');
 Route::get('/verify/order/{id}' , 'OrderController@verify');
+
+
+//comments
+Route::post('/store/comment' , 'CommentController@store')->middleware($middleware);
+Route::get('/comments/{product_id}' , 'CommentController@index');
+Route::get('/comment/verify/{id}' , 'CommentController@verify');
+Route::get('/allComments' , 'CommentController@allComments');
 
 
 //baners
