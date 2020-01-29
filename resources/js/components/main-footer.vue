@@ -48,8 +48,8 @@
                 </div>
                 <div class="col col-sm col-xs col-md col-lg col-xl-4 footer-main-bottom-namad">
                     <div class="col col-sm col-xs col-md col-lg col-xl-12 footer-main-bottom-namad-top" alt="Responsive image">
-                        <a href="#"><img src="img/footer/logo-saman.png"></a>
-                        <a href="#"><img src="img/footer/logo-enmad.png"></a>
+                        <a href="#"><img src="/img/footer/logo-saman.png"></a>
+                        <a href="#"><img src="/img/footer/logo-enmad.png"></a>
                     </div>
                     <div class="col col-sm col-xs col-md col-lg col-xl-12 footer-main-bottom-namad-beetween">
                         <a href="#" class="text-black"><i class="fab fa-linkedin"></i></a>

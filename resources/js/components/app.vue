@@ -1,7 +1,7 @@
 <template>
     <div>
-        <another-header @first-emit-cat="get_main_categories($event)"></another-header>
-        <router-view :main_categories="mainCat"></router-view>
+        <another-header :order="order" @first-emit-cat="get_main_categories($event)"></another-header>
+        <router-view :main_categories="mainCat" @send_number="get_price_order($event)"></router-view>
         <main-footer></main-footer>
     </div>
 </template>
@@ -12,11 +12,15 @@
 
         data() {
             return {
-                mainCat: []
+                mainCat: [] ,
+                order: []
             }
         } ,
 
         methods: {
+            get_price_order(event){
+                this.order = event
+            } ,
             get_main_categories(event) {
                 this.mainCat = event
             }

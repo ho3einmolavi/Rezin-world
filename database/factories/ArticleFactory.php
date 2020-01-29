@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Article::class, function (Faker $faker) {
     return [
-        'title' => $faker->title ,
+        'title' => $faker->slug ,
         'body' => $faker->text(500)
     ];
 });

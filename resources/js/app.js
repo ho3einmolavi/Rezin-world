@@ -78,6 +78,13 @@ Vue.component('single-newest-products', require('./components/single-newest-prod
 Vue.component('comments-list', require('./components/comments-list.vue').default);
 Vue.component('add-post', require('./components/add-post.vue').default);
 Vue.component('articles', require('./components/articles.vue').default);
+Vue.component('card', require('./components/card.vue').default);
+Vue.component('card-products', require('./components/card-products.vue').default);
+Vue.component('card-left', require('./components/card-left.vue').default);
+Vue.component('card-address', require('./components/card-address.vue').default);
+Vue.component('card-pay', require('./components/card-pay.vue').default);
+Vue.component('pay-success', require('./components/pay-success.vue').default);
+
 
 
 
@@ -101,6 +108,9 @@ const routes = [
     {path: '/admin/articles',name:'admin',component:require('./components/articles.vue').default } ,
     {path: '/admin/add-post',name:'admin',component:require('./components/add-post.vue').default } ,
     {path: '/single/:productID',name:'single',component:require('./components/single.vue').default } ,
+    {path: '/card/products',name:'card',component:require('./components/card-products.vue').default } ,
+    {path: '/card/address',name:'card',component:require('./components/card-address.vue').default } ,
+    {path: '/card/pay',name:'card',component:require('./components/card-pay.vue').default } ,
 
 ];
 

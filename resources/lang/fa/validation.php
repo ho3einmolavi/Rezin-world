@@ -144,5 +144,8 @@ return array(
         "discount" => "تخفیف" ,
         "expire" => "تاریخ انقضا" ,
         "keywords" => "کلمات کلیدی" ,
+        "phone_number" => "شماره موبایل" ,
+        "code" => "کد تایید" ,
+        "postal_code" => "کد پستی" ,
     ),
 );

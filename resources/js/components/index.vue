@@ -8,7 +8,10 @@
 
 <script>
     export default {
-        name: "index"
+        name: "index" ,
+        created() {
+            localStorage.removeItem('tracking_code')
+        }
     }
 </script>
 

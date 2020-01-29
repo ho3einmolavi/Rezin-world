@@ -112,9 +112,9 @@
                     <div v-for="item in products" v-bind:key="item.id" class="col col-sm col-xs col-md-12 col-lg-12 col-xl-12 product-page-left-slider-inside flex table-responsive-md table-responsive-lg table-responsive-xl">
 
                         <div v-for="product in item"  class="col col-sm col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box delete-padding">
-                            <a :href="'/single/' + product.id">
+                            <a >
                                 <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-top">
-                                    <img :src="'/images/products/' + product.images[0]">
+                                    <a :href="'/single/' + product.id"><img :src="'/images/products/' + product.images[0]"></a>
                                 </div>
                                 <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom delete-padding">
                                     <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-top delete-padding">
@@ -124,7 +124,7 @@
                                     </div>
                                     <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom flex delete-padding">
                                         <div class="col-3 col-sm-3 col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box-bottom-bottom-buy">
-                                            <a href="#"><i class="fas fa-shopping-basket"></i></a>
+                                            <a @click="sent_to_card(product)"><i class="fas fa-shopping-basket"></i></a>
                                         </div>
                                         <div class="col col-sm col-xs col-md- col-lg- col-xl-9 product-page-left-slider-inside-box-bottom-bottom-price delete-padding">
                                             <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-off">
@@ -256,7 +256,7 @@
                     <div class="col col-sm col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box delete-padding">
                         <a href="#">
                             <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-top">
-                                <img src="img/page-product/img1.png">
+                                <img src="/img/page-product/img1.png">
                             </div>
                             <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom delete-padding">
                                 <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-top delete-padding">
@@ -336,6 +336,7 @@
 
 
         created() {
+            this.$emit('send_number' , JSON.parse(localStorage.getItem('order')));
 
             if (this.$route.params.id)
             {
@@ -355,6 +356,54 @@
         } ,
 
         methods: {
+            sent_to_card(product) {
+                this.$toasted.show('محصول اضافه شد', {
+                    position: 'bottom-center' ,
+                    type: 'success' ,
+                    theme: 'bubble' ,
+                    fitToScreen: true ,
+                    className: ['your-custom-class']
+                }).goAway(1500);
+                let arr = JSON.parse(localStorage.getItem('order')) || [];
+
+                if (product.order_number)
+                {
+                    product.order_number ++;
+                    product.final_price1 = product.final_price * product.order_number;
+                }
+                else
+                {
+                    product.order_number = 1;
+                    product.final_price1 = product.final_price * product.order_number;
+                }
+
+                let flag = 0;
+                arr.forEach(item => {
+                    if (item.id === product.id)
+                    {
+                        flag = 1;
+                        if (item.order_number)
+                        {
+                            item.order_number ++;
+                            item.final_price1 = item.final_price * item.order_number;
+                        }
+                        else
+                        {
+                            item.order_number = 1;
+                            item.final_price1 = item.final_price * item.order_number;
+                        }
+                    }
+                });
+
+                if (flag === 0)
+                {
+                    arr.push(product);
+                }
+
+
+                localStorage.setItem('order' , JSON.stringify(arr));
+                this.$emit('send_number' , JSON.parse(localStorage.getItem('order')));
+            } ,
             makePagination(obj) {
                 this.pagination = {
                     next: obj.next_page_url,

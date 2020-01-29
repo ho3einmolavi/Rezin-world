@@ -6,6 +6,7 @@ use App\Article;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Morilog\Jalali\Jalalian;
 
 class ArticleController extends Controller
 {
@@ -25,9 +26,14 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function show()
     {
-        //
+        $articles = Article::latest('id')->take(4)->get();
+        foreach ($articles as $article)
+        {
+            $article['date'] = Jalalian::forge($article->created_at)->format('%A, %d %B %y');
+        }
+        return response()->json($articles);
     }
 
     /**
@@ -77,16 +83,7 @@ class ArticleController extends Controller
         return response()->json($article);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Article  $article
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Article $article)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.

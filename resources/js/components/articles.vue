@@ -1,9 +1,9 @@
 <template>
     <div class="col-xs col-sm col-10 col-md-11 col-lg-9 col-xl-9 users-main delete-padding-left">
         <div >
-            <b-card v-for="item in articles" style="margin-bottom: 20px" :title="item.title" >
+            <b-card v-for="item in articles" :key="item.id" style="margin-bottom: 20px" :title="item.title" >
                 <b-card-text>
-                    {{item.body.substr(0 , 200)}}
+                    {{item.body.substr(0 , 200) + '....'}}
                 </b-card-text>
 
                 <a :href="'/article/' + item.title"  class="card-link">لینک مقاله</a>

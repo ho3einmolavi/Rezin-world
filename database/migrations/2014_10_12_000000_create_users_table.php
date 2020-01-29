@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('type')->nullable()->default('user');
             $table->string('email')->unique()->nullable();
             $table->string('password')->nullable();
-            $table->text('api_token')->nullable();
             $table->string('state')->nullable();
             $table->string('city')->nullable();
             $table->text('address')->nullable();
@@ -29,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('national_id')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('code')->nullable();
-            $table->boolean('verification')->nullable();
+            $table->boolean('verification')->nullable()->default(0);
             $table->timestamps();
         });
     }

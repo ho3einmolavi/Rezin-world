@@ -66,27 +66,27 @@
             <div class="col col-sm col-xs col-md col-lg col-xl-12 information-rezin-news-bottom">
                 <center>
                     <div class="col col-sm col-xs col-md col-lg col-xl-11 col-information-rezin-news-bottom-auto flex delete-padding">
-                        <div class="col col-sm col-xs col-md-6 col-lg-6 col-xl-6 article-info-right flex">
+                        <div v-for="article in articles" class="col col-sm col-xs col-md-6 col-lg-6 col-xl-6 article-info-right flex">
 
 
-                            <div class="col col-sm col-xs col-md col-lg col-xl-6 article-info-1 delete-padding">
-                                <a href="single-article.html">
+                            <div v-for="item in article" class="col col-sm col-xs col-md col-lg col-xl-6 article-info-1 delete-padding">
+                                <a :href="'/article/' + item.title">
                                     <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-top delete-padding">
-                                        <img src="img/article/article1.png">
+                                        <img :src="'/images/articles/' + item.cover">
                                     </div>
                                     <div class="col col-sm col-xs col-md col-lg col-xl-12 img-article-small">
-                                        <img src="img/rezin-all/img-article.png">
+                                        <!--<img src="/img/rezin-all/img-article.png">-->
                                     </div>
                                     <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom delete-padding">
                                         <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom-subject">
-                                            <span class="title-3 text-black-black"> رزین ولد درجه یک  </span>
+                                            <span class="title-3 text-black-black">{{item.title}}  </span>
                                         </div>
                                         <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom-des">
-                                            <p class="text-black title-4">رزین ولد یکی از بهترین و  معتبرترین  نوع از رنگ های جهان می باشد . که در مقایسه با رنگ های دیگر از کیفیت بهتری برخوردار است .</p>
+                                            <p class="text-black title-4">{{item.body.substr(0 , 150) + "..."}}</p>
                                         </div>
                                         <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom-end flex delete-padding">
                                             <div class="col col-sm col-xs col-md col-lg col-xl-6 article-info-bottom-end-right">
-                                                <span class="text-black title-4"> 1398/08/24  </span>
+                                                <span class="text-black title-4"> {{item.date}}  </span>
                                             </div>
                                             <div class="col col-sm col-xs col-md col-lg col-xl-6 article-info-bottom-end-left">
                                                 <span  class="text-black title-4"> 124 </span>
@@ -98,91 +98,6 @@
                             </div>
 
 
-                            <div class="col col-sm col-xs col-md col-lg col-xl-6 article-info-2 delete-padding">
-                                <a href="single-article.html">
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-top delete-padding">
-                                        <img src="img/article/article2.png">
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 img-article-small">
-                                        <img src="img/rezin-all/img-article.png">
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom delete-padding">
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom-subject">
-                                            <span class="title-3 text-black-black"> رزین ولد درجه یک  </span>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom-des">
-                                            <p class="text-black title-4">رزین ولد یکی از بهترین و  معتبرترین  نوع از رنگ های جهان می باشد . که در مقایسه با رنگ های دیگر از کیفیت بهتری برخوردار است .</p>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom-end flex delete-padding">
-                                            <div class="col col-sm col-xs col-md col-lg col-xl-6 article-info-bottom-end-right">
-                                                <span class="text-black title-4"> 1398/08/24  </span>
-                                            </div>
-                                            <div class="col col-sm col-xs col-md col-lg col-xl-6 article-info-bottom-end-left">
-                                                <span  class="text-black title-4"> 124 </span>
-                                                <span><i class="far fa-comment-alt"></i> </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-
-                        </div>
-                        <div class="col col-sm col-xs col-md-6 col-lg-6 col-xl-6 article-info-right flex">
-                            <div class="col col-sm col-xs col-md col-lg col-xl-6 article-info-3 delete-padding">
-                                <a href="single-article.html">
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-top delete-padding">
-                                        <img src="img/article/article2.png">
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 img-article-small">
-                                        <img src="img/rezin-all/img-article.png">
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom delete-padding">
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom-subject">
-                                            <span class="title-3 text-black-black"> رزین ولد درجه یک  </span>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom-des">
-                                            <p class="text-black title-4">رزین ولد یکی از بهترین و  معتبرترین  نوع از رنگ های جهان می باشد . که در مقایسه با رنگ های دیگر از کیفیت بهتری برخوردار است .</p>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom-end flex delete-padding">
-                                            <div class="col col-sm col-xs col-md col-lg col-xl-6 article-info-bottom-end-right">
-                                                <span class="text-black title-4"> 1398/08/24  </span>
-                                            </div>
-                                            <div class="col col-sm col-xs col-md col-lg col-xl-6 article-info-bottom-end-left">
-                                                <span  class="text-black title-4"> 124 </span>
-                                                <span><i class="far fa-comment-alt"></i> </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col col-sm col-xs col-md col-lg col-xl-6 article-info-4 delete-padding">
-                                <a href="single-article.html">
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-top delete-padding">
-                                        <img src="img/article/article1.png">
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 img-article-small">
-                                        <img src="img/rezin-all/img-article.png">
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom delete-padding">
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom-subject">
-                                            <span class="title-3 text-black-black"> رزین ولد درجه یک  </span>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom-des">
-                                            <p class="text-black title-4">رزین ولد یکی از بهترین و  معتبرترین  نوع از رنگ های جهان می باشد . که در مقایسه با رنگ های دیگر از کیفیت بهتری برخوردار است .</p>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-bottom-end flex delete-padding">
-                                            <div class="col col-sm col-xs col-md col-lg col-xl-6 article-info-bottom-end-right">
-                                                <span class="text-black title-4"> 1398/08/24  </span>
-                                            </div>
-                                            <div class="col col-sm col-xs col-md col-lg col-xl-6 article-info-bottom-end-left">
-                                                <span  class="text-black title-4"> 124 </span>
-                                                <span><i class="far fa-comment-alt"></i> </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
                         </div>
 
                     </div>
@@ -304,7 +219,40 @@
 
 <script>
     export default {
-        name: "index-information"
+        name: "index-information" ,
+
+        data() {
+            return {
+                articles: []
+            }
+        } ,
+
+        created() {
+            this.get_articles();
+        } ,
+
+        methods: {
+             chunk(array, size) {
+                const chunked_arr = [];
+                let copied = [...array]; // ES6 destructuring
+                const numOfChild = Math.ceil(copied.length / size); // Round up to the nearest integer
+                for (let i = 0; i < numOfChild; i++) {
+                    chunked_arr.push(copied.splice(0, size));
+                }
+                return chunked_arr;
+            } ,
+            get_articles() {
+                axios({
+                    method: 'get' ,
+                    url: '/api/articlesForShow'
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.articles = this.chunk(res.data , 2);
+                    })
+                    .catch(err => console.log(err.response))
+            }
+        }
     }
 </script>
 

@@ -24,7 +24,6 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'phone_number' => '09'.$faker->numberBetween(100000000 , 999999999),
         'password' => bcrypt('123456789'), // password
-        'api_token' => Str::random(256),
         'state' => $faker->city ,
         'city' => $faker->city ,
         'address' => $faker->address

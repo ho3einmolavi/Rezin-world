@@ -32,7 +32,7 @@ Route::get('/single/{any}' , function () {
 
 
 Route::get('/card/{any}' , function () {
-    return view('products');
+    return view('card');
 })->where('any', '.*');
 
 Route::get('/404' , function () {
@@ -51,13 +51,13 @@ Route::get('/contact-us' , function () {
     return view('products');
 });
 
-Route::get('/order/pay/error' , function () {
-    return view('products');
-});
-
-Route::get('/{any}/order/pay' , function () {
-    return view('products');
-})->where('any', '.*');
+//Route::get('/order/pay/error' , function () {
+//    return view('products');
+//});
+//
+//Route::get('/{any}/order/pay' , function () {
+//    return view('products');
+//})->where('any', '.*');
 
 Route::get('/admin/{any}' , function () {
     return view('admin');
@@ -78,4 +78,9 @@ Route::get('/adminOrdersDetails/{any}' , function () {
 Route::get('/product/{any}' , function () {
     return view('admin');
 })->where('any', '.*');
+
+Route::get('/payment-success' , function () {
+    return view('payment');
+})->name('pay.success');
+
 

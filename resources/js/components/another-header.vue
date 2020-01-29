@@ -25,7 +25,7 @@
 
 
             <div class="col-xs-6 col-5 col-sm-6 col-md-5 col-lg col-xl logo-site-res">
-                <img src="img/header/payjoy.png">
+                <img src="/img/header/payjoy.png">
             </div>
             <div class="col-xs-6 col-5 col-sm-6 col-md-8 col-lg col-xl-10 header-main-top-right delete-res">
                 <a href="/"><span class="text-main title-4">  صفحه اصلی </span></a>
@@ -35,11 +35,19 @@
                 <a href=""><span class="text-main title-4"> پیشنهاد ناب </span></a>
                 <a href=""><span class="text-main title-4"> تماس با ما </span></a>
             </div>
+
+
             <div class="col-xs-6 col-6 col-sm-4 col-md-4 col-lg-3 col-xl header-main-top-left">
+
+                <!-- partial:index.partial.html -->
                 <nav class="main-nav">
-                    <ul>
+                    <ul v-if="! user">
                         <li><a class="signup" href="#0">ثبت نام   </a></li>
                         <li><a class="signin" href="#0">  ورود </a></li>
+                    </ul>
+                    <ul v-if="user">
+                        <li v-if="!user.first_name || !user.last_name">حساب کاربری</li>
+                        <li v-if="user.first_name && user.last_name">{{user.first_name}} {{user.last_name}}</li>
                     </ul>
                 </nav>
 
@@ -53,14 +61,14 @@
                         <div id="login">
                             <form class="form">
                                 <p class="fieldset">
-                                    <label class="image-replace email" for="signin-email">ایمیل</label>
-                                    <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
+                                    <label class="image-replace email" for="signin-email">ایمیل یا شماره موبایل</label>
+                                    <input v-model="login" class="full-width has-padding has-border" id="signin-email" type="text" placeholder="ایمیل یا شماره موبایل">
                                     <span class="error-message">An account with this email address does not exist!</span>
                                 </p>
 
                                 <p class="fieldset">
-                                    <label class="image-replace password" for="signin-password">رمز</label>
-                                    <input class="full-width has-padding has-border" id="signin-password" type="password"  placeholder="Password">
+                                    <label class="image-replace password" for="signin-password">رمز عبور</label>
+                                    <input v-model="password" class="full-width has-padding has-border" id="signin-password" type="password"  placeholder="رمز عبور">
                                     <a href="#0" class="hide-password">نمایش</a>
                                     <span class="error-message">Wrong password! Try again.</span>
                                 </p>
@@ -71,7 +79,7 @@
                                 </p>
 
                                 <p class="fieldset">
-                                    <input class="full-width" type="submit" value="Login">
+                                    <input class="full-width" type="button" value="ورود" @click="loginTheUser">
                                 </p>
                             </form>
 
@@ -80,22 +88,22 @@
                         </div>
 
                         <div id="signup">
-                            <form class="form">
+                            <form class="form" v-if="signup === 0">
                                 <p class="fieldset">
-                                    <label class="image-replace username" for="signup-username">نام کاربری   </label>
-                                    <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="نام کاربری">
+                                    <label class="image-replace username" for="signup-username">ایمیل</label>
+                                    <input v-model="email" class="full-width has-padding has-border" id="signup-username" type="email" placeholder="ایمیل">
                                     <span class="error-message">Your username can only contain numeric and alphabetic symbols!</span>
                                 </p>
 
                                 <p class="fieldset">
-                                    <label class="image-replace email" for="signup-email">ایمیل</label>
-                                    <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="ایمیل">
+                                    <label class="image-replace email" for="signup-email">شماره موبایل</label>
+                                    <input v-model="phone_number" class="full-width has-padding has-border" id="signup-email" type="number" placeholder="شماره موبایل">
                                     <span class="error-message">Enter a valid email address!</span>
                                 </p>
 
                                 <p class="fieldset">
                                     <label class="image-replace password" for="signup-password">رمز عبور</label>
-                                    <input class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="رمز عبور">
+                                    <input v-model="password" class="full-width has-padding has-border" id="signup-password" type="password"  placeholder="رمز عبور">
                                     <a href="#0" class="hide-password">نمایش</a>
                                     <span class="error-message">Your password has to be at least 6 characters long!</span>
                                 </p>
@@ -106,11 +114,37 @@
                                 </p>
 
                                 <p class="fieldset">
-                                    <input class="full-width has-padding" type="submit" value="Create account">
+                                    <input class="full-width has-padding" @click="register" type="button" value="دریافت کد">
                                 </p>
+
+                                <div class="alert alert-warning" v-if="error === 0">
+                                    <div>
+                                        <span style="float: right"> در حال ارسال اطلاعات شما ...</span>
+                                    </div>
+                                    <div class="loader"></div>
+                                </div>
+
                             </form>
 
-                            <!-- <a href="#0" class="cd-close-form">Close</a> -->
+                            <form class="form" v-if="signup === 1">
+                                <p class="fieldset">
+                                    <label class="image-replace username" for="signup-username1">کد تایید</label>
+                                    <input v-model="code" class="full-width has-padding has-border" id="signup-username1" type="number" placeholder="کد تایید">
+                                    <span class="error-message">Your username can only contain numeric and alphabetic symbols!</span>
+                                </p>
+
+                                <p class="fieldset">
+                                    <input class="full-width has-padding" @click="verifyCode" type="button" value="دریافت کد">
+                                </p>
+
+                                <div class="alert alert-warning" v-if="error === 0">
+                                    <div>
+                                        <span style="float: right"> در حال ارسال اطلاعات شما ...</span>
+                                    </div>
+                                    <div class="loader"></div>
+                                </div>
+
+                            </form>
                         </div>
 
                         <div id="reset-password">
@@ -168,9 +202,9 @@
                         <span class="text-main title-4 tuman">  مورد علاقه </span>
                         <span style="color: red;" class="tuman"> 1 </span>
                     </div>
-                    <div class="col-1 col-sm col-md-2 col-lg col-xl-1 logo-buy-cart flex delete-padding">
-                        <span class="text-main"> <i class="fas fa-cart-plus"></i> </span>
-                        <span class="text-main title-4 tuman"> 5/450 تومان  </span>
+                    <div  class="col-1 col-sm col-md-2 col-lg col-xl-1 logo-buy-cart flex delete-padding">
+                        <a href="/card/products"><span class="text-main"> <i class="fas fa-cart-plus"></i> </span></a>
+                        <span class="text-main title-4 tuman"> {{show.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان  </span>
                     </div>
                 </div>
             </div>
@@ -189,8 +223,10 @@
         name: "another-header" ,
 
         created() {
+            this.get_user();
             this.getCat();
             this.specifyTheRoute();
+            this.get_number1();
         } ,
 
         data() {
@@ -199,11 +235,29 @@
                 router: '' ,
                 secondary_cats: [] ,
                 main_id: '' ,
-                title: ''
+                title: '' ,
+                sum: '' ,
+                show: '' ,
+                orders: [] ,
+                user: [] ,
+                code: '' ,
+                phone_number: '' ,
+                email: '' ,
+                password: '' ,
+                login: '' ,
+                signup: 0 ,
+                error: '' ,
+                token: ''
             }
         } ,
 
+        props: ['order'] ,
+
+
         watch: {
+            order: function () {
+                this.get_number();
+            } ,
             '$route' (to , from) {
                 if (to.params.id)
                 {
@@ -219,6 +273,138 @@
         } ,
 
         methods: {
+            loginTheUser() {
+                axios({
+                    method: 'post' ,
+                    url: '/api/login' ,
+                    data: {
+                        login: this.login ,
+                        password: this.password
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                        localStorage.setItem('token' , res.data.access_token);
+                        window.location = '/'
+                    })
+                    .catch(err => {
+                        this.user = null;
+                        console.log(err.response);
+                        err.response.data.forEach(error => {
+                            this.$toasted.show(error, {
+                                position: 'bottom-center' ,
+                                type: 'error' ,
+                                theme: 'bubble' ,
+                                fitToScreen: true ,
+                                className: ['your-custom-class']
+                            }).goAway(2000);
+                        })
+                    })
+            } ,
+            register() {
+                this.error = 0;
+                axios({
+                    method: 'post' ,
+                    url: '/api/register' ,
+                    data: {
+                        phone_number: this.phone_number ,
+                        email: this.email ,
+                        password: this.password
+                    }
+                })
+                    .then(res => {
+                        this.signup = 1;
+                        this.error = 1;
+                        console.log(res);
+                        this.token = res.data.access_token;
+                    })
+                    .catch(err => {
+                        this.error = 1;
+                        console.log(err.response);
+                        err.response.data.forEach(error => {
+                            this.$toasted.show(error, {
+                                position: 'bottom-center' ,
+                                type: 'error' ,
+                                theme: 'bubble' ,
+                                fitToScreen: true ,
+                                className: ['your-custom-class']
+                            }).goAway(2000);
+                        })
+
+                    })
+            } ,
+            get_user() {
+                axios({
+                    method: 'get' ,
+                    url: '/api/user' ,
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.user = res.data;
+                        this.$emit('user' , this.user);
+                    })
+                    .catch(err => {
+                        this.user = null;
+                        console.log(err.response);
+                    })
+            } ,
+            verifyCode() {
+                axios({
+                    method: 'post' ,
+                    url: '/api/verification' ,
+                    data: {
+                        phone_number: this.phone_number ,
+                        code: this.code
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                        localStorage.setItem('token' , this.token);
+                        window.location = '/';
+                    })
+                    .catch(err => {
+                        console.log(err.response);
+                        err.response.data.data.forEach(error => {
+                            this.$toasted.show(error, {
+                                position: 'bottom-center' ,
+                                type: 'error' ,
+                                theme: 'bubble' ,
+                                fitToScreen: true ,
+                                className: ['your-custom-class']
+                            }).goAway(2000);
+                        })
+                    })
+            } ,
+            get_number1() {
+                if (! localStorage.order)
+                {
+                    this.show = 0;
+                }
+                else {
+                    this.orders = JSON.parse(localStorage.order);
+                    const add = (a , b) => a + b ;
+                    this.sum = [];
+                    this.orders.forEach(item => {
+                        this.sum.push(item.final_price1)
+                    });
+                    this.sum = this.sum.reduce(add);
+                    this.show = this.sum;
+                    this.$emit('add-order' , this.orders);
+                }
+            } ,
+            get_number() {
+                const add = (a , b) => a + b ;
+                this.sum = [];
+                this.order.forEach(item => {
+                    this.sum.push(item.final_price1)
+                });
+                this.sum = this.sum.reduce(add);
+                this.show = this.sum;
+                this.$emit('add-order' , this.order);
+            } ,
             search() {
                 if (this.title === '')
                 {

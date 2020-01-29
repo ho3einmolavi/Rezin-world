@@ -18,9 +18,6 @@
                 <div class="col-xs col-sm col- col-md col-lg col-xl-2  word-list-name">
                     <span class="title-4">  تاریخ سفارش</span>
                 </div>
-                <div class="col-xs col-sm col- col-md col-lg col-xl-2 word-list-all">
-                    <span class="title-4"> یادداشت </span>
-                </div>
                 <div class="col-xs col-sm col- col-md col-lg col-xl-1 word-list-des">
                     <span class="title-4">  وضعیت</span>
                 </div>
@@ -44,13 +41,10 @@
                         <span class="text-span title-4"> {{item.date}} در ساعت {{item.time}} </span>
                     </div>
                     <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-number">
-                        <span class="text-span title-4"> {{item.order.explanation}} </span>
-                    </div>
-                    <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-number">
                         <span class="text-span title-4 c-stop" >  {{item.order.status}} </span>
                     </div>
                     <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-email">
-                        <span class="text-span title-4">  {{item.order.total}}تومان </span>
+                        <span class="text-span title-4">  {{item.order.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان </span>
                     </div>
                     <div class="col-xs col-sm col- col-md col-lg col-xl-2 table-data-feature flex">
                         <router-link :to="'/adminOrdersDetails/'+item.order.id" class="item confirm" data-toggle="tooltip" data-placement="top" title="" data-original-title="تایید">
@@ -68,7 +62,77 @@
 
 <script>
     export default {
-        name: "orders-list"
+        name: "orders-list" ,
+        created() {
+            this.get_orders();
+        } ,
+
+        data() {
+            return {
+                orders: [] ,
+                query: '' ,
+                error: 0
+            }
+        } ,
+        methods: {
+            search() {
+                axios({
+                    url: `/api/search/orders/tracking_code` ,
+                    method: 'post' ,
+                    data: {
+                        q: this.query
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.error = 0;
+                        this.orders = res.data;
+                    })
+                    .catch(err => {
+                        console.log(err.response);
+                        this.error = 1
+                    })
+            } ,
+            delete_order(id) {
+                if (confirm('آیا از حذف کردن این سفارش مطمئن هستید؟؟؟'))
+                {
+                    axios({
+                        url: `/api/orders/${id}/delete` ,
+                        method: 'get' ,
+                    })
+                        .then(res => {
+                            console.log(res);
+                            this.$toasted.success('order is deleted' , {
+                                position: 'bottom-center' ,
+                                theme: 'bubble' ,
+                                fitToScreen: true
+                            }).goAway(1500);
+                            this.get_orders();
+                        })
+                        .catch(err => {
+                            console.log(err.response);
+                            this.$toasted.error(err.response.data , {
+                                position: 'bottom-center' ,
+                                theme: 'bubble' ,
+                                fitToScreen: true
+                            }).goAway(3000);
+                        })
+                }
+            } ,
+            get_orders() {
+                axios({
+                    url: '/api/orders' ,
+                    method: 'get' ,
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.orders = res.data;
+                    })
+                    .catch(err => {
+                        console.log(err.response);
+                    })
+            }
+        }
     }
 </script>
 

@@ -45,12 +45,19 @@ Route::post('/setting' , 'SettingController@update');
 Route::get('/setting/index' , 'SettingController@index');
 Route::post('/logo' , 'SettingController@logo');
 
+
+//passport
+Route::post('/register' , 'AuthController@register');
+Route::post('/login' , 'AuthController@login');
+
+
+
 //users
 Route::get('/users' , 'UserController@index');
 Route::post('/sendMessage' , 'UserController@sendMessage');
 Route::post('/forgetPassword' , 'UserController@forgetPassword');
 Route::post('/forgetPassword/verify' , 'UserController@forgetPassword_verify');
-Route::post('/login' , 'UserController@login');
+//Route::post('/login' , 'UserController@login');
 Route::post('/getcode' , 'UserController@getCode');
 Route::post('/verification' , 'UserController@verificationTheCode');
 Route::post('/{id}/deleteUser' , 'UserController@deleteUser');
@@ -116,5 +123,6 @@ Route::get('/productsPage/baner' , 'BanerController@showProductsPageBaner');
 
 
 //articles
-Route::post('/article/store' , 'ArticleController@store')->middleware('auth:api');
+Route::post('/article/store' , 'ArticleController@store');
 Route::get('/articles' , 'ArticleController@index');
+Route::get('/articlesForShow' , 'ArticleController@show');

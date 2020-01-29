@@ -398,7 +398,6 @@ class UserController extends Controller
         $validator = Validator::make($request->all() , [
             'code' => 'required' ,
             'phone_number' => 'required|iran_mobile' ,
-            'email' => ['nullable' ,'string', 'email', 'max:255', 'unique:users'],
         ]);
 
         if ($validator->fails())
@@ -413,7 +412,7 @@ class UserController extends Controller
         if (is_null($user))
         {
             return response()->json([
-                'message' => ['کاربر مورد نظر یافت نشد'] ,
+                'data' => ['کاربر مورد نظر یافت نشد'] ,
             ] , 404);
         }
 
@@ -428,19 +427,16 @@ class UserController extends Controller
         {
             $user->update([
                 'verification' => '1' ,
-                'email' => $request->email ,
-                'password' => bcrypt($request->password) ,
-                'api_token' => Str::random(200),
             ]);
 
             return response()->json([
-                'message' => ['شماره موبایل شما تایید شد'],
+                'data' => ['شماره موبایل شما تایید شد'],
                 'user' => $user
             ]);
         }
 
         return response()->json([
-            'message' => ['کد وارد شده اشتباه است'] ,
+            'data' => ['کد وارد شده اشتباه است'] ,
         ] , 400);
     }
 
@@ -500,7 +496,6 @@ class UserController extends Controller
         $valid = Validator::make($request->all(), [
             'phone' =>'nullable|numeric',
             'phone_number' => 'required|iran_mobile' ,
-           // 'email' => 'nullable|email|unique:users' ,
             'postal_code' =>'required|numeric',
             'address' => 'required' ,
             'first_name' => 'required' ,
