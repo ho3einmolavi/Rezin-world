@@ -119,4 +119,14 @@ class CommentController extends Controller
         }
         return response()->json($comments);
     }
+
+    public function comments_in_index()
+    {
+        $comments = Comment::where('verify' , 1)->latest('id')->get();
+        foreach ($comments as $comment)
+        {
+            $comment['user'] = $comment->user;
+        }
+        return response()->json($comments);
+    }
 }

@@ -35,7 +35,7 @@ class AuthController extends Controller
     {
         //validation
         $validData = Validator::make($request->all() , [
-            'password' => ['required', 'string', 'min:8'] ,
+            'password' => ['required', 'string'] ,
             'login' => 'required'
         ]);
 

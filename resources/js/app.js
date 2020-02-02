@@ -43,8 +43,7 @@ Vue.use(VueRouter);
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('main-header', require('./components/main-header.vue').default);
@@ -84,6 +83,14 @@ Vue.component('card-left', require('./components/card-left.vue').default);
 Vue.component('card-address', require('./components/card-address.vue').default);
 Vue.component('card-pay', require('./components/card-pay.vue').default);
 Vue.component('pay-success', require('./components/pay-success.vue').default);
+Vue.component('user', require('./components/user.vue').default);
+Vue.component('user-dashboard', require('./components/user-dashboard.vue').default);
+Vue.component('user-dashboard-res', require('./components/user-dashboard-res.vue').default);
+Vue.component('user-profile', require('./components/user-profile.vue').default);
+Vue.component('user-orders', require('./components/user-orders.vue').default);
+Vue.component('user-order-details', require('./components/user-order-details.vue').default);
+Vue.component('user-changePassword', require('./components/user-changePassword.vue').default);
+
 
 
 
@@ -111,6 +118,10 @@ const routes = [
     {path: '/card/products',name:'card',component:require('./components/card-products.vue').default } ,
     {path: '/card/address',name:'card',component:require('./components/card-address.vue').default } ,
     {path: '/card/pay',name:'card',component:require('./components/card-pay.vue').default } ,
+    {path: '/user/profile',name:'card',component:require('./components/user-profile.vue').default } ,
+    {path: '/user/orders',name:'card',component:require('./components/user-orders.vue').default } ,
+    {path: '/user/order/details/:orderID',name:'card',component:require('./components/user-order-details.vue').default } ,
+    {path: '/user/changePassword',name:'card',component:require('./components/user-changePassword.vue').default } ,
 
 ];
 

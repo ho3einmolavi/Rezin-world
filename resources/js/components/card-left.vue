@@ -149,7 +149,7 @@
                         localStorage.removeItem('order');
                         this.sendMessage(res.data.order.tracking_code);
                         localStorage.setItem('tracking_code' , res.data.order.tracking_code);
-                        window.location = '/payment-success'
+                        window.location.href = '/payment-success'
                     })
                     .catch(err => {
                         this.loading = 0;

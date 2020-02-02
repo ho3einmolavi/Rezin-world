@@ -17,6 +17,8 @@ class CreateOrdersTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id')->nullable();
             $table->string('tracking_code')->nullable();
+            $table->boolean('factor')->nullable()->default(0);
+            $table->text('payment_method')->nullable();
             $table->text('explanation')->nullable();
             $table->string('status')->nullable()->default('در حال بررسی');
             $table->string('total')->nullable();

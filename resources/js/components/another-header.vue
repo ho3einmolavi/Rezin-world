@@ -45,9 +45,13 @@
                         <li><a class="signup" href="#0">ثبت نام   </a></li>
                         <li><a class="signin" href="#0">  ورود </a></li>
                     </ul>
+
+                </nav>
+
+                <nav class="main-nav">
                     <ul v-if="user">
-                        <li v-if="!user.first_name || !user.last_name">حساب کاربری</li>
-                        <li v-if="user.first_name && user.last_name">{{user.first_name}} {{user.last_name}}</li>
+                        <li v-if="!user.first_name || !user.last_name"><a href="/user/profile">حساب کاربری</a></li>
+                        <li v-if="user.first_name && user.last_name"><a href="/user/profile">{{user.first_name}} {{user.last_name}}</a></li>
                     </ul>
                 </nav>
 

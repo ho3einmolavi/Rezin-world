@@ -105,7 +105,7 @@ class OrderController extends Controller
         return response()->json($arr);
     }
 
-    public function show($id)
+    public function show($id , Request $request)
     {
         $user = auth()->user();
         $order = Order::find($id);
@@ -114,27 +114,22 @@ class OrderController extends Controller
         {
             if ($order->user->id === $user->id || $user->type === 'admin')
             {
-                if ($user->type === 'admin')
+                foreach ($order->products as $product)
                 {
-                    return new JsonResponse([
-                        'message' => "it's ok" ,
-                        'tracking_code' => $order->tracking_code ,
-                        'order' => $order ,
-                        'user' => $order->user ,
-                        'products' => $order->products ,
-                        'check' => 1
-                    ] , 200);
+                    $productsID[] = $product['id'];
                 }
-                else
-                {
-                    return new JsonResponse([
-                        'message' => "it's ok" ,
-                        'tracking_code' => $order->tracking_code ,
-                        'order' => $order ,
-                        'user' => $order->user ,
-                        'products' => $order->products
-                    ] , 200);
-                }
+                $res = $this->find($order['id'] , $productsID);
+
+                unset($order['user']);
+                unset($order['products']);
+                return new JsonResponse([
+                    'message' => "it's ok" ,
+                    'tracking_code' => $order->tracking_code ,
+                    'order' => $order ,
+                    'user' => $order->user ,
+                    'products' => $res ,
+                    'check' => 1
+                ] , 200);
 
             }
             else
@@ -152,23 +147,13 @@ class OrderController extends Controller
     public function userOrders()
     {
         $user = auth()->user();
-        return new JsonResponse($user->orders);
+        return new JsonResponse($user->orders()->latest('id')->get());
     }
 
-    public function find(Request $request)
+    public function find($order , array $products)
     {
-        $validData = Validator::make($request->all() ,[
-            'orders' => 'required' ,
-            'products' => 'required' ,
-        ]);
-
-        if ($validData->fails())
-        {
-            return new JsonResponse($validData->errors()->all() , 400);
-        }
-
-        $results = DB::table('order_product')->whereIn('product_id' , $request->products);
-        $results = $results->whereIn('order_id' , $request->orders);
-        return new JsonResponse($results->get());
+        $results = DB::table('order_product')->whereIn('product_id' , $products);
+        $results = $results->where('order_id' , $order);
+        return ($results->get());
     }
 }

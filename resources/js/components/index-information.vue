@@ -223,15 +223,28 @@
 
         data() {
             return {
-                articles: []
+                articles: [] ,
+                comments: []
             }
         } ,
 
         created() {
             this.get_articles();
+            this.get_comments();
         } ,
 
         methods: {
+            get_comments() {
+                axios({
+                    method: 'get' ,
+                    url: '/api/articlesForShow'
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.comments = res.data;
+                    })
+                    .catch(err => console.log(err.response))
+            } ,
              chunk(array, size) {
                 const chunked_arr = [];
                 let copied = [...array]; // ES6 destructuring

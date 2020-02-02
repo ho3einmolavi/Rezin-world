@@ -51,20 +51,12 @@ Route::get('/contact-us' , function () {
     return view('products');
 });
 
-//Route::get('/order/pay/error' , function () {
-//    return view('products');
-//});
-//
-//Route::get('/{any}/order/pay' , function () {
-//    return view('products');
-//})->where('any', '.*');
-
 Route::get('/admin/{any}' , function () {
     return view('admin');
 })->where('any', '.*');
 
 Route::get('/user/{any}' , function () {
-    return view('admin');
+    return view('user');
 })->where('any', '.*');
 
 Route::get('/details/{any}' , function () {

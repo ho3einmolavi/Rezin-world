@@ -94,7 +94,6 @@ Route::post('/order/create' , 'OrderController@create')->middleware('auth:api');
 Route::get('/orders' , 'OrderController@index');
 Route::get('/check/order/{id}' , 'OrderController@show')->middleware('auth:api');
 Route::get('/user/orders' , 'OrderController@userOrders')->middleware('auth:api');
-Route::post('/find/products/order' , 'OrderController@find');
 Route::get('/verify/order/{id}' , 'OrderController@verify');
 
 
@@ -103,6 +102,7 @@ Route::post('/store/comment' , 'CommentController@store')->middleware($middlewar
 Route::get('/comments/{product_id}' , 'CommentController@index');
 Route::get('/comment/verify/{id}' , 'CommentController@verify');
 Route::get('/allComments' , 'CommentController@allComments');
+Route::get('/comments_in_index' , 'CommentController@comments_in_index');
 
 
 //baners

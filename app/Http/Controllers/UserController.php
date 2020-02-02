@@ -446,8 +446,8 @@ class UserController extends Controller
 
         $valid = Validator::make($request->all(), [
             'old' => 'required',
-            'new' => 'required',
-            'confirm' => 'required',
+            'new' => 'required|alpha_dash',
+            'confirm' => 'required|alpha_dash',
         ]);
 
         if ($valid->fails()) {
@@ -464,12 +464,12 @@ class UserController extends Controller
             }
             else
             {
-                return response('پسوردها منطبق نیستند لطفا دوباره امتحان کنید', 422);
+                return response(['پسوردها منطبق نیستند لطفا دوباره امتحان کنید'], 422);
             }
         }
         else
         {
-            return response('پسورد وارد شده اشتباه است', 422);
+            return response(['پسورد وارد شده اشتباه است'], 422);
         }
         return response([
             'message' => 'تغییرات با موفقیت اعمال شد' ,
