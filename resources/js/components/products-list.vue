@@ -1,5 +1,5 @@
 <template>
-    <div class="col-xs col-sm col-10 col-md-10 col-lg-9 col-xl-9 users-main delete-padding">
+    <div class="col-xs col-sm col-10 col-md-11 col-lg-9 col-xl-9 users-main delete-padding">
         <div class="user-list-page">
             <div class="user-list-manage-box">
                 <div class="col-xs col-sm col- col-md col-lg col-xl-4 user-list-manage-box-search delete-padding">
@@ -18,19 +18,19 @@
                     <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-image">
                         <img :src="'/images/products/' + product.images[0]">
                     </div>
-                    <div class="col-xs col-sm col- col-md col-lg col-xl-1 user-list-info-box-name">
+                    <div class="col-xs col-sm col- col-md col-lg col-xl-3 user-list-info-box-name">
                         <span class="text-span text-gray-p"> {{product.title}}  </span>
                     </div>
                     <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-city">
                         <span class="text-span  text-gray-p">{{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان  </span>
                     </div>
 
-                    <div class="col-xs col-sm col- col-md col-lg col-xl-3 user-list-info-box-email">
+                    <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-email">
                         <span class="text-span text-gray-p" v-if="product.number"> موجود در انبار </span>
                         <span class="text-span" style="color: red" v-else> ناموجود </span>
                     </div>
 
-                    <div class="col-xs col-sm col- col-md col-lg col-xl-2 table-data-feature flex">
+                    <div class="col-xs col-sm col- col-md col-lg col-xl-3 table-data-feature flex">
                         <router-link :to="'/product/'+product.id" id="error23" class="item delete" data-toggle="tooltip" data-placement="top" title="جزئیات" data-original-title="حذف ">
                             <i class="fas fa-ellipsis-h"></i>
                         </router-link>

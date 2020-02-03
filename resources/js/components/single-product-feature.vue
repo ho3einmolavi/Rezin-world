@@ -7,10 +7,10 @@
         </div>
         <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main flex">
             <div class="col col-sm col-xs col-md-4 col-lg-4 col-xl-4 card-main-right">
-                <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-right-like">
-                    <span>  265 </span>
-                    <span><i class="fas fa-heart"></i></span>
-                </div>
+                <!--<div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-right-like">-->
+                    <!--<span>  265 </span>-->
+                    <!--<span><i class="fas fa-heart"></i></span>-->
+                <!--</div>-->
                 <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-right-img">
                     <div class="card-main-right-img-inside">
                         <!--gallery-->
@@ -67,6 +67,7 @@
                         </div>
                     </div>
                 </div>
+
                 <hr class="hr-page-card">
                 <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-like">
                     <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-like-top flex">
@@ -86,21 +87,22 @@
                             <div class="col col-sm col-xs col-md col-lg col-xl-3 card-main-left-like-between-left-number">
                                 <!---->
                                 <div class="wrapper">
-                                    <div class="control" id="minus">-</div>
-                                    <div id="number">0</div>
-                                    <div class="control" id="plus">+</div>
+                                    <div class="control" id="minus" @click="reducePro(product)">-</div>
+                                    <div id="number" v-if="order" >{{order.order_number}}</div>
+                                    <div id="number" v-else> 0 </div>
+                                    <div class="control" id="plus" @click="increasePrd(product)">+</div>
                                 </div>
                                 <!---->
                             </div>
-                            <div class="col col-sm col-xs col-md col-lg col-xl-2 card-main-left-like-between-left-like">
-                                <div class="like-icon">
-                                    <i class="far fa-heart"></i>
-                                </div>
-                            </div>
+                            <!--<div class="col col-sm col-xs col-md col-lg col-xl-2 card-main-left-like-between-left-like">-->
+                                <!--<div class="like-icon">-->
+                                    <!--<i class="far fa-heart"></i>-->
+                                <!--</div>-->
+                            <!--</div>-->
 
-                            <div class="col col-sm col-xs col-md col-lg col-xl-7 card-main-left-like-between-left-buy">
+                            <div @click="increasePrd(product)" style="cursor: pointer" class="col col-sm col-xs col-md col-lg col-xl-7 card-main-left-like-between-left-buy">
                                 <div class="buy-icon">
-                                    <a href="#"><span class="title-4"> لینک خرید محصول </span></a>
+                                    <a><span  class="title-4"> افزودن به سبد خرید </span></a>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +117,7 @@
                     <!--res-->
                     <div class="col col-sm col-xs col-md col-lg col-xl-7 card-main-left-like-between-left-buy-res">
                         <div class="buy-icon-res">
-                            <a href="#"><span class="title-4"> لینک خرید محصول </span></a>
+                            <a href="/card/products"><span class="title-4"> لینک خرید محصول </span></a>
                         </div>
                         <div></div></div>
                     <!--end-res-->
@@ -389,8 +391,6 @@
 
                                     </div> <!-- faq-items -->
                                     <a href="#0" class="cd-close-panel">Close</a>
-
-
                                 </section>
                             </div>
                         </main>
@@ -407,21 +407,120 @@
     export default {
         name: "single-product-feature" ,
 
-
         created() {
+            this.get_number_of_product();
             this.get_product(this.$route.params.productID);
             this.getComments(this.$route.params.productID);
         } ,
+
 
         data() {
             return {
                 product: [] ,
                 body: '' ,
-                comments: []
+                comments: [] ,
+                order: null
             }
         } ,
 
         methods: {
+            reducePro(product) {
+                let arr = JSON.parse(localStorage.getItem('order')) || null;
+                    arr.forEach(item => {
+                        if (item.id === product.id)
+                        {
+                            if (item.order_number !== 1)
+                            {
+                                item.order_number --;
+                                item.final_price1 = item.final_price * item.order_number;
+                            }
+                            else {
+                                this.order = null;
+                                let index = arr.indexOf(item);
+                                if (index > -1)
+                                {
+                                    arr.splice(index, 1);
+                                }
+                            }
+                        }
+                    });
+
+
+
+                localStorage.setItem('order' , JSON.stringify(arr));
+                let order = JSON.parse(localStorage.getItem('order'));
+                order.forEach(item => {
+                    if (item.id == this.$route.params.productID)
+                    {
+                        this.order = item
+                    }
+                });
+                this.$emit('send_number' , JSON.parse(localStorage.getItem('order')));
+
+            } ,
+            increasePrd(product) {
+                this.$toasted.show('محصول اضافه شد', {
+                    position: 'bottom-center' ,
+                    type: 'success' ,
+                    theme: 'bubble' ,
+                    fitToScreen: true ,
+                    className: ['your-custom-class']
+                }).goAway(1500);
+                let flag = 0;
+                let arr = JSON.parse(localStorage.getItem('order')) || null;
+                if (arr)
+                {
+                    arr.forEach(item => {
+                        if (item.id === product.id)
+                        {
+                            flag = 1;
+                            item.order_number ++;
+                            item.final_price1 = item.final_price * item.order_number;
+                        }
+                    });
+                    if (flag === 0)
+                    {
+                        arr.push(product);
+                        arr.forEach(item => {
+                            item.order_number = 1;
+                            item.final_price1 = item.final_price * item.order_number;
+                        });
+                    }
+                }
+                else
+                {
+                    arr = [];
+                    arr.push(product);
+                    arr.forEach(item => {
+                            item.order_number = 1;
+                            item.final_price1 = item.final_price * item.order_number;
+                    });
+                }
+
+                localStorage.setItem('order' , JSON.stringify(arr));
+                let order = JSON.parse(localStorage.getItem('order'));
+                order.forEach(item => {
+                    if (item.id == this.$route.params.productID)
+                    {
+                        this.order = item
+                    }
+                });
+
+                this.$emit('send_number' , JSON.parse(localStorage.getItem('order')));
+
+            } ,
+            get_number_of_product() {
+                let order = JSON.parse(localStorage.getItem('order')) || null;
+                if (order)
+                {
+                    order.forEach(item => {
+                        if (item.id == this.$route.params.productID)
+                        {
+                            this.order = item
+                        }
+                    });
+                }
+            } ,
             shareLinkOnWhatsapp() {
                 window.location=`https://wa.me/?text=${window.location.href}`
             } ,

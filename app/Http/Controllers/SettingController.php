@@ -23,6 +23,8 @@ class SettingController extends Controller
                 'address' => $request->address ,
                 'consultant_mobile' => $request->consultant_mobile ,
                 'consultant_number' => $request->consultant_number ,
+                'minimum_order_cost' => $request->minimum_order_cost ,
+                'sending_cost' => $request->sending_cost ,
                 'telegram' => $request->telegram ,
                 'email' => $request->email ,
                 'email_info' => $request->email_info ,
@@ -32,20 +34,7 @@ class SettingController extends Controller
                 'account_owner' => $request->account_owner ,
             ]);
         }
-//        title: '' ,
-//                    description: '' ,
-//                    keywords: '' ,
-//                    address: '' ,
-//                    consultant_mobile: '' ,
-//                    consultant_number: '' ,
-//                    telegram: '',
-//                    email: '' ,
-//                    email_info: '' ,
-//                    instagram: '' ,
-//                    account_number: '' ,
-//                    card_number: '' ,
-//                    account_owner: '' ,
-//                    logo: '' ,
+
         else
         {
             $setting->update([
@@ -56,6 +45,8 @@ class SettingController extends Controller
                 'consultant_mobile' => $request->consultant_mobile ,
                 'consultant_number' => $request->consultant_number ,
                 'telegram' => $request->telegram ,
+                'minimum_order_cost' => $request->minimum_order_cost ,
+                'sending_cost' => $request->sending_cost ,
                 'email' => $request->email ,
                 'email_info' => $request->email_info ,
                 'instagram' => $request->instagram ,
@@ -74,7 +65,7 @@ class SettingController extends Controller
         if ($set->isEmpty())
         {
             $set = Setting::create([
-                'title' => 'کالیمو' ,
+                'title' => 'رزین' ,
                 'description' => 'کالیمو یکی از بزرگترین و معتبرترین سوپر مارکت های انلاین کشور می باشد . که با اتکا به محصولات با کیفیت و قیمت رقابتی پا به عرصه فروش آنلاین در ایران گذاشته است و فعالیت خود را در زمینه فروش محصولات غذایی ار سال 1397 آغاز کرد.'
             ]);
         }
@@ -98,7 +89,7 @@ class SettingController extends Controller
         {
             $image = $request->file('logo');
             $name = $image->getClientOriginalName();
-            $image->move(public_path('/img/logo') , $name);
+            $image->move(public_path('/images/logo') , $name);
             $setting = Setting::orderBy('id' , 'DESC')->first();
             if ($setting)
             {

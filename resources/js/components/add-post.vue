@@ -27,8 +27,9 @@
                     separator=" "
                     placeholder="تگ را وارد کنید و با دکمه enter آن‌ها را از هم جدا نمایید"
                     class="mb-2"
+                    add-button-text="اضافه"
             ></b-form-tags>
-            <!--<p>Value: {{ keywords }}</p>-->
+
         </div>
 
         <div class="form-group" style="font-family: irs">
@@ -46,7 +47,7 @@
                 body: '' ,
                 cover: '' ,
                 keywords: [] ,
-               percent: 0 ,
+                percent: 0 ,
                 ok: 0
             }
         } ,

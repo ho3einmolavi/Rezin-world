@@ -17,8 +17,6 @@ class CreateMainCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->text('keywords')->nullable();
-            $table->string('img')->nullable();
-            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }

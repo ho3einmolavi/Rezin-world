@@ -37,32 +37,35 @@
             <div class="col-xs col-sm col- col-md col-lg col-xl-1 word-list-all">
                 <span class="title-4">  درصد تخفیف  </span>
             </div>
-            <div class="col-xs col-sm col- col-md col-lg col-xl-1 word-list-ads">
+            <div class="col-xs col-sm col- col-md col-lg col-xl-2 word-list-ads">
                 <span class="title-4"> شناسه  </span>
             </div>
             <div class="col-xs col-sm col- col-md col-lg col-xl-2 word-list-date">
                 <span class="title-4"> انقضاء</span>
             </div>
+            <div class="col-xs col-sm col- col-md col-lg col-xl-2 word-list-date">
+                <span class="title-4"> حذف</span>
+            </div>
         </div>
         <ol id="selectable" class="col-md-12 delete-padding-left">
             <li  v-for="(item , index) in offs" class="ui-state-default user-list-info-box flex">
-                <div class="col-md-1 user-list-info-box-image">
+                <div class="col-xs col-sm col- col-md col-lg col-xl-1 user-list-info-box-image">
                     <span class="text-span title-4">  {{index + 1}} </span>
                 </div>
-                <div class="col-md-2 user-list-info-box-name">
+                <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-name">
                     <span class="text-span title-4">کوپن تخفیف </span>
                 </div>
-                <div class="col-md-1 user-list-info-box-number">
+                <div class="col-xs col-sm col- col-md col-lg col-xl-1 user-list-info-box-number">
                     <span class="text-span title-4"> {{item[0].amount}}</span>
                 </div>
 
-                <div class="col-md-2 user-list-info-box-email2">
+                <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-email2">
                     <span class="text-span title-4"> {{item[0].name}}</span>
                 </div>
-                <div class="col-md-2 user-list-info-box-email2">
+                <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-email2">
                     <span class="text-span title-4"> {{item[1]}}</span>
                 </div>
-                <div class="col-md-2 table-data-feature flex">
+                <div class="col-xs col-sm col- col-md col-lg col-xl-2 table-data-feature flex">
                     <a v-on:click="delete_discount(item[0].id)" id="error2" class="item delete" data-toggle="tooltip" data-placement="top" title="" data-original-title="حذف ">
                         <i class="fas fa-trash-alt"></i>
                     </a>
@@ -171,6 +174,10 @@
     }
 </script>
 
-<style>
-
+<style scoped>
+    .btn-primary {
+        color: #fff;
+        background-color: #ff7a76;
+        border-color: #ff7a76
+    }
 </style>

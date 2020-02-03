@@ -10,7 +10,7 @@
                 <div class="col-xs col-sm col- col-md col-lg col-xl-12 card-right-bottom-one delete-padding">
                     <input type="radio" name="gender" v-model="payMethod" value="online" @change="checkPayMethod">
                     <i class="fas fa-credit-card"></i>
-                    <span class="title-3"> پرداخت اینترنتی هوشمند کالیمو  <span class="title-6"> (آنلاین با تمامی کارت های بانکی) </span></span>
+                    <span class="title-3"> پرداخت اینترنتی هوشمند  <span class="title-6"> (آنلاین با تمامی کارت های بانکی) </span></span>
                 </div>
                 <div class="col-xs col-sm col- col-md col-lg col-xl-12 card-right-bottom-two delete-padding">
                     <input type="radio" name="gender" v-model="payMethod" value="offline" @change="checkPayMethod">
@@ -50,37 +50,41 @@
                             </div>
                             <div class="col-xs col-sm col- col-md col-lg col-xl-12 card-right-bottom-1-bottom flex">
                                 <div class="col-xs col-sm col- col-md-2 col-lg-2 col-xl-2 card-right-marsule">
-                                    <span class="text-black title-4"> (1 کالا ) </span>
+                                    <span class="text-black title-4"> ({{orders.length}} کالا ) </span>
                                 </div>
                                 <div class="col-xs col-sm col- col-md-2 col-lg-2 col-xl-2 card-right-time">
                                     <span class="text-black title-4"> چهارشنبه 8 ابان 1398 ساعت 15 تا 22 </span>
                                 </div>
                                 <div class="col-xs col-sm col- col-md-6 col-lg-6 col-xl-4 card-right-How-send">
-                                    <span class="text-black title-4">تحویل اکسپرس  کالیمو شهرستان  (ارسال رایگان سفارش های  بالاتر  از 150 هزار تومان)</span>
+                                    <span class="text-black title-4">تحویل اکسپرس</span>
                                 </div>
                                 <div class="col-xs col-sm col- col-md-1 col-lg-1 col-xl-2 card-right-send-of">
                                     <span class="text-black title-4"> آماده ارسال </span>
                                 </div>
                                 <div class="col-xs col-sm col- col-md-1 col-lg-1 col-xl-2 card-right-money">
-                                    <span class="text-black title-4"> 8/000 تومان </span>
+                                    <span class="text-black title-4" v-if="setting.sending_cost"> {{setting.sending_cost}} تومان </span>
+                                    <span class="text-black title-4" v-else> رایگان </span>
                                 </div>
 
                             </div>
 
                         </div>
                     </a>
-                    <div v-for="item in chunk(orders , 4)" class="col-xs col-sm col- col-md col-lg col-xl-12 faq-content">
-                        <div v-for="product in item" class="col-xs col-sm col- col-md col-lg col-xl-4 faq-content-main">
-                            <div class="col-xs col-sm col- col-md col-lg col-xl-12 faq-content-main-img">
-                                <img :src="'/images/products/' + product.images[0]">
-                            </div>
-                            <div class="col-xs col-sm col- col-md col-lg col-xl-12 faq-content-main-name">
-                                <span class="text-black">  {{product.title}} </span>
-                            </div>
-                            <div class="col-xs col-sm col- col-md col-lg col-xl-12 faq-content-main-number">
-                                <span class="text-black"> تعداد : <span class="text-black"> {{product.order_number}} عدد </span>  </span>
+                    <div class="col-xs col-sm col- col-md col-lg col-xl-12 faq-content" style="display: block">
+                        <div v-for="item in chunk(orders , 4)" class="col-xs col-sm col- col-md col-lg col-xl-12 div-test flex table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
+                            <div v-for="product in item" class="col-xs col-sm col- col-md col-lg col-xl-3 faq-content-main">
+                                <div class="col-xs col-sm col- col-md col-lg col-xl-12 faq-content-main-img">
+                                    <img :src="'/images/products/' + product.images[0]">
+                                </div>
+                                <div class="col-xs col-sm col- col-md col-lg col-xl-12 faq-content-main-name">
+                                    <span class="text-black">  {{product.title}} </span>
+                                </div>
+                                <div class="col-xs col-sm col- col-md col-lg col-xl-12 faq-content-main-number">
+                                    <span class="text-black"> تعداد : <span class="text-black"> {{product.order_number}} عدد </span>  </span>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </li>
             </ul>
@@ -90,20 +94,20 @@
         <!--end-2-->
 
         <!--3-->
-        <div class="buy-card-right-1 col-xs col-sm col- col-md-12 col-lg-12 col-xl-12 delete-padding">
+        <div v-if="check === 1" class="buy-card-right-onee col-xs col-sm col- col-md-12 col-lg-12 col-xl-12 delete-padding">
             <div class="col-xs col-sm col- col-md col-lg col-xl-12  buy-card-right-top">
                 <span>  استفاده از کد تخفیف کالیمو </span>
             </div>
             <div class="col-xs col-sm col- col-md col-lg col-xl-12 card-right-bottom-offer delete-padding flex">
                 <div class="col-xs col-sm col- col-md col-lg col-xl-6 card-right-bottom-offer-right">
-                    <span class="text-black title-4">  با ثبت کد تخفیف , مبلغ کد تخفیف از "مبلغ قابل پرداخت" کم می شود  </span>
+                    <span class="text-black title-3">  با ثبت کد تخفیف , مبلغ کد تخفیف از "مبلغ قابل پرداخت" کم می شود  </span>
                 </div>
                 <div class="col-xs col-sm col- col-md col-lg col-xl-6 card-right-bottom-offer-left flex">
                     <div class="col-xs col-sm col- col-md col-lg col-xl-8 card-right-bottom-offer-left-1">
-                        <input type="text" class="form-control" id="validationCustom04" placeholder="مثلا 123456" required="">
+                        <input type="text" v-model="name" class="form-control" id="validationCustom04" placeholder="مثلا 123456" required="">
                     </div>
                     <div class="col-xs col-sm col- col-md col-lg col-xl-4 card-right-bottom-offer-left-2">
-                        <button class="btn btn-primary" type="submit">ثبت کد تخفیف</button>
+                        <button class="btn btn-primary" type="button" @click="checkDiscount">ثبت کد تخفیف</button>
                     </div>
                 </div>
             </div>
@@ -113,11 +117,7 @@
         <div class="col-xs col-sm col- col-md col-lg col-xl-12 card-factor-end flex">
             <div class="col-xs col-sm col- col-md col-lg col-xl-6 card-factor-end-right">
                 <span><i class="fas fa-angle-double-right"></i></span>
-                <a href="card-address.html"><span class="title-4">  بازگشت به سبد خرید  </span></a>
-            </div>
-            <div class="col-xs col-sm col- col-md col-lg col-xl-6 card-factor-end-left">
-                <a href="#"><span class="title-4"> تایید و ادامه ثبت سفارش  </span></a>
-                <span><i class="fas fa-angle-double-left"></i></span>
+                <router-link to="/card/address"><span class="title-4">  بازگشت به سبد خرید  </span></router-link>
             </div>
         </div>
 
@@ -127,21 +127,126 @@
 <script>
     export default {
         name: "card-pay" ,
-        props: ['orders'] ,
+        props: ['orders' , 'setting'] ,
 
         created() {
+            this.which_discount_to_use();
             this.faq();
         } ,
 
         data() {
             return {
-                payMethod: ''
+                payMethod: '' ,
+                name: '' ,
+                factor: false ,
+                sum: '' ,
+                //date: moment().locale('fa').format('Do MMMM  YYYY') ,
+                flag: 0 ,
+                check: ''
             }
         } ,
 
         methods: {
+            cost(order) {
+                let s = 0;
+                order.forEach(item => {
+                    s += item.final_price1;
+                });
+                return s;
+            } ,
+            which_discount_to_use() {
+                axios({
+                    url: '/api/check/discounts' ,
+                    method: 'get' ,
+                    headers: {
+                        Accept: 'application/json' ,
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.check = res.data.check;
+                        if (this.check !== 1)
+                        {
+                            this.run_special_discount();
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err.response);
+                    })
+            } ,
+            run_special_discount() {
+                if (this.check !== 1)
+                {
+                    if (this.flag === 0)
+                    {
+                        axios({
+                            url: '/api/use/special_discount' ,
+                            method: 'post' ,
+                            data: {
+                                base: this.cost(this.orders)
+                            } ,
+                            headers: {
+                                Accept: 'application/json' ,
+                            }
+                        })
+                            .then(res => {
+                                console.log(res);
+                                this.$toasted.success(`${Math.ceil(this.cost(this.orders) - res.data)} تومان از مبلغ سفارش شما کم شد` , {
+                                    position: 'bottom-center' ,
+                                    theme: 'bubble' ,
+                                    fitToScreen: true ,
+                                    className: ['your-custom-class']
+                                }).goAway(4000);
+                                this.$emit('cost-after-off' , res.data);
+                                this.flag = 1;
+                            })
+                            .catch(err => {
+                                console.log(err.response);
+                                this.$toasted.error(err.response.data , {
+                                    position: 'bottom-center' ,
+                                    theme: 'bubble' ,
+                                    fitToScreen: true ,
+                                    className: ['your-custom-class']
+                                }).goAway(4000);
+                            })
+                    }
+                }
+            } ,
+            checkDiscount() {
+                axios({
+                    url: '/api/use/discount' ,
+                    method: 'post' ,
+                    data: {
+                        name: this.name ,
+                        base: this.cost(this.orders)
+                    } ,
+                    headers: {
+                        Accept: 'application/json' ,
+                        Authorization: `Bearer ${localStorage.token}`
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.$toasted.success(`${Math.ceil(this.cost(this.orders) - res.data).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} تومان از مبلغ سفارش شما کم شد` , {
+                            position: 'bottom-center' ,
+                            theme: 'bubble' ,
+                            fitToScreen: true ,
+                            className: ['your-custom-class']
+                        }).goAway(4000);
+                        this.$emit('cost-after-off' , res.data)
+                    })
+                    .catch(err => {
+                        console.log(err.response);
+                        this.$toasted.error(err.response.data , {
+                            position: 'bottom-center' ,
+                            theme: 'bubble' ,
+                            fitToScreen: true ,
+                            className: ['your-custom-class']
+                        }).goAway(4000);
+                    })
+            } ,
             checkPayMethod() {
-               this.$emit('pay-method' , this.payMethod)
+                this.$emit('pay-method' , this.payMethod)
             } ,
             faq() {
                 jQuery(document).ready(function($){

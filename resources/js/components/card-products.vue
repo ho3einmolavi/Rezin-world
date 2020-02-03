@@ -16,7 +16,7 @@
                 </div>
                 <div class="col-xs col-sm-4 col- col-md-4 col-lg-4 col-xl-4 buy-card-right-des">
                     <div class="col-xs col-sm col- col-md col-lg col-xl-12 buy-card-right-1">
-                        <span class="title-4 text-black"> رزین ولد برند دیجی عالی </span>
+                        <span class="title-4 text-black"> {{item.title}} </span>
                     </div>
                     <div class="col-xs col-sm col- col-md col-lg col-xl-12 buy-card-right-2">
                         <span class="title-4 text-black"> فروشنده : رزین ولد </span>
@@ -102,7 +102,7 @@
 
             } ,
             increasePrd(product) {
-                let arr = this.orders;
+                let arr = this.orders1;
                 arr.forEach(item => {
                     if (item.id === product.id)
                     {

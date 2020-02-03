@@ -25,6 +25,8 @@ class CreateSettingsTable extends Migration
             $table->string('email')->nullable();
             $table->string('email_info')->nullable();
             $table->string('instagram')->nullable();
+            $table->float('minimum_order_cost')->nullable();
+            $table->float('sending_cost')->nullable();
             $table->string('account_number')->nullable();
             $table->string('card_number')->nullable();
             $table->string('account_owner')->nullable();

@@ -2,9 +2,6 @@
     <div class="col-xs col-sm col-10 col-md-11 col-lg-9 col-xl-9 contentt">
         <ol class="col-xs col-sm col- col-md col-lg col-xl-12 delete-padding-left">
             <li class="ui-state-default user-list-info-box flex" v-for="cat in cats" style="border-radius: 10px">
-                <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-image">
-                    <img :src="'/images/category/' + cat.img">
-                </div>
                 <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-name">
                     <span class="text-span text-gray-p">  {{cat.name}} </span>
                 </div>
@@ -25,9 +22,6 @@
         <div v-if="click" class="col-xs col-sm col- col-md col-lg col-xl-12 tabcontent inside-product-box-end">
             <ol class="col-xs col-sm col- col-md col-lg col-xl-12 delete-padding-left">
                 <li v-for="item in cats1" class="ui-state-default user-list-info-box flex" style="background-color: #ff7a76;border-radius: 10px ">
-                    <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-image">
-                        <img :src="'/images/category/' + item.img">
-                    </div>
                     <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-name">
                         <span class="text-span text-white"> {{item.name}} </span>
                     </div>

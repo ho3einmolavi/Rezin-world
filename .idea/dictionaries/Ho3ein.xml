@@ -8,6 +8,7 @@
       <w>categorybrands</w>
       <w>chunked</w>
       <w>getcode</w>
+      <w>instagram</w>
       <w>nullable</w>
       <w>numbertext</w>
       <w>ptoduct</w>
@@ -19,6 +20,7 @@
       <w>swal</w>
       <w>sweetalert</w>
       <w>validata</w>
+      <w>whatsapp</w>
     </words>
   </dictionary>
 </component>

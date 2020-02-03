@@ -43,7 +43,7 @@ font-family: irs;
 }
 .main-nav a {
   color: #676767;
-  font-size: 13px;
+  font-size: 12px;
  /* display: block;
   height: 50px;
 	margin: 10px;
@@ -146,7 +146,7 @@ font-family: irs;
   background: #FFF;
   color: #505260;
 }
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 320px) {
   .user-modal-container {
     margin: 4em auto;
   }
@@ -309,7 +309,7 @@ right: 10px;
   visibility: visible;
   transition: opacity 0.2s 0, visibility 0 0;
 }
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 320px) {
   .form {
     padding: 2em;
   }
@@ -339,7 +339,7 @@ right: 10px;
   line-height: 1.4;
   text-align: center;
 }
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 320px) {
   .form-message {
     padding: 2em 2em 0;
   }

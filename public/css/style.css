@@ -105,7 +105,7 @@ color:;
 }
 /*//////////[span]////////////////////*/
 .text-span{
-	font-size:14px;
+	font-size:12px;
 }
 /*//////////[b]////////////////////*/
 .text-b{
@@ -376,10 +376,15 @@ background-color: red;
 }
 .header-main-bottom-span{
 	height: 45px;
-	display: block ruby;
+	display: block;
 	align-items: center;
 	text-align: center;
 	justify-content: center;
+}
+.header-main-bottom-span-inside {
+	height: 50px;
+	padding-top: 8px;
+	display: block;
 }
 .header-main-bottom-span span{
 	padding: 30px;
@@ -1568,14 +1573,12 @@ font-family: irs;
 
 .adds-sidebar-1{
 	height: auto;
-	background-color: red;
 }
 .adds-sidebar-1 img{
 	width: 100%;
 }
 .adds-sidebar-2{
 	height: auto;
-	background-color: green;
 	margin-top: 10px;
 }
 .adds-sidebar-2 img{
@@ -2539,15 +2542,22 @@ margin-bottom: -10px;
 
 .buy-card-right-price{
 	height: auto;
-	background-color:;
 }
 .buy-card-right-price-1{
 	height: 80px;
-	background-color:;
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
 }
+
+.buy-card-right-price-1-off{
+	height: 80px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+
 .buy-card-right-price-1 span{
 	text-decoration: line-through;
 }
@@ -3254,16 +3264,20 @@ background-color:;
 	align-items: center;
 	justify-content:center;
 }
+.faq-content-main-img img {
+	width: 170px;
+	height: 140px;
+}
 .faq-content-main-name{
 	height: 40px;
-	background-color:;
+	font-size: 12px;
 	display: flex;
 	align-items: center;
 	justify-content:center;
 }
 .faq-content-main-number{
 	height: 40px;
-	background-color:;
+	font-size: 12px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -3917,4 +3931,9 @@ Main components
 
 .your-custom-class {
 	font-family: "irs";
+}
+
+::placeholder {
+	font-size: 12px;
+	font-family: irs;
 }

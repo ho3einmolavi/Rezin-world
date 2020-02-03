@@ -126,3 +126,4 @@ Route::get('/productsPage/baner' , 'BanerController@showProductsPageBaner');
 Route::post('/article/store' , 'ArticleController@store');
 Route::get('/articles' , 'ArticleController@index');
 Route::get('/articlesForShow' , 'ArticleController@show');
+Route::post('/article/{id}' , 'ArticleController@update');

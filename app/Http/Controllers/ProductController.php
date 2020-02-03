@@ -371,36 +371,47 @@ class ProductController extends Controller
 
         if ($param == 'newest')
         {
-            $product = $product->orderBy('id' , 'DESC');
+            $product = $product->orderBy('id' , 'DESC')->paginate(12);
+            foreach ($product as $item)
+            {
+                $item['images'] = explode(',' , $item['product_img']);
+                unset($item['product_img']);
+            }
         }
 
         else if ($param == 'cheaper')
         {
-            $product = $product->orderBy('final_price' , 'ASC');
+            $product = $product->orderBy('final_price' , 'ASC')->paginate(12);
+            foreach ($product as $item)
+            {
+                $item['images'] = explode(',' , $item['product_img']);
+                unset($item['product_img']);
+            }
         }
 
         else if ($param == 'the-most-expensive')
         {
-            $product = $product->orderBy('final_price' , 'DESC');
+            $product = $product->orderBy('final_price' , 'DESC')->paginate(12);
+            foreach ($product as $item)
+            {
+                $item['images'] = explode(',' , $item['product_img']);
+                unset($item['product_img']);
+            }
         }
 
-        else $product = $product->latest();
+        else
+        {
+            $product = $product->latest('id')->paginate(12);
+            foreach ($product as $item)
+            {
+                $item['images'] = explode(',' , $item['product_img']);
+                unset($item['product_img']);
+            }
+        }
 
-
-//        $LNG = ceil(count($product) / 4);
-//        $arr = [];
-//        for ($i = 0, $k = 0; $i < $LNG; $i++, $k += 4) {
-//            for ($j = $k; $j < $k + 4; $j++)
-//            {
-//                if (isset($product[$j]))
-//                {
-//                    $arr[$i][] = $product[$j];
-//                }
-//            }
-//        }
 
         //return results
-        return response()->json($product->paginate(12));
+        return response()->json($product);
     }
 
     public function productsBySecondCat($main , $sec , $param)

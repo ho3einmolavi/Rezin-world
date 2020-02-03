@@ -3,9 +3,6 @@
         <div class="information-page-content-title">
             <div class="col-md-12 information-page-content-title-inside">
                 <h5 class="title-all-h5">جزئیات سفارش مشتریان </h5>
-                <p class="title-all-p title-4">
-                    شرکت سارین وب تیم متشکل 25 نفراز توسعه دهنگان و طراحان سایت است که توجه ویژه ای بر جنبه های توسعه UX دارند
-                </p>
             </div>
         </div>
         <div class="col-md-12 orderr-bottom flex">
@@ -39,15 +36,21 @@
                 <div class="orderr-bottom-right-inside">
                     <span class="title-4">  کد پستی :  </span><span class="title-4"> {{order.user.postal_code}} </span>
                 </div>
-                <div class="orderr-bottom-right-inside">
-                    <span class="title-4"> یادداشت  : </span><span class="title-4"> بسیار عجله دارم! </span>
+                <div class="orderr-bottom-right-inside" v-if="order.order.factor">
+                    <span class="title-4" > درخواست فاکتور  : </span><span class="title-4">دارم </span>
+                </div>
+
+                <div class="orderr-bottom-right-inside" v-else>
+                    <span class="title-4"> درخواست فاکتور  : </span><span class="title-4">ندارم </span>
                 </div>
                 <div class="orderr-bottom-right-inside">
-                    <span class="title-4"> روش پرداخت  : </span><span class="title-4"> درگاه پرداخت زرین پال </span>
+                    <span class="title-4"> روش پرداخت  : </span>
+                    <span class="title-4" v-if="order.order.payment_method === 'online'"> درگاه پرداخت زرین پال </span>
+                    <span class="title-4" v-if="order.order.payment_method === 'offline'"> پرداخت حضوری </span>
                 </div>
                 <div class="orderr-bottom-right-inside">
                     <span class="title-4"> سفارش :  </span><span class="title-4 c-stop">{{order.order.status}}</span>
-                    <button class="btn btn btn-success" style="font-family: irs" v-if="admin === 1 && order.order.status === 'در حال بررسی'" type="button" @click="verifyOrder(order.order.id)">تایید این سفارش</button>
+                    <b-button  variant="outline-primary" style="font-family: irs" v-if="admin === 1 && order.order.status === 'در حال بررسی'" type="button" @click="verifyOrder(order.order.id)">تایید این سفارش</b-button>
                 </div>
             </div>
         </div>
@@ -65,18 +68,18 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr v-for="(item , index) in order_products">
+                <tr v-for="(item , index) in order.products">
                     <th scope="row">{{index + 1}}</th>
                     <td class="title-4">{{item.title}}</td>
                     <td class="title-4">{{item.number}} <span> عدد </span></td>
-                    <td class="title-4">{{item.price}} <span>تومان </span></td>
-                    <td class="title-4">{{item.discount}}</td>
-                    <td class="title-4">{{item.total}} <span> تومان </span></td>
+                    <td class="title-4">{{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} <span>تومان </span></td>
+                    <td class="title-4">{{item.discount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</td>
+                    <td class="title-4">{{item.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} <span> تومان </span></td>
                 </tr>
                 </tbody>
             </table>
             <div class="co-md-12 invoice-product">
-                <span class="title-4"> جمع فاکتور   <span class="title-4">{{order.order.total}}</span> <span class="title-4"> تومان </span> </span>
+                <span class="title-4"> جمع فاکتور   <span class="title-4">{{order.order.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</span> <span class="title-4"> تومان </span> </span>
             </div>
         </div>
 
@@ -96,9 +99,6 @@
                 order: [] ,
                 ok: '' ,
                 products: [] ,
-                order_products: [] ,
-                products_id: [] ,
-                orders_id: [] ,
                 admin: ''
             }
         } ,
@@ -121,7 +121,6 @@
                     })
             } ,
             makeSure(id) {
-
                 axios({
                     url: `/api/check/order/${id}` ,
                     method: 'get' ,
@@ -131,47 +130,21 @@
                     }
                 })
                     .then(res => {
-                        this.products = [];
                         console.log(res);
                         this.ok = 1;
                         this.order = res.data;
+                        this.products = [];
                         res.data.products.forEach(item => {
                             this.products.push(item.title)
                         });
 
-                        res.data.products.forEach(item => {
-                            this.products_id.push(item.pivot.product_id);
-                            this.orders_id.push(item.pivot.order_id);
-                        });
-
                         this.admin = res.data.check;
-                        this.get_order_products();
                     })
                     .catch(err => {
                         console.log(err.response);
-                        window.location = '/404'
+                        //  window.location = '/404'
                     })
             } ,
-            get_order_products() {
-                axios({
-                    url: '/api/find/products/order' ,
-                    method: 'post' ,
-                    headers: {
-                        Accept: 'application/json' ,
-                    } ,
-                    data: {
-                        products: this.products_id ,
-                        orders: this.orders_id
-                    }
-                })
-                    .then(res => {
-                        console.log(res);
-                        this.order_products = res.data;
-                    })
-                    .catch(err => {
-                        console.log(err.response);
-                    })
-            }
         }
     }
 </script>

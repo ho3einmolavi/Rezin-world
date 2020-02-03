@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('sale')->default(0);
             $table->text('brand_id')->nullable();
             $table->string('available')->nullable();
-            $table->string('discount')->default(1)->nullable();
+            $table->float('discount')->default(1)->nullable();
             $table->boolean('slideShow')->default(0)->nullable();
             $table->bigInteger('main_category_id')->nullable();
             $table->bigInteger('secondary_category_id')->nullable();

@@ -31,6 +31,11 @@ const options = {
 
 
 Vue.use(VueSweetalert2, options);
+Vue.use(VuePersianDatetimePicker , {
+    props: {
+        color: '#ff7a76',
+    }
+});
 Vue.component('date-picker', VuePersianDatetimePicker);
 Vue.use(Toasted);
 Vue.use(VueRouter);
@@ -90,6 +95,8 @@ Vue.component('user-profile', require('./components/user-profile.vue').default);
 Vue.component('user-orders', require('./components/user-orders.vue').default);
 Vue.component('user-order-details', require('./components/user-order-details.vue').default);
 Vue.component('user-changePassword', require('./components/user-changePassword.vue').default);
+Vue.component('special-discount', require('./components/special-discount.vue').default);
+Vue.component('edit-article', require('./components/edit-article.vue').default);
 
 
 
@@ -107,13 +114,15 @@ const routes = [
     {path: '/admin/add-discount',name:'admin',component:require('./components/add-discount.vue').default } ,
     {path: '/admin/users',name:'admin',component:require('./components/users.vue').default } ,
     {path: '/admin/orders-list',name:'admin',component:require('./components/orders-list.vue').default } ,
-    {path: '/admin/adminOrdersDetails/:ID',name:'admin',component:require('./components/admin-order-details.vue').default } ,
+    {path: '/admin/order/details/:ID',name:'admin',component:require('./components/admin-order-details.vue').default } ,
     {path: '/admin/products-list',name:'admin',component:require('./components/products-list.vue').default } ,
     {path: '/admin/setting',name:'admin',component:require('./components/setting.vue').default } ,
     {path: '/admin/edit-baners',name:'admin',component:require('./components/edit-baners.vue').default } ,
     {path: '/admin/comments',name:'admin',component:require('./components/comments-list.vue').default } ,
     {path: '/admin/articles',name:'admin',component:require('./components/articles.vue').default } ,
     {path: '/admin/add-post',name:'admin',component:require('./components/add-post.vue').default } ,
+    {path: '/admin/add-special-discount',name:'admin',component:require('./components/special-discount.vue').default } ,
+    {path: '/admin/update-article/:articleID',name:'admin',component:require('./components/edit-article.vue').default } ,
     {path: '/single/:productID',name:'single',component:require('./components/single.vue').default } ,
     {path: '/card/products',name:'card',component:require('./components/card-products.vue').default } ,
     {path: '/card/address',name:'card',component:require('./components/card-address.vue').default } ,

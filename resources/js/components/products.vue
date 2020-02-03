@@ -107,7 +107,7 @@
             </div>
             <!--end-sidebar-->
             <div class="col col-sm-8 col-xs col-md-9 col-lg-9 col-xl-9 product-page-left">
-                <div class="col col-sm col-xs col-md-12 col-lg-12 col-xl-12 product-page-left-slider delete-padding">
+                <div v-if="ok === 1" class="col col-sm col-xs col-md-12 col-lg-12 col-xl-12 product-page-left-slider delete-padding">
                     <!--slide-1-->
                     <div v-for="item in products" v-bind:key="item.id" class="col col-sm col-xs col-md-12 col-lg-12 col-xl-12 product-page-left-slider-inside flex table-responsive-md table-responsive-lg table-responsive-xl">
 
@@ -128,8 +128,8 @@
                                         </div>
                                         <div class="col col-sm col-xs col-md- col-lg- col-xl-9 product-page-left-slider-inside-box-bottom-bottom-price delete-padding">
                                             <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-off">
-                                                <span class="price-none text-black title-4">{{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</span>
-                                                <span class="box-offer"> %{{Math.round((1 - product.discount) * 100)}} </span>
+                                                <span class="price-none text-black title-4" v-if="product.price !== product.final_price">{{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</span>
+                                                <span class="box-offer" v-if="product.discount !== 1"> %{{Math.round((1 - product.discount) * 100)}} </span>
                                             </div>
                                             <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-none">
                                                 <span class="">  {{product.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}<span class=""> تومان  </span> </span>
@@ -154,6 +154,9 @@
                     </div>
 
 
+                </div>
+                <div v-if="ok === 0" class="col col-sm col-xs col-md-12 col-lg-12 col-xl-12 product-page-left-slider delete-padding">
+                    <b-alert show variant="danger" class="right-error">محصولی یافت نشد</b-alert>
                 </div>
                 <div class="col col-sm col-xs col-md- col-lg- col-xl-12 adds-box delete-padding">
                     <div class="col col-sm col-xs col-md- col-lg- col-xl-12 adds-box-inside delete-padding">
@@ -196,7 +199,7 @@
                     <div class="col col-sm col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box delete-padding">
                         <a href="#">
                             <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-top">
-                                <img src="img/page-product/img1.png">
+                                <img src="/img/page-product/img1.png">
                             </div>
                             <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom delete-padding">
                                 <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-top delete-padding">
@@ -351,7 +354,6 @@
             else
             {
                 this.productsBySec(this.$route.params.main, this.$route.params.sec, this.param);
-               // this.findBrands(this.$route.params.main);
             }
         } ,
 
@@ -458,7 +460,6 @@
 
             } ,
             orderedProducts(obj) {
-
                let arr = [];
                this.products = [];
 
@@ -475,6 +476,7 @@
                         }
                    }
                }
+               console.log(this.products)
             } ,
 
             productsBySec(main , sec , param) {
@@ -542,5 +544,7 @@
 </script>
 
 <style scoped>
-
+.right-error {
+    float: right;
+}
 </style>

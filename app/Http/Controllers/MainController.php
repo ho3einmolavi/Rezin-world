@@ -20,12 +20,16 @@ class MainController extends Controller
         if (!$set)
         {
             return view('index' , [
+                'description' => '' ,
+                'title' => 'صفحه اصلی' ,
                 'keywords' => "کالیمو,سوپرمارکت آنلاین"
             ]);
         }
         else
         {
             return view('index' , [
+                'description' => $set->description ,
+                'title' => $set->title ,
                 'keywords' => $set->keywords
             ]);
         }
@@ -33,12 +37,13 @@ class MainController extends Controller
 
     public function mainCat()
     {
+        $set = Setting::orderBy('id' , 'DESC')->first();
         if (Route::currentRouteName() == 'main')
         {
             $cat = MainCategory::find(request()->route('any'));
 
             return view('products' , [
-            'keywords' => $cat->name
+            'keywords' => "{$set->keywords},{$cat->name}"
         ]);
         }
 
@@ -48,7 +53,7 @@ class MainController extends Controller
             $second = request()->route('any1');
 
             return view('products' , [
-                'keywords' => "{$cat->name},{$second}"
+                'keywords' => "{$set->keywords},{$cat->name},{$second}"
             ]);
         }
 
@@ -58,15 +63,15 @@ class MainController extends Controller
             $second = request()->route('any1');
 
             return view('products' , [
-                'keywords' => "{$cat->name},{$second}"
+                'keywords' => "{$set->keywords},{$cat->name},{$second}"
             ]);
         }
 
        else
        {
-
+           $res = request()->route('any');
            return view('products' , [
-               'keywords' => request()->route('any')
+               'keywords' => "{$set->keywords},{$res}"
            ]);
        }
     }

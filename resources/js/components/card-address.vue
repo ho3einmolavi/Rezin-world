@@ -101,7 +101,7 @@
             </div>
             <div class="col-xs col-sm col- col-md col-lg col-xl-12 card-factor-bottom">
                 <div class="col-xs col-sm col- col-md col-lg col-xl-4 card-factor-bottom-inside">
-                    <input type="checkbox" name="gender" value="male"> درخواست ارسال فاکتور  خرید<br>
+                    <input type="checkbox" v-model="hasFactor" @change="wantFactor" name="gender"> درخواست ارسال فاکتور  خرید<br>
                 </div>
             </div>
         </div>
@@ -109,10 +109,10 @@
         <div class="col-xs col-sm col- col-md col-lg col-xl-12 card-factor-end flex">
             <div class="col-xs col-sm col- col-md col-lg col-xl-6 card-factor-end-right">
                 <span><i class="fas fa-angle-double-right"></i></span>
-                <a href="card.html"><span class="title-4">  بازگشت به سبد خرید  </span></a>
+                <router-link to="/card/products"><span class="title-4">  بازگشت به سبد خرید  </span></router-link>
             </div>
             <div class="col-xs col-sm col- col-md col-lg col-xl-6 card-factor-end-left">
-                <a href="card-pay.html"><span class="title-4"> تایید و ادامه ثبت سفارش  </span></a>
+              <span style="cursor: pointer" @click="where_to_go" class="title-4"> تایید و ادامه ثبت سفارش  </span>
                 <span><i class="fas fa-angle-double-left"></i></span>
             </div>
         </div>
@@ -126,7 +126,7 @@
         props: ['show'] ,
 
         created() {
-
+            this.wantFactor();
         } ,
 
         data() {
@@ -134,10 +134,35 @@
                 check: '' ,
                 sum: '' ,
                 error: '' ,
-                errorMessage: ''
+                errorMessage: '' ,
+                hasFactor: false
             }
         } ,
         methods: {
+            where_to_go() {
+             if (this.$route.path === '/card/address')
+                {
+                    if (this.show.first_name && this.show.last_name
+                        && this.show.address && this.show.postal_code)
+                    {
+                        this.$router.push({ path: '/card/pay' })
+                    }
+                    else
+                    {
+                        this.$toasted.show('لطفا اطلاعات خود را کامل کنید', {
+                            position: 'top-center' ,
+                            type: 'error' ,
+                            theme: 'bubble' ,
+                            fitToScreen: true ,
+                            fullWidth: true ,
+                            className: ['your-custom-class']
+                        }).goAway(2000);
+                    }
+                }
+            } ,
+            wantFactor() {
+               this.$emit('factor' , this.hasFactor)
+            } ,
             edit_user() {
                 axios({
                     url: '/api/edit' ,

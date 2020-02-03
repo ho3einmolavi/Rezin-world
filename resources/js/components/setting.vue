@@ -3,7 +3,6 @@
         <div class="ui-state-default user-list-info-box-add">
             <div class="admin-form col-xs col-sm col- col-md col-lg col-xl-8">
                 <form class="needs-validation" novalidate="">
-
                     <div class="form-group col-md-12">
                         <label for="inputname">عنوان سایت </label>
                         <input type="text" v-model="setting_data.title" class="form-control" id="inputname" placeholder="عنوان سایت را وارد کنید">
@@ -19,6 +18,24 @@
                     <div class="form-group col-md-12">
                         <label for="inputEmail4"> کلمات کلیدی</label>
                         <textarea class="form-control" id="inputEmail4" v-model="setting_data.keywords" placeholder=" کلمات کلیدی را با کاما از هم جدا کنید. مثال کتاب,چاپ,اصفهان" required=""></textarea>
+                        <div class="invalid-feedback">
+                            لطفا توضیحات  دسته را واد کنید
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-md-12">
+                        <label for="inputEmail43"> هزینه ارسال</label>
+                        <textarea class="form-control" id="inputEmail43" v-model="setting_data.sending_cost" placeholder=" کلمات کلیدی را با کاما از هم جدا کنید. مثال کتاب,چاپ,اصفهان" required=""></textarea>
+                        <div class="invalid-feedback">
+                            لطفا توضیحات  دسته را واد کنید
+                        </div>
+                    </div>
+
+
+                    <div class="form-group col-md-12">
+                        <label for="inputEmail411"> حداقل مقدار سفارش</label>
+                        <textarea class="form-control" id="inputEmail411" v-model="setting_data.minimum_order_cost" placeholder=" کلمات کلیدی را با کاما از هم جدا کنید. مثال کتاب,چاپ,اصفهان" required=""></textarea>
                         <div class="invalid-feedback">
                             لطفا توضیحات  دسته را واد کنید
                         </div>
@@ -103,6 +120,8 @@
                     address: '' ,
                     consultant_mobile: '' ,
                     consultant_number: '' ,
+                    minimum_order_cost: '' ,
+                    sending_cost: '' ,
                     telegram: '',
                     email: '' ,
                     email_info: '' ,
@@ -145,7 +164,7 @@
                 let data = new FormData();
                 if (file !== '' && file !== null)
                 {
-                    swal({
+                    this.$swal({
                         title: 'در حال آپلود' ,
                         text: ' لطفا منتظر بمانید ...' ,
                         className: 'your-custom-class' ,
@@ -162,7 +181,7 @@
                     })
                         .then(res => {
                             console.log(res.data);
-                            swal({
+                            this.$swal({
                                 title: 'تغییرات با موفقیت اعمال شد' ,
                                 text: 'لوگو با موفقیت تغییر کرد' ,
                                 className: 'your-custom-class' ,
@@ -201,6 +220,8 @@
                         description: this.setting_data.description ,
                         keywords: this.setting_data.keywords ,
                         address: this.setting_data.address ,
+                        minimum_order_cost: this.setting_data.minimum_order_cost ,
+                        sending_cost: this.setting_data.sending_cost ,
                         consultant_mobile: this.setting_data.consultant_mobile ,
                         consultant_number: this.setting_data.consultant_number ,
                         telegram: this.setting_data.telegram,

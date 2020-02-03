@@ -13,11 +13,6 @@
                 <nav class="nav-nav">
                     <ul>
                         <li><a href="/" class="ttogle">صفحه اصلی </a></li>
-                        <li><a href="login.html" class="ttogle">ورود </a></li>
-                        <li><a href="register.html" class="ttogle">ثبت نام</a></li>
-                        <li><a href="index.html" class="ttogle">محاسبه قیمت </a></li>
-                        <li><a href="contact-us.html" class="ttogle">تماس با ما </a></li>
-                        <li><a href="important-points.html" class="ttogle">نکات مهم چاپ</a></li>
                     </ul>
                 </nav>
             </div>
@@ -29,7 +24,7 @@
             </div>
             <div class="col-xs-6 col-5 col-sm-6 col-md-8 col-lg col-xl-10 header-main-top-right delete-res">
                 <a href="/"><span class="text-main title-4">  صفحه اصلی </span></a>
-                <a href="product-html"><span class="text-main title-4"> دسته بندی ها </span></a>
+                <a href=""><span class="text-main title-4"> دسته بندی ها </span></a>
                 <a href=""><span class="text-main title-4"> تعرفه ها  </span></a>
                 <a href=""><span class="text-main title-4">  وبلاگ </span></a>
                 <a href=""><span class="text-main title-4"> پیشنهاد ناب </span></a>
@@ -40,20 +35,18 @@
             <div class="col-xs-6 col-6 col-sm-4 col-md-4 col-lg-3 col-xl header-main-top-left">
 
                 <!-- partial:index.partial.html -->
-                <nav class="main-nav">
-                    <ul v-if="! user">
+                <nav class="main-nav" v-if="! user">
+                    <ul>
                         <li><a class="signup" href="#0">ثبت نام   </a></li>
                         <li><a class="signin" href="#0">  ورود </a></li>
                     </ul>
-
                 </nav>
-
-                <nav class="main-nav">
-                    <ul v-if="user">
+                <div class="col-xs- col- col-sm- col-md- col-lg- col-xl-6" v-if="user">
+                    <ul>
                         <li v-if="!user.first_name || !user.last_name"><a href="/user/profile">حساب کاربری</a></li>
                         <li v-if="user.first_name && user.last_name"><a href="/user/profile">{{user.first_name}} {{user.last_name}}</a></li>
                     </ul>
-                </nav>
+                </div>
 
                 <div class="user-modal">
                     <div class="user-modal-container">
@@ -77,13 +70,9 @@
                                     <span class="error-message">Wrong password! Try again.</span>
                                 </p>
 
-                                <p class="fieldset">
-                                    <input type="checkbox" id="remember-me" checked>
-                                    <label for="remember-me">فراموشی رمز عبور</label>
-                                </p>
 
                                 <p class="fieldset">
-                                    <input class="full-width" type="button" value="ورود" @click="loginTheUser">
+                                    <input class="full-width auth-button" type="button" value="ورود" @click="loginTheUser">
                                 </p>
                             </form>
 
@@ -112,13 +101,9 @@
                                     <span class="error-message">Your password has to be at least 6 characters long!</span>
                                 </p>
 
-                                <p class="fieldset">
-                                    <input type="checkbox" id="accept-terms">
-                                    <label for="accept-terms">I agree to the <a class="accept-terms" href="#0">Terms</a></label>
-                                </p>
 
                                 <p class="fieldset">
-                                    <input class="full-width has-padding" @click="register" type="button" value="دریافت کد">
+                                    <input class="full-width has-padding auth-button" @click="register" type="button" value="دریافت کد">
                                 </p>
 
                                 <div class="alert alert-warning" v-if="error === 0">
@@ -138,7 +123,7 @@
                                 </p>
 
                                 <p class="fieldset">
-                                    <input class="full-width has-padding" @click="verifyCode" type="button" value="دریافت کد">
+                                    <input class="full-width has-padding auth-button" @click="verifyCode" type="button" value="دریافت کد">
                                 </p>
 
                                 <div class="alert alert-warning" v-if="error === 0">
@@ -181,20 +166,20 @@
             <div class="margin-top">
                 <div class="col col-sm col-md-12 col-lg col-xl header-main-bottom-search flex">
                     <div class="col col-sm col-md-2 col-lg col-xl-2 logo-site">
-                        <img src="/img/header/payjoy.png">
+                        <a href="/"><img :src="'/images/logo/' + setting_data.logo"></a>
                     </div>
                     <div class="logo-site-border">
                         <span> | </span>
                     </div>
                     <div class="col-2 col-sm col-md-2 col-lg col-xl-1 logo-number">
-                        <span class="text-main title-4">  03132244704 </span>
+                        <span class="text-main title-4">  {{setting_data.consultant_mobile}} </span>
                     </div>
                     <div class="col-10 col-sm-7 col-md-4 col-lg-6 col-xl-6 logo-search">
                         <div class="col-xs col col-sm col-md-12 col-lg col-xl delete-padding">
                             <div class="search-box">
                                 <form class="search-form">
                                     <input class="form-control" v-model="title" @keypress.enter="search" placeholder="جستجو : محصول , گروه محصول" type="text">
-                                    <button @click="search" class="btn btn-link search-btn">
+                                    <button type="button" @click="search" class="btn btn-link search-btn">
                                         <i class="fas fa-search"></i>
                                     </button>
                                 </form>
@@ -208,14 +193,17 @@
                     </div>
                     <div  class="col-1 col-sm col-md-2 col-lg col-xl-1 logo-buy-cart flex delete-padding">
                         <a href="/card/products"><span class="text-main"> <i class="fas fa-cart-plus"></i> </span></a>
-                        <span class="text-main title-4 tuman"> {{show.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان  </span>
+                        <a href="/card/products"><span class="text-main title-4 tuman"> {{show.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان  </span></a>
                     </div>
                 </div>
             </div>
-            <div class="col col-sm col-md-12 col-lg col-xl header-main-bottom-span table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">
-                <a v-if="router === 0" v-for="item in main_categories"  :href="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></a>
-                <router-link v-if="router === 1" v-for="item in main_categories" v-bind:key="item.id"  :to="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></router-link>
+            <div class="col col-sm col-md-12 col-lg col-xl header-main-bottom-span">
+                <div class="table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl header-main-bottom-span-inside">
+                    <a v-if="router === 0" v-for="item in main_categories"  :href="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></a>
+                    <router-link v-if="router === 1" v-for="item in main_categories" v-bind:key="item.id"  :to="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></router-link>
+                </div>
             </div>
+
             <div class="col col-sm col-xs col-md col-lg col-xl-12 header-main-bottom-slideshow">
             </div>
         </div>
@@ -231,6 +219,7 @@
             this.getCat();
             this.specifyTheRoute();
             this.get_number1();
+            this.setting();
         } ,
 
         data() {
@@ -251,7 +240,8 @@
                 login: '' ,
                 signup: 0 ,
                 error: '' ,
-                token: ''
+                token: '' ,
+                setting_data: []
             }
         } ,
 
@@ -277,6 +267,28 @@
         } ,
 
         methods: {
+            setting() {
+                axios({
+                    url: '/api/setting/index' ,
+                    method: 'get' ,
+                    headers: {
+                        accept: 'application/json'
+                    } ,
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.setting_data = res.data[0];
+                        this.$emit('setting' , this.setting_data)
+                    })
+                    .catch(err => {
+                        console.log(err.response);
+                        this.$toasted.error(err.response.data, {
+                            position: 'bottom-center' ,
+                            theme: 'bubble' ,
+                            fitToScreen: true
+                        }).goAway(3000);
+                    })
+            } ,
             loginTheUser() {
                 axios({
                     method: 'post' ,
@@ -410,13 +422,19 @@
                 this.$emit('add-order' , this.order);
             } ,
             search() {
-                if (this.title === '')
+                if (this.router === 1)
                 {
-                    window.location = `/products/search/_`;
+                    if (this.title !== '')
+                    {
+                        this.$router.push({ path: `/products/search/${this.title}` })
+                    }
                 }
                 else
                 {
-                    window.location = `/products/search/${this.title}`;
+                    if (this.title !== '')
+                    {
+                        window.location = `/products/search/${this.title}`;
+                    }
                 }
             } ,
             get_second(id) {

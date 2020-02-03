@@ -39,6 +39,8 @@ class OrderController extends Controller
         $order = Order::create([
             'user_id' => $user->id ,
             'total' => $request->total ,
+            'factor' => $request->factor ,
+            'payment_method' => $request->payment_method ,
             'explanation' => $request->explanation ,
             'tracking_code' => Str::random(3).''.rand(10000 , 99999) ,
         ]);

@@ -17,7 +17,6 @@ class CreateSecondaryCategoriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->bigInteger('main_category_id');
-            $table->string('img')->nullable();
             $table->timestamps();
         });
     }

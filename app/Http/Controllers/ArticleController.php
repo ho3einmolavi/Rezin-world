@@ -60,7 +60,7 @@ class ArticleController extends Controller
         {
             $file = $request->file('cover');
             $name2 = $file->getClientOriginalName();
-            $name2 = time().'_'.$name2;;
+            $name2 = time().'_'.$name2;
             $file->move(public_path('/images/articles') , $name2);
 
             $article = Article::create([
@@ -99,13 +99,49 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Article  $article
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @param  \Illuminate\Http\Request $request
+     * @return JsonResponse
      */
-    public function update(Request $request, Article $article)
+    public function update($id ,Request $request)
     {
-        //
+        $article = Article::find($id);
+        $validata = Validator::make($request->all() , [
+            'title' => 'required|unique:articles' ,
+            'body' => 'required' ,
+            'keywords' => 'required' ,
+            'cover' => 'nullable|image' ,
+        ]);
+
+        if ($validata->fails())
+        {
+            return new JsonResponse($validata->errors()->all() , 400);
+        }
+
+        if ($request->hasFile('cover'))
+        {
+            $file = $request->file('cover');
+            $name2 = $file->getClientOriginalName();
+            $name2 = time().'_'.$name2;
+            $file->move(public_path('/images/articles') , $name2);
+            $article->update([
+                'title' => $request->title ,
+                'body' => $request->body ,
+                'keywords' => $request->keywords ,
+                'cover' => $name2 ,
+            ]);
+        }
+        else
+        {
+            $article->update([
+                'title' => $request->title ,
+                'body' => $request->body ,
+                'keywords' => $request->keywords ,
+                'cover' => 'default.png'
+            ]);
+        }
+
+        return response()->json($article);
     }
 
     /**

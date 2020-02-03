@@ -15,7 +15,8 @@
                         <span class="title-4" style="color: #3bb4d5;">تخفیف </span>
                     </div>
                     <div class="col-xs col-sm col- col-md col-lg col-xl-6 buy-card-left-top-filter-main-inside-left">
-                        <span class="title-4" style="color: #3bb4d5;">  2/000 تومان</span>
+                        <span class="title-4" style="color: #3bb4d5;" v-if="cost_after_off">  {{(cost(orders) - (cost_after_off)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان</span>
+                        <span class="title-4" style="color: #3bb4d5;" v-else>  0 تومان</span>
                     </div>
                 </div>
                 <div class="col-xs col-sm col- col-md col-lg col-xl-12 buy-card-left-top-filter-main flex delete-padding">
@@ -23,7 +24,8 @@
                         <span class="title-4 text-black"> هزینه ارسال  </span>
                     </div>
                     <div class="col-xs col-sm col- col-md col-lg col-xl-6 buy-card-left-top-filter-main-inside-left">
-                        <span class="title-4 text-black"> رایگان  </span>
+                        <span class="title-4 text-black" v-if="setting.sending_cost"> {{setting.sending_cost}} تومان  </span>
+                        <span class="title-4 text-black" v-else> رایگان  </span>
                     </div>
                 </div>
             </div>
@@ -33,7 +35,10 @@
                     <span class="text-black">  مبلغ قابل پرداخت  : </span>
                 </div>
                 <div class="col-xs col-sm col- col-md col-lg col-xl-12 buy-card-left-top-price-2">
-                    <span class="text-black"> {{cost(orders).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان  </span>
+                    <span class="text-black" v-if="cost_after_off  && !setting.sending_cost">  {{cost_after_off.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان  </span>
+                    <span class="text-black" v-if="!cost_after_off  && setting.sending_cost">  {{(cost(orders) + setting.sending_cost).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان  </span>
+                    <span class="text-black" v-if="setting.sending_cost && cost_after_off">  {{(cost_after_off + setting.sending_cost).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان  </span>
+                    <span class="text-black" v-if="!cost_after_off && !setting.sending_cost"> {{cost(orders).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان  </span>
                 </div>
                 <div class="col-xs col-sm col- col-md col-lg col-xl-12 buy-card-left-top-price-3">
                     <div style="cursor: pointer" @click="where_to_go"><div class="col-xs col-sm col- col-md-12 col-lg col-xl-12 pay-price">
@@ -71,7 +76,7 @@
 <script>
     export default {
         name: "card-left" ,
-        props: ['orders' , 'user' , 'payMethod'] ,
+        props: ['orders' , 'user' , 'payMethod' , 'cost_after_off' , 'setting' , 'factor'] ,
 
         data() {
             return {
@@ -102,41 +107,39 @@
                     })
             } ,
             create_orders() {
-                // let cost = '';
-                // let factor = '';
-                // if (this.off > 0)
-                // {
-                //     cost = this.off
-                // }
-                // else if (this.off < 0)
-                // {
-                //     cost = 0;
-                // }
-                // else
-                // {
-                //     cost = this.price
-                // }
+                let cost = '';
+                let factor = '';
+                if (this.cost_after_off)
+                {
+                    cost = this.cost_after_off;
+                }
+                else
+                {
+                    cost = this.cost(this.orders);
+                }
 
-                // if (this.sending_cost)
-                // {
-                //     cost += this.sending_cost;
-                // }
-                // if (!this.factor)
-                // {
-                //     factor = 0;
-                // }
-                // else
-                // {
-                //     factor = this.factor;
-                // }
+                if (this.setting.sending_cost)
+                {
+                    cost += this.setting.sending_cost;
+                }
+                if (!this.factor)
+                {
+                    factor = 0;
+                }
+                else
+                {
+                    factor = this.factor;
+                }
+
                 this.loading = 1;
                 axios({
                     url: '/api/order/create' ,
                     method: 'post' ,
                     data: {
-                        total: this.cost(this.orders) ,
+                        total: cost ,
                         products: this.orders ,
-                        factor: null
+                        factor: factor ,
+                        payment_method: this.payMethod
                     } ,
                     headers: {
                         Accept: 'application/json' ,
@@ -146,10 +149,10 @@
                     .then(res => {
                         this.loading = 0;
                         console.log(res);
-                        localStorage.removeItem('order');
+                       localStorage.removeItem('order');
                         this.sendMessage(res.data.order.tracking_code);
                         localStorage.setItem('tracking_code' , res.data.order.tracking_code);
-                        window.location.href = '/payment-success'
+                       window.location.href = '/payment-success'
                     })
                     .catch(err => {
                         this.loading = 0;
@@ -198,10 +201,25 @@
                }
                else
                {
-                   if (this.payMethod === 'offline')
+                   if (this.payMethod)
                    {
-                        this.create_orders();
+                       if (this.payMethod === 'offline')
+                       {
+                           this.create_orders();
+                       }
                    }
+                   else
+                   {
+                       this.$toasted.show('لطفا روش پرداخت را انتخاب کنید', {
+                           position: 'top-center' ,
+                           type: 'error' ,
+                           theme: 'bubble' ,
+                           fitToScreen: true ,
+                           fullWidth: true ,
+                           className: ['your-custom-class']
+                       }).goAway(2000);
+                   }
+
                }
             } ,
             cost(order) {

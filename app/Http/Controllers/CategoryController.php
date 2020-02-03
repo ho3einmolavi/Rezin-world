@@ -93,8 +93,6 @@ class CategoryController extends Controller
     {
         $validata = Validator::make($request->all() , [
             'name' => 'required' ,
-            'img' => 'image' ,
-            'icon' => 'image' ,
         ]);
 
         if ($validata->fails())

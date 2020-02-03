@@ -54,7 +54,6 @@
     <script src='/js/gallery/jquery.touchSwipe.min.js'></script>
     <script src="/js/gallery/gallery.js"></script>
     <!--select-number-->
-    <script src="/js/select-number/select-number.js"></script>
     <!--slideshow-->
     <script src="/js/slideshow/popper.min.js"></script>
     <!--bootstrap/4.0.0 for slideshow-->

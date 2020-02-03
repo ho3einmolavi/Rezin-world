@@ -1,7 +1,7 @@
 <template>
     <div>
-        <another-header></another-header>
-        <single-product-feature></single-product-feature>
+        <another-header :order="orders"></another-header>
+        <single-product-feature @send_number="get_order($event)"></single-product-feature>
         <hr class="hr-end-box">
         <single-same-products></single-same-products>
         <single-newest-products></single-newest-products>
@@ -11,7 +11,19 @@
 
 <script>
     export default {
-        name: "single"
+        name: "single" ,
+
+        data() {
+            return {
+                orders: []
+            }
+        } ,
+
+        methods: {
+            get_order(event) {
+                this.orders = event
+            }
+        }
     }
 </script>
 

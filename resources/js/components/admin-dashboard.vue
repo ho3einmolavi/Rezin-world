@@ -8,6 +8,7 @@
             <router-link to="/admin/products-list" class="list-group-item list-group-item-action"><i class="fab fa-product-hunt"></i>  لیست  محصولات<i class="fas fa-angle-left icon-left"></i></router-link>
             <router-link to="/admin/add-product" class="list-group-item list-group-item-action"><i class="fab fa-adversal"></i> افزودن محصولات <i class="fas fa-angle-left icon-left"></i></router-link>
             <router-link to="/admin/add-discount" class="list-group-item list-group-item-action"><i class="fas fa-align-right"></i> افزودن کد تخفیف <i class="fas fa-angle-left icon-left"></i></router-link>
+            <router-link to="/admin/add-special-discount" class="list-group-item list-group-item-action"><i class="fas fa-align-center"></i> افزودن تخفیف شرایطی<i class="fas fa-angle-left icon-left"></i></router-link>
             <router-link to="/admin/add-category" class="list-group-item list-group-item-action"><i class="fas fa-align-center"></i> افزودن  دسته بندی<i class="fas fa-angle-left icon-left"></i></router-link>
             <router-link to="/admin/add-post" class="list-group-item list-group-item-action"><i class="fas fa-align-center"></i> افزودن  مقاله<i class="fas fa-angle-left icon-left"></i></router-link>
             <router-link to="/admin/articles" class="list-group-item list-group-item-action"><i class="fas fa-align-center"></i> مقالات<i class="fas fa-angle-left icon-left"></i></router-link>
