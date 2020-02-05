@@ -1,7 +1,28 @@
 <template>
     <div class="col-xs col-sm col-10 col-md-11 col-lg-9 col-xl-9 users-main delete-padding-left">
-        <div >
-            <b-card v-for="item in articles" :key="item.id" style="margin-bottom: 20px;font-family: irs" :title="item.title" title-tag="h6" >
+        <div class="user-list-manage-box">
+            <div class="col-xs col-sm col- col-md col-lg col-xl-4 user-list-manage-box-search delete-padding">
+                <div class="input-group mb-3 input-name-doctor" style="direction: ltr;width: 98%;">
+                    <div class="input-group-prepend button-name-doctor">
+                        <button class="btn btn-outline-secondary" @click="search" type="button" id="button-addon1"><i class="fas fa-search"></i></button>
+                    </div>
+                    <input style="text-align: right;font-size: 12px;" v-model="query" @keypress.enter="search" type="text" class="form-control input-form-control" placeholder="عنوان مقاله مورد نظر خود را جستجو کنید" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                </div>
+            </div>
+        </div>
+
+        <b-alert show variant="danger" style="font-family: irs" v-if="error === 1">مقاله ای یافت نشد</b-alert>
+
+        <div v-if="error === 0">
+            <b-card
+                    v-for="item in articles"
+                    sub-title-tag="div"
+                    :sub-title="item.date"
+                    :key="item.id"
+                    style="margin-bottom: 20px;font-family: irs"
+                    :title="item.title"
+                    title-tag="h6"
+            >
                 <b-card-text style="font-size: 12px">
                     {{item.body.substr(0 , 200) + '....'}}
                 </b-card-text>
@@ -21,7 +42,9 @@
 
         data() {
             return {
-                articles: []
+                articles: [] ,
+                query: '' ,
+                error: 0
             }
         } ,
 
@@ -30,6 +53,24 @@
         } ,
 
         methods: {
+            search() {
+                axios({
+                    url: `/api/search/articles/title` ,
+                    method: 'post' ,
+                    data: {
+                        q: this.query
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.error = 0;
+                        this.articles = res.data;
+                    })
+                    .catch(err => {
+                        console.log(err.response);
+                        this.error = 1
+                    })
+            } ,
             delete_article(id) {
                 this.$swal.fire({
                     title: 'مطمئن هستید؟',
@@ -48,7 +89,7 @@
                         .then(res => {
                             console.log(res);
                             if (result.value) {
-                                this.$swal('پاک شد' , 'کامنت حذف شد' , 'success')
+                                this.$swal('پاک شد' , 'مقاله حذف شد' , 'success')
                             }
                             this.get_articles();
                         })
@@ -76,5 +117,7 @@
 </script>
 
 <style scoped>
-
+    .text-muted {
+        font-size: 13px;
+    }
 </style>

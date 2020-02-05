@@ -75,9 +75,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/search/{param}' , 'ProductController@search');
 Route::get('/product/{id}' , 'ProductController@show');
 Route::get('/index' , 'ProductController@index');
+Route::get('/sameProducts/{id}' , 'ProductController@sameProducts');
 Route::post('/product/edit/{id}' , 'ProductController@edit');
 Route::post('/store' , 'ProductController@store');
 Route::get('/mostSale' , 'ProductController@mostSale');
+Route::get('/latest_products/{number}' , 'ProductController@latest_products');
 Route::get('/addtoslideshow/{id}' , 'ProductController@addToSlideShow');
 Route::get('/slideShow' , 'ProductController@getSlideShow');
 Route::post('/filters/brands' , 'ProductController@filterByBrands');
@@ -123,7 +125,7 @@ Route::get('/productsPage/baner' , 'BanerController@showProductsPageBaner');
 
 
 //articles
-Route::post('/article/store' , 'ArticleController@store');
+Route::post('/article/store' , 'ArticleController@store')->middleware('auth:api');
 Route::get('/articles' , 'ArticleController@index');
 Route::get('/articlesForShow' , 'ArticleController@show');
-Route::post('/article/{id}' , 'ArticleController@update');
+Route::post('/article/{id}' , 'ArticleController@update')->middleware('auth:api');

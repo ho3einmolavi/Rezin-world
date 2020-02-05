@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-group" style="font-family: irs">
-            <b-button @click="post_article" variant="outline-primary">ویرایش</b-button>
+            <b-button @click="update_and_show_article(1 , $route.params.articleID)" variant="outline-primary">ویرایش</b-button>
         </div>
     </form>
 </template>
@@ -52,48 +52,86 @@
             }
         } ,
         created() {
-
+            this.update_and_show_article(0 , this.$route.params.articleID);
         } ,
         methods: {
             handle() {
                 this.cover = this.$refs.cover.files[0];
             } ,
 
-            post_article() {
+            update_and_show_article(flag , id) {
                 this.percent = 0;
                 this.ok = 1;
-                let data = new FormData();
-                data.append('title' , this.title);
-                data.append('body' , this.body);
-                data.append('cover' , this.cover);
-                data.append('keywords' , this.keywords.join(','));
-                axios({
-                    url: `/api/article/store` ,
-                    method: 'post' ,
-                    data: data ,
-                    onUploadProgress: uploadEvent => {
-                        this.percent = Math.round(uploadEvent.loaded / uploadEvent.total * 100);
-                    }
-                })
-                    .then(res => {
-                        console.log(res);
-                        this.$swal({
-                            title: 'success' ,
-                            text: 'the article is posted successfully' ,
-                            icon: 'success'
+                if (flag === 1)
+                {
+                    let data = new FormData();
+                    data.append('title' , this.title);
+                    data.append('body' , this.body);
+                    data.append('cover' , this.cover);
+                    data.append('keywords' , this.keywords.join(','));
+                    axios({
+                        url: `/api/article/${id}` ,
+                        method: 'post' ,
+                        data: data ,
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('token')}`
+                        } ,
+                        onUploadProgress: uploadEvent => {
+                            this.percent = Math.round(uploadEvent.loaded / uploadEvent.total * 100);
+                        }
+                    })
+                        .then(res => {
+                            console.log(res);
+                            this.$swal({
+                                title: 'success' ,
+                                text: 'the article is update successfully' ,
+                                icon: 'success'
+                            });
+                            this.update_and_show_article(0 , id);
                         })
+                        .catch(err => {
+                            console.log(err.response);
+                            err.response.data.forEach(item => {
+                                this.$toasted.error(item.toString() , {
+                                    position: 'bottom-center' ,
+                                    theme: 'bubble' ,
+                                    fitToScreen: true ,
+                                    className: ['your-custom-class']
+                                }).goAway(3000);
+                            });
+                        })
+                }
+                else
+                {
+                    axios({
+                        url: `/api/article/${id}` ,
+                        method: 'post' ,
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('token')}`
+                        } ,
+                        onUploadProgress: uploadEvent => {
+                            this.percent = Math.round(uploadEvent.loaded / uploadEvent.total * 100);
+                        }
                     })
-                    .catch(err => {
-                        console.log(err.response);
-                        err.response.data.forEach(item => {
-                            this.$toasted.error(item.toString() , {
-                                position: 'bottom-center' ,
-                                theme: 'bubble' ,
-                                fitToScreen: true ,
-                                className: ['your-custom-class']
-                            }).goAway(3000);
-                        });
-                    })
+                        .then(res => {
+                            console.log(res);
+                            this.title = res.data.title;
+                            this.body = res.data.body;
+                            this.keywords = res.data.keywords.split(',');
+                        })
+                        .catch(err => {
+                            console.log(err.response);
+                            err.response.data.forEach(item => {
+                                this.$toasted.error(item.toString() , {
+                                    position: 'bottom-center' ,
+                                    theme: 'bubble' ,
+                                    fitToScreen: true ,
+                                    className: ['your-custom-class']
+                                }).goAway(3000);
+                            });
+                        })
+                }
+
             }
         }
     }

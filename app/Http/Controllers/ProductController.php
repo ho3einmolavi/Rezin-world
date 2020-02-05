@@ -16,6 +16,97 @@ use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
+    public function latest_products($number)
+    {
+        if ($number == 0)
+        {
+            $last_products = Product::latest('id')->get();
+            foreach ($last_products as $product)
+            {
+                $product['images'] = explode(',' , $product['product_img']);
+                unset($product['product_img']);
+            }
+            return response()->json($last_products);
+        }
+        else if ($number > 0)
+        {
+            $last_products = Product::latest('id')->take($number)->get();
+            foreach ($last_products as $product)
+            {
+                $product['images'] = explode(',' , $product['product_img']);
+                unset($product['product_img']);
+            }
+            return response()->json($last_products);
+        }
+
+
+        return new JsonResponse(['there is no product'] , 404);
+    }
+
+    public function sameProducts($id)
+    {
+        $product = Product::find($id);
+        $products1 = Product::where('main_category_id' , $product->main_category_id)->get();
+        foreach ($products1 as $item)
+        {
+            $result1[] = $item;
+        }
+
+
+        $query = explode(' ' , $product->title);
+        $products = [];
+        $result = [];
+        foreach ($query as $item)
+        {
+            $products[] = Product::where('title' ,'LIKE' , "%$item%")->get();
+        }
+
+        // pass products in one array
+        foreach ($products as $product)
+        {
+            foreach ($product as $item)
+            {
+                $result[] = $item;
+            }
+        }
+
+        //remove duplicate products
+        foreach ($result1 as $item)
+        {
+            foreach ($result as $key => $item1)
+            {
+                if ($item['id'] == $item1['id'])
+                {
+                    unset($result[$key]);
+                }
+            }
+        }
+
+
+
+        $res = array_merge($result , $result1);
+        foreach ($res as $key => $item)
+        {
+            if ($key < 18)
+            {
+                $res1[] = $item;
+            }
+        }
+
+        foreach ($res1 as $product)
+        {
+            $product['images'] = explode(',' , $product['product_img']);
+            unset($product['product_img']);
+        }
+
+        $last_products = $this->latest_products(6);
+
+        return response()->json([
+            'same' => $res1 ,
+            'latest' => $last_products->getOriginalContent()
+        ]) ;
+    }
+
     public function edit($id , Request $request)
     {
         $validata = Validator::make($request->all() , [
@@ -48,6 +139,7 @@ class ProductController extends Controller
                 'number' => $request->number ,
                 'discount' => $request->discount ,
                 'brand_id' => $request->brand_id ,
+                'features' => $request->features ,
                 'main_category_id' => $cat->main->id ,
                 'secondary_category_id' => $request->secondary_category_id ,
                 'description' => $request->description ,
@@ -62,6 +154,7 @@ class ProductController extends Controller
                 'final_price' => $request->price * $request->discount ,
                 'number' => $request->number ,
                 'discount' => $request->discount ,
+                'features' => $request->features ,
                 'brand_id' => $request->brand_id ,
                 'main_category_id' => $cat->main->id ,
                 'secondary_category_id' => $request->secondary_category_id ,
@@ -174,6 +267,7 @@ class ProductController extends Controller
                             'final_price' => $request->price * $request->discount ,
                             'number' => $request->number ,
                             'discount' => $request->discount ,
+                            'features' => $request->features ,
                             'brand_id' => $request->brand_id ,
                             'main_category_id' => $cat->main->id ,
                             'secondary_category_id' => $cat->id,
@@ -189,6 +283,7 @@ class ProductController extends Controller
                          'final_price' => $request->price * $request->discount ,
                          'number' => $request->number ,
                          'discount' => $request->discount ,
+                         'features' => $request->features ,
                          'brand_id' => $request->brand_id ,
                          'main_category_id' => $cat->main->id ,
                          'secondary_category_id' => $cat->id,

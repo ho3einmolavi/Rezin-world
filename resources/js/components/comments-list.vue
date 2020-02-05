@@ -15,7 +15,7 @@
                 <div class="col-xs col-sm col- col-md col-lg col-xl-2 word-list-img">
                     <span class="title-4">  نام کاربر </span>
                 </div>
-                <div class="col-xs col-sm col- col-md col-lg col-xl-2 word-list-all">
+                <div class="col-xs col-sm col- col-md col-lg col-xl-6 word-list-all">
                     <span class="title-4">متن</span>
                 </div>
                 <div class="col-xs col-sm col- col-md col-lg col-xl-2 word-list-delete-details">
@@ -32,7 +32,7 @@
                         <span class="text-span title-4" v-if="item.user"> {{item.user.first_name}} {{item.user.last_name}}</span>
                         <span class="text-span title-4" v-else> مهمان</span>
                     </div>
-                    <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-number">
+                    <div class="col-xs col-sm col- col-md col-lg col-xl-6 user-list-info-box-number">
                         <span class="text-span title-4"> {{item.body}} </span>
                     </div>
                     <div class="col-xs col-sm col- col-md col-lg col-xl-2 table-data-feature flex">

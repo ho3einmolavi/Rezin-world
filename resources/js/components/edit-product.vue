@@ -30,6 +30,31 @@
                             <option v-for="br in category_brands" v-bind:key="br.id" :value="br.id">{{br.name}}</option>
                         </select>
                     </div>
+
+
+
+                    <div class="form-group col-xs col-sm col-10 col-md col-lg col-xl-12">
+                        <label for="inputState">نام ویژگی و مقادیر آن را وارد کنید</label>
+                        <b-form inline>
+                            <b-input
+                                    class="mb-2 mr-sm-2 mb-sm-0"
+                                    placeholder="نام ویژگی"
+                                    v-model="name"
+                            ></b-input>
+
+                            <b-form-tags
+                                    v-model="values"
+                                    class="mb-2 mr-sm-2 mb-sm-0"
+                                    placeholder="مقادیر ویژگی"
+                            ></b-form-tags>
+
+                            <b-button @click="add_feature" variant="primary" class="mb-2 mr-sm-2 mb-sm-0">افزودن</b-button>
+                        </b-form>
+                    </div>
+
+
+
+
                     <div class="form-group col-xs col-sm col-10 col-md col-lg col-xl-12">
                         <label for="inputEmail4">قیمت (به تومان)</label>
                         <input type="text" v-model="product.price" class="form-control" id="inputEmail4" placeholder="قیمت محصول را وارد کنید">
@@ -103,11 +128,24 @@
                     price: '' ,
                     discount: '' ,
                     number: '' ,
-                }
+                } ,
+                features: [] ,
+                name: '' ,
+                values: []
             }
         } ,
 
         methods: {
+            add_feature() {
+                let obj = {
+                    feature_name: this.name ,
+                    feature_values: this.values ,
+                };
+
+                this.features.push(obj);
+                this.name = '';
+                this.values = []
+            } ,
             getCategorybrands(category) {
                 this.category_brands = [];
                 this.brands.forEach(item => {
@@ -148,6 +186,7 @@
                     data.append('brand_id' , this.brand_id);
                     data.append('discount' , (100 - this.discount) / 100);
                     data.append('number' , this.product.number);
+                    data.append('features' , this.features);
 
                     axios({
                         url: `/api/product/edit/${id}` ,
@@ -193,6 +232,7 @@
                             brand_id: this.brand_id ,
                             discount: (100 - this.discount) / 100 ,
                             number: this.product.number ,
+                            features: this.features
                         } ,
                         onUploadProgress: uploadEvent => {
                             this.percent = Math.round(uploadEvent.loaded / uploadEvent.total * 100);

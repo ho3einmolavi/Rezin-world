@@ -82,8 +82,8 @@ class MainController extends Controller
         return view('article' , [
             'article' => $article ,
             'user' => $article->user ,
-            'date' => Jalalian::forge($article->created_at)->format('%A, %d %B %y') ,
-            'time' =>  Jalalian::fromDateTime($article->created_at)->format('H:i')
+            'date' => Jalalian::forge($article->updated_at)->format('%A, %d %B %y') ,
+            'time' =>  Jalalian::fromDateTime($article->updated_at)->format('H:i')
         ]);
     }
 

@@ -372,7 +372,7 @@ background-color: red;
 	justify-content:center;
 }
 .logo-buy-cart span{
-		padding-right: 10px;
+		padding-right: 5px;
 }
 .header-main-bottom-span{
 	height: 45px;
@@ -488,8 +488,8 @@ display: none;
 	display: none;
 }
 .logo-search{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .logo-site ,.logo-search ,.logo-buy-cart ,.logo-like ,.logo-number{
 	height: 60px;
@@ -506,12 +506,12 @@ display: none;
 	display: none;
 }
 .logo-like , .logo-search{
-	padding-left: 0px;
-	padding-left: 0px;
+	padding-left: 0px !important;
+	padding-left: 0px !important;
 }
 .logo-buy-cart{
-	padding-left: 0px;
-	padding-left: 0px;
+	padding-left: 0px !important;
+	padding-left: 0px !important;
 }
 .logo-site ,.logo-search ,.logo-buy-cart ,.logo-like ,.logo-number{
 	height: 60px;
@@ -576,6 +576,10 @@ display: none;
 	align-items: center;
 	justify-content: center; 
 	border-bottom: 1px solid #dbdada
+}
+.product-rezin-inside-top img {
+	width: 140px;
+	height: 115px;
 }
 .product-rezin-inside-between{
 	height: 170px;
@@ -814,8 +818,8 @@ display: none;
 		display: none !important;
 	}
 	.tag-product{
-		padding-right: 0px;
-		padding-left: 0px;
+		padding-right: 0px !important;
+		padding-left: 0px !important;
 	}
 }
 /*///////////////////end-products-inside/////////////////*/
@@ -926,8 +930,8 @@ margin-top: 15px;
 	height: 150px;
 }
 .information-rezin-main-bottom-inside{
-	padding-left: 0px;
-	padding-right: 0px;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
 }
 .information-rezin-main-top span{
 	margin-right: 10px;
@@ -1087,8 +1091,8 @@ margin-top: 15px;
 }
 .article-info-right ,.article-info-left{
 	display: block;
-	padding-left: 0px;
-	padding-right: 0px;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
 }
 .article-info-1 ,.article-info-2 ,.article-info-3 ,.article-info-4{
 	margin-bottom: 20px;
@@ -1109,8 +1113,8 @@ margin-top: 15px;
 
 @media (min-width:768px) and (max-width:960px){
 .information-rezin-news-bottom{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .article-info-bottom-subject{
 	height: 70px;
@@ -1453,20 +1457,20 @@ font-family: irs;
 
 @media (min-width:768px) and (max-width:960px){
 .footer-main-bottom{
-	padding-left: 0px;
-	padding-right: 0px;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
 }
 .footer-main-bottom-rezin{
-	padding-left: 0px;
-	padding-right: 0px;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
 }
 .footer-main-bottom-servant{
-	padding-left: 0px;
-	padding-right: 0px;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
 }
 .footer-main-bottom-buy{
-	padding-left: 0px;
-	padding-right: 0px;
+	padding-left: 0px !important;
+	padding-right: 0px !important;
 }
 .footer-main-bottom-servant-name{
 	margin-left: 10px;
@@ -1504,7 +1508,7 @@ font-family: irs;
 /*///////////////page-prpduct/////////////////*/
 .pagination {
 	display: flex;
-	justify-items: center;
+	align-items: center;
 	justify-content: center;
 }
 .product-main{
@@ -2052,8 +2056,8 @@ body .no-padding{
 	display: ;
 }
 .card-main-left{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px  !important;
+	padding-left: 0px  !important;
 }
 .card-main-left-subject{
 	padding-right: 0px;
@@ -2061,12 +2065,12 @@ body .no-padding{
 	margin-top: 20px;
 }
 .card-main-left-subject-right ,.card-main-left-subject-left{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .card-main-left-subject-right-top ,.card-main-left-subject-right-bottom{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .card-main-left-subject-right-top span{
 	font-size: 12px;
@@ -2081,21 +2085,21 @@ body .no-padding{
 
 .card-main-left-des-right{
 	text-align: right;
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .card-main-left-des-left{
 	text-align: right;
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .card-main-left-like{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .card-main-left-like-top ,.card-main-left-like-between{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .card-main-left-like-between-left-icon-buy{
 	display: block;
@@ -2126,21 +2130,21 @@ body .no-padding{
 	display: ;
 }
 .card-main-left{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .card-main-left-subject{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 	margin-top: 20px;
 }
 .card-main-left-subject-right ,.card-main-left-subject-left{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .card-main-left-subject-right-top ,.card-main-left-subject-right-bottom{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .card-main-left-subject-right-top span{
 	font-size: 12px;
@@ -2155,21 +2159,21 @@ body .no-padding{
 
 .card-main-left-des-right{
 	text-align: right;
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .card-main-left-des-left{
 	text-align: right;
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .card-main-left-like{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .card-main-left-like-top ,.card-main-left-like-between{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .card-main-left-like-between-left-icon-buy{
 	display: block;
@@ -2193,11 +2197,11 @@ body .no-padding{
 	display: none;
 }
 .card-main-left-like-between-left ,.card-main-left-like-between-left-number{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .card-main-left-like-between-left-like{
-	padding-left: 0px;
+	padding-left: 0px !important;
 }
 .buy-icon{
 	width: 155px;
@@ -2206,8 +2210,8 @@ body .no-padding{
 	font-size: 14px;
 }
 .card-main-left-like-between-right{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 .card-main-left-like-between-right span{
 	font-size: 12px;
@@ -2220,8 +2224,8 @@ body .no-padding{
 	width: 155px;
 }
 .card-main-left-like-between-right{
-	padding-right: 0px;
-	padding-left: 0px;
+	padding-right: 0px !important;
+	padding-left: 0px !important;
 }
 
 
@@ -2511,7 +2515,7 @@ margin-bottom: -10px;
 }
 .buy-card-right-3{
 	height: 80px;
-	background-color:;
+	text-align: right;
 	display: flex;
 	align-items: flex-start;
 	justify-content: flex-start;
@@ -2521,18 +2525,15 @@ margin-bottom: -10px;
 
 .buy-card-right-number{
 	height: auto;
-	background-color:;
 }
 .buy-card-right-number-top{
 	height: 80px;
-	background-color:;
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
 }
 .buy-card-right-number-bottom{
 	height: 100px;
-	background-color:;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -2723,12 +2724,12 @@ padding: 0px;
 		margin-bottom: 20px;
 	}
 	.buy-card{
-		padding-left: 0px;
-		padding-right: 0px;
+		padding-left: 0px !important;
+		padding-right: 0px !important;
 	}
 	.content-card{
-		padding-left: 0px;
-		padding-right: 0px;
+		padding-left: 0px !important;
+		padding-right: 0px !important;
 	}
 }
 
@@ -2744,12 +2745,12 @@ padding: 0px;
 		width: 100%;
 	}
 	.buy-card-right-number{
-		padding-right: 0px;
-		padding-left: 0px;
+		padding-right: 0px !important;
+		padding-left: 0px !important;
 	}
 	.buy-card-right-price{
-		padding-right: 0px;
-		padding-left: 0px;
+		padding-right: 0px !important;
+		padding-left: 0px !important;
 	}
 	
 }
@@ -2758,34 +2759,36 @@ padding: 0px;
 
 	.buy-card-left{
 		margin-top: 20px;
+		padding-left: 0px !important;
+		padding-right: 0px !important;
 	}
 .hr-card{
 		width: 100%;
 	}
 	.buy-card-right-number{
-		padding-right: 0px;
-		padding-left: 0px;
+		padding-right: 0px !important;
+		padding-left: 0px !important;
 	}
 	.buy-card-right-price{
-		padding-right: 0px;
-		padding-left: 0px;
+		padding-right: 0px !important;
+		padding-left: 0px !important;
 	}
 	.hr-price{
 		width: 100%;
 	}
 	.buy-card{
-		padding-right: 0px;
-		padding-left: 0px;
+		padding-right: 0px !important;
+		padding-left: 0px !important;
 	}
 	.buy-card-right ,.buy-card-left{
-		padding-right: 0px;
+		padding-right: 0px !important;
 	}
 	.buy-card-left{
-		padding-left: 0px;
+		padding-left: 0px !important;
 	}
 	.buy-card-left-top-filter-main-inside-right ,.buy-card-left-top-filter-main-inside-left{
-		padding-right: 0px;
-		padding-left: 0px;
+		padding-right: 0px !important;
+		padding-left: 0px !important;
 	}
 }
 @media (min-width: 960px) and (max-width: 1114px){
@@ -2796,12 +2799,12 @@ padding: 0px;
 		width: 100%;
 	}
 	.buy-card-left{
-		padding-right: 0px;
-		padding-left: 0px;
+		padding-right: 0px !important;
+		padding-left: 0px !important;
 	}
 	.buy-card{
-		padding-right: 0px;
-		padding-right: 0px;
+		padding-right: 0px !important;
+		padding-right: 0px !important;
 	}
 }
 /*//////////////////end-card////////////////////*/
@@ -3009,8 +3012,8 @@ margin-top: 30px;
 		justify-content: center;
 	}
 	.card-factor-end-right ,.card-factor-end-left{
-		padding-right: 0px;
-		padding-left: 0px;
+		padding-right: 0px !important;
+		padding-left: 0px !important;
 		height: 50px;
 	}
 	.card-factor-end{
@@ -3021,8 +3024,8 @@ margin-top: 30px;
 		justify-content: center;
 	}
 		.buy-card{
-		padding-right: 0px;
-		padding-left: 0px;
+		padding-right: 0px !important;
+		padding-left: 0px !important;
 	}
 	.buy-card-right{
 		/*padding-right: 0px;
@@ -3036,16 +3039,16 @@ margin-top: 30px;
 
 @media (min-width: 768px) and (max-width:960px){
 	.buy-card-left-top-price-3{
-		padding-right: 0px;
-		padding-left: 0px;
+		padding-right: 0px !important;
+		padding-left: 0px !important;
 	}
 
 }
 @media (min-width: 960px) and (max-width:1360px){
 
 .buy-card-left-top-filter-main-inside-right ,.buy-card-left-top-filter-main-inside-left{
-	padding-right: 0px;
-		padding-left: 0px;
+	padding-right: 0px !important;
+		padding-left: 0px !important;
 }
 }
 @media (min-width: 768px) and (max-width:880px){
@@ -3089,7 +3092,7 @@ margin-top: 30px;
 .buy-card-right-1{
 	height: auto;
 	display: block;
-	margin-top: ;
+	margin-top: 40px;
 	text-align: right;
 	/*margin-top: 40px;*/
 }
@@ -3875,24 +3878,22 @@ Main components
 /*/////////////////////[pay-Successful]/////////*/
 .pay-Successful{
 	height: auto;
-	background-color:;
+
 	margin-top: 50px;
 }
 
 .pay-Successful-inside{
 	height: auto;
-	background-color:;
+
 }
 .pay-Successful-inside-img{
 	height: auto;
-	background-color: ;
 }
 .pay-Successful-inside-img img{
 	height: 330px;
 }
 .pay-Successful-inside-text-top{
 	height: 50px;
-	background-color: ;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -3936,4 +3937,62 @@ Main components
 ::placeholder {
 	font-size: 12px;
 	font-family: irs;
+}
+
+
+@media (min-width: 576px) and (max-width: 1200px) {
+	.buy-card-right-img img {
+		width: 100px;
+		height: 100px;
+	}
+}
+
+
+@media (min-width: 576px) and (max-width: 768px) {
+	.buy-card-right-price , .buy-card-right-price-1 ,
+	.buy-card-right-price-2 , .buy-card-right-price-3 {
+		padding-right: 0px !important;
+		padding-left: 0px !important;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 960px) {
+    .buy-card-left {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 576px) {
+    .information-rezin-news , .information-rezin-news-bottom {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 576px) {
+	.header-main-top-left {
+		padding-left: 0px !important;
+	}
+}
+
+@media (min-width: 320px) and (max-width: 576px) {
+	.rezin-name , .rezin-model , .rezin-cod {
+		height: 37px;
+	}
+	.product-rezin-inside-between {
+		height: 190px;
+	}
+	.rezin-number {
+		align-items: center;
+	}
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+	.information-rezin-main-top {
+		justify-content: center;
+	}
+	.information-rezin-news-top {
+		justify-content: center;
+	}
 }

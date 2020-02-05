@@ -207,6 +207,7 @@ right: 10px;
   margin: 0;
   padding: 0;
   border-radius: 0.25em;
+  font-size: 12px;
 }
 .form input.full-width {
   width: 100%;

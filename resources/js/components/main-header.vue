@@ -39,8 +39,8 @@
                 </nav>
                 <div class="col-xs- col- col-sm- col-md- col-lg- col-xl-6" v-if="user">
                     <ul>
-                        <li v-if="!user.first_name || !user.last_name"><a href="/user/profile">حساب کاربری</a></li>
-                        <li v-if="user.first_name && user.last_name"><a href="/user/profile">{{user.first_name}} {{user.last_name}}</a></li>
+                        <li style="padding-top: 8px" v-if="!user.first_name || !user.last_name"><a style="color: #676767" href="/user/profile">حساب کاربری</a></li>
+                        <li style="padding-top: 8px" v-if="user.first_name && user.last_name"><a style="color: #676767" href="/user/profile">{{user.first_name}} {{user.last_name}}</a></li>
                     </ul>
                 </div>
 
@@ -195,9 +195,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col col-sm col-md-12 col-lg col-xl header-main-bottom-span">
-                <div class="table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl header-main-bottom-span-inside">
-                    <a v-for="item in main_categories" :href="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></a>
+            <div class="col col-sm col-md-12 col-lg col-xl header-main-bottom-span" >
+                <div style="display: block ruby;display: -webkit-inline-box" class="table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl header-main-bottom-span-inside">
+                    <div v-for="item in main_categories">
+                        <a :href="'/products/category/' + item.id"><span class="text-main title-4"> {{item.name}} </span></a>
+                    </div>
                 </div>
             </div>
             <div class="col col-sm col-xs col-md col-lg col-xl-12 header-main-bottom-slideshow">

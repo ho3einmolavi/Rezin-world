@@ -3,7 +3,6 @@
         <div class="information-page-content-title">
             <div class="col-md-12 information-page-content-title-inside">
                 <h5 class="title-all-h5">جزئیات سفارش مشتریان </h5>
-
             </div>
         </div>
         <div class="col-md-12 orderr-bottom flex">
@@ -45,7 +44,9 @@
                     <span class="title-4"> درخواست فاکتور  : </span><span class="title-4">ندارم </span>
                 </div>
                 <div class="orderr-bottom-right-inside">
-                    <span class="title-4"> روش پرداخت  : </span><span class="title-4"> درگاه پرداخت زرین پال </span>
+                    <span class="title-4"> روش پرداخت  : </span>
+                    <span class="title-4" v-if="order.order.payment_method === 'online'"> درگاه پرداخت زرین پال </span>
+                    <span class="title-4" v-if="order.order.payment_method === 'offline'"> پرداخت حضوری </span>
                 </div>
                 <div class="orderr-bottom-right-inside">
                     <span class="title-4"> سفارش :  </span><span class="title-4 c-stop">{{order.order.status}}</span>

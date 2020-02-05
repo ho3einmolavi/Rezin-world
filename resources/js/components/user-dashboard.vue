@@ -7,7 +7,7 @@
             <a href="" class="list-group-item list-group-item-action active lga-color">پروفایل کاربری  </a>
             <!--<a href="/messages-user" class="list-group-item list-group-item-action"><i class="fas fa-envelope-open"></i>صندوق پیام ها  <i class="fas fa-angle-left icon-left"></i></a>-->
             <router-link to="/user/changePassword" class="list-group-item list-group-item-action"><i class="fas fa-unlock-alt"></i>تغییر رمز عبور  <i class="fas fa-angle-left icon-left"></i></router-link>
-            <a onclick="localStorage.removeItem('token'); window.location = '/'" class="list-group-item list-group-item-action"><i class="fas fa-sign-in-alt"></i> خروج  <i class="fas fa-angle-left icon-left"></i></a>
+            <a style="cursor: pointer" onclick="localStorage.removeItem('token'); window.location = '/'" class="list-group-item list-group-item-action"><i class="fas fa-sign-in-alt"></i> خروج  <i class="fas fa-angle-left icon-left"></i></a>
         </div>
     </div>
 </template>

@@ -46,7 +46,7 @@
 
 
                 <div class="form-row">
-                    <div class="col-xl-10 mb-3">
+                    <div class="col-xl-12 mb-3">
                         <input type="text" class="form-control" v-model="show.first_name" id="validationToholtip01" placeholder ="نام" required>
                         <div class="valid-tooltip">
                             Looks good!
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="col-xl-10 mb-3">
+                    <div class="col-xl-12 mb-3">
                         <input type="text" class="form-control" v-model="show.last_name" id="validationTooltip01" placeholder ="نام خانوادگی" required>
                         <div class="valid-tooltip">
                             Looks good!
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="col-xl-10 mb-3">
+                    <div class="col-xl-12 mb-3">
                         <input type="text" class="form-control" v-model="show.address" id="validationTdooltip01" placeholder ="نشانی جدید را وارد کنید" required>
                         <div class="valid-tooltip">
                             Looks good!
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="col-xl-10 mb-3">
+                    <div class="col-xl-12 mb-3">
                         <input type="text" class="form-control" v-model="show.postal_code" id="validadetionTooltip01" placeholder ="کدپستی" required>
                         <div class="valid-tooltip">
                             Looks good!
@@ -82,8 +82,9 @@
                 </div>
 
                 <div class="form-row">
-                    <div class="col-xl-10 mb-3" style="font-family: irs">
-                        <b-button @click="edit_user" variant="outline-primary">ویرایش اطلاعات</b-button>
+                    <div class="col-xl-12 mb-3" style="font-family: irs">
+                        <!--<b-button @click="edit_user" variant="outline-primary">ویرایش اطلاعات</b-button>-->
+                        <button class="edit-button" type="button"@click="edit_user" >ویرایش اطلاعات</button>
                     </div>
                 </div>
 
@@ -224,5 +225,12 @@
 </script>
 
 <style scoped>
-
+    .edit-button {
+        font-size: 13px;
+        color: #ff7a76;
+        height: 35px;
+        border: 1px solid #ff7a76;
+        background-color: #fff;
+        border-radius: 5px;
+    }
 </style>

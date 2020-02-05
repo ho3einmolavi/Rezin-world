@@ -23,7 +23,7 @@
             <!--<a href="#" class="list-group-item list-group-item-action disabled"><i class="fas fa-list-ol"></i> آمار فروش <i class="fas fa-angle-left icon-left"></i></a>-->
             <!--<router-link to="/admin/add-dis" class="list-group-item list-group-item-action disabled"><i class="far fa-list-alt"></i> افزودن کد تخفیف <i class="fas fa-angle-left icon-left"></i></router-link>-->
             <router-link to="/admin/setting" class="list-group-item list-group-item-action"><i class="fas fa-cogs"></i> تنظیمات  <i class="fas fa-angle-left icon-left"></i></router-link>
-            <a class="list-group-item list-group-item-action"><i class="fas fa-sign-in-alt"></i> خروج  <i class="fas fa-angle-left icon-left"></i></a>
+            <!--<a class="list-group-item list-group-item-action"><i class="fas fa-sign-in-alt"></i> خروج  <i class="fas fa-angle-left icon-left"></i></a>-->
         </div>
     </div>
 </template>

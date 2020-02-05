@@ -37,6 +37,8 @@
 
 <!--bootstrap-->
 <script src="{{ asset('js/app.js') }}"></script>
+<!--login-register-->
+<script src="/js/login-register/login-register.js"></script>
 <script  src="/js/bootstrap/bootstrap.min.js"></script>
 <script>
     function openCity(evt, cityName) {
@@ -57,11 +59,12 @@
     document.getElementById("defaultOpen").click();
 </script>
 <script  src="/js/bootstrap/bootstrap.js"></script>
+<script  src="/js/modernizr.min.js"></script>
 <!--buy-card-->
 <script type="/js/faq/faq.js"></script>
 <script src="/js/jquery.min.js"></script>
-<!--select-number-->
-<!--login-register-->
-<script src="/js/login-register/login-register.js"></script>
+
+
+
 </body>
 </html>

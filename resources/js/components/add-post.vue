@@ -69,6 +69,9 @@
                     axios({
                         url: `/api/article/store` ,
                         method: 'post' ,
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('token')}`
+                        } ,
                         data: data ,
                         onUploadProgress: uploadEvent => {
                             this.percent = Math.round(uploadEvent.loaded / uploadEvent.total * 100);

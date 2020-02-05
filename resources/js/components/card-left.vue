@@ -56,6 +56,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-xs col-sm col- col-md col-lg col-xl-12  buy-card-left-bottom delete-padding">
             <div class="col-xs col-sm col- col-md col-lg col-xl-12  buy-card-left-bottom-1">
                 <span><i class="fas fa-shipping-fast"></i></span>
@@ -166,7 +167,23 @@
                {
                    if (this.user)
                    {
-                       this.$router.push({ path: '/card/address' })
+                       if (this.cost(this.orders) >= this.setting.minimum_order_cost )
+                       {
+                           this.$router.push({ path: '/card/address' })
+                       }
+                       else
+                       {
+                           let msg = `حداقل میزان سفارش باید ${this.setting.minimum_order_cost} تومان باشد`
+                           this.$toasted.show(msg, {
+                               position: 'top-center' ,
+                               type: 'error' ,
+                               theme: 'bubble' ,
+                               fitToScreen: true ,
+                               fullWidth: true ,
+                               className: ['your-custom-class']
+                           }).goAway(2000);
+                       }
+
                    }
                    else
                    {

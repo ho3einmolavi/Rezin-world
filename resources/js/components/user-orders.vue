@@ -17,7 +17,7 @@
         <ol id="selectable" class="col-xs col-sm col- col-md col-lg col-xl-12 delete-padding-left">
             <li class="ui-state-default user-list-info-box flex" v-for="item in orders">
                 <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-image">
-                    <span class="text-span text-gray-p">#{{item.tracking_code}} </span>
+                    <span class="text-span text-gray-p">{{item.tracking_code}} </span>
                 </div>
                 <div class="col-xs col-sm col- col-md col-lg col-xl-2 user-list-info-box-name">
                     <span class="text-span text-gray-p"> {{item.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان</span>

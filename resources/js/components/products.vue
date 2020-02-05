@@ -155,7 +155,7 @@
 
 
                 </div>
-                <div v-if="ok === 0" class="col col-sm col-xs col-md-12 col-lg-12 col-xl-12 product-page-left-slider delete-padding">
+                <div style="font-family: irs; font-size: 12px" v-if="ok === 0" class="col col-sm col-xs col-md-12 col-lg-12 col-xl-12 product-page-left-slider delete-padding">
                     <b-alert show variant="danger" class="right-error">محصولی یافت نشد</b-alert>
                 </div>
                 <div class="col col-sm col-xs col-md- col-lg- col-xl-12 adds-box delete-padding">

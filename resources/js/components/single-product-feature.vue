@@ -197,86 +197,19 @@
                             <main>
                                 <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product flex table-responsive-md table-responsive-lg table-responsive-xl">
                                     <div class="col col-sm col-xs col-md col-lg col-xl-3 details-product-right">
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
+
+                                        <div v-for="item in JSON.parse(product.features)" class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
                                             <div class="details-text">
-                                                <span class="text-black title-4"> رنگ برنج  </span>
+                                                <span class="text-black title-4"> {{item.feature_name}}  </span>
                                             </div>
                                         </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
-                                            <div class="details-text">
-                                                <span class="text-black title-4"> نوع برنج </span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
-                                            <div class="details-text">
-                                                <span class="text-black title-4">عنوان برنج </span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
-                                            <div class="details-text">
-                                                <span class="text-black title-4"> اندازه دانه</span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
-                                            <div class="details-text">
-                                                <span class="text-black title-4">  اندازه دانه  </span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
-                                            <div class="details-text">
-                                                <span class="text-black title-4">وزن </span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
-                                            <div class="details-text">
-                                                <span class="text-black title-4"> توضیحات نوع برنج</span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-right-inside">
-                                            <div class="details-text">
-                                                <span class="text-black title-4">شماره پروانه بهداشت </span>
-                                            </div>
-                                        </div>
+
                                     </div>
 
                                     <div class="col col-sm col-xs col-md col-lg col-xl-9 details-product-left">
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
+                                        <div v-for="item in JSON.parse(product.features)" class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
                                             <div class="details-text-des">
-                                                <span class="text-black title-4"> سفید  </span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
-                                            <div class="details-text-des">
-                                                <span class="text-black title-4"> ساده</span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
-                                            <div class="details-text-des">
-                                                <span class="text-black title-4">هاشمی </span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
-                                            <div class="details-text-des">
-                                                <span class="text-black title-4"> دانه کامل  </span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
-                                            <div class="details-text-des">
-                                                <span class="text-black title-4"> 10 کیلوگرم  </span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
-                                            <div class="details-text-des">
-                                                <span class="text-black title-4">  5 تا 10 کیلوگرم </span></div>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
-                                            <div class="details-text-des">
-                                                <span class="text-black title-4">  برنج ایرانی هاشمی </span>
-                                            </div>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md col-lg col-xl-12 details-product-left-inside">
-                                            <div class="details-text-des">
-                                                <span class="text-black title-4">  8375706981 </span>
+                                                <span class="text-black title-4"> {{item.feature_values.join(' ')}}  </span>
                                             </div>
                                         </div>
                                     </div>

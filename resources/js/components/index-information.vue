@@ -69,7 +69,7 @@
                         <div v-for="article in articles" class="col col-sm col-xs col-md-6 col-lg-6 col-xl-6 article-info-right flex">
 
 
-                            <div v-for="item in article" class="col col-sm col-xs col-md col-lg col-xl-6 article-info-1 delete-padding">
+                            <div v-for="item in article" class="col col-sm col-xs col-md col-lg col-xl-6 article-info-1 delete-padding" style="margin-right: 15px">
                                 <a :href="'/article/' + item.title">
                                     <div class="col col-sm col-xs col-md col-lg col-xl-12 article-info-top delete-padding">
                                         <img :src="'/images/articles/' + item.cover">
@@ -230,7 +230,7 @@
 
         created() {
             this.get_articles();
-            this.get_comments();
+           // this.get_comments();
         } ,
 
         methods: {
