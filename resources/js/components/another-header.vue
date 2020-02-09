@@ -35,25 +35,23 @@
             <div class="col-xs-6 col-6 col-sm-4 col-md-4 col-lg-3 col-xl header-main-top-left">
 
                 <!-- partial:index.partial.html -->
-                <nav class="main-nav" v-if="! user">
+                <nav class="main-nav" v-if="showAuth && !user">
                     <ul>
                         <li><a class="signup" href="#0">ثبت نام   </a></li>
                         <li><a class="signin" href="#0">  ورود </a></li>
                     </ul>
                 </nav>
+                <div class="col-xs- col- col-sm- col-md- col-lg- col-xl-6" v-if="showAuth && user && (!user.first_name || !user.last_name)" style="padding-right: 0px; padding-left: 0px">
+                    <ul>
+                        <li style="padding-top: 8px"><a style="color: #676767" href="/user/profile">حساب کاربری</a></li>
+                    </ul>
+                </div>
 
-
-                    <div class="col-xs- col- col-sm- col-md- col-lg- col-xl-6" v-if="user && (!user.first_name || !user.last_name)" style="padding-right: 0px; padding-left: 0px">
-                        <ul>
-                            <li style="padding-top: 8px"><a style="color: #676767" href="/user/profile">حساب کاربری</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-xs- col- col-sm- col-md- col-lg- col-xl-6" v-if="user && user.first_name && user.last_name" style="padding-right: 0px; padding-left: 0px">
-                        <ul>
-                            <li style="padding-top: 8px"><a style="color: #676767" href="/user/profile">{{user.first_name}} {{user.last_name}}</a></li>
-                        </ul>
-                    </div>
+                <div class="col-xs- col- col-sm- col-md- col-lg- col-xl-6" v-if="showAuth && user && user.first_name && user.last_name" style="padding-right: 0px; padding-left: 0px">
+                    <ul>
+                        <li style="padding-top: 8px"><a style="color: #676767" href="/user/profile">{{user.first_name}} {{user.last_name}}</a></li>
+                    </ul>
+                </div>
 
 
 
@@ -254,7 +252,8 @@
                 signup: 0 ,
                 error: '' ,
                 token: '' ,
-                setting_data: []
+                setting_data: [] ,
+                showAuth: null
             }
         } ,
 
@@ -371,11 +370,13 @@
                     }
                 })
                     .then(res => {
+                        this.showAuth = 1;
                         console.log(res);
                         this.user = res.data;
                         this.$emit('user' , this.user);
                     })
                     .catch(err => {
+                        this.showAuth = 1;
                         this.user = null;
                         console.log(err.response);
                     })

@@ -472,7 +472,7 @@
                     .catch(err => {
                         console.log(err.response);
                         err.response.data.forEach(item => {
-                            this.$toasted.error(item.toString() , {
+                            this.$toasted.error(item , {
                                 position: 'bottom-center' ,
                                 theme: 'bubble' ,
                                 fitToScreen: true ,
