@@ -17,7 +17,7 @@
 
                     <div class="form-group col-md-12">
                         <label for="inputEmail4"> کلمات کلیدی</label>
-                        <textarea class="form-control" id="inputEmail4" v-model="setting_data.keywords" placeholder=" کلمات کلیدی را با کاما از هم جدا کنید. مثال کتاب,چاپ,اصفهان" required=""></textarea>
+                        <textarea class="form-control" id="inputEmail4" v-model="setting_data.keywords" placeholder=" کلمات کلیدی را با کاما از هم جدا کنید. مثال سوپرمارکت,سوپر مارکت آنلاین در اصفهان" required=""></textarea>
                         <div class="invalid-feedback">
                             لطفا توضیحات  دسته را واد کنید
                         </div>
@@ -26,7 +26,7 @@
 
                     <div class="form-group col-md-12">
                         <label for="inputEmail43"> هزینه ارسال</label>
-                        <textarea class="form-control" id="inputEmail43" v-model="setting_data.sending_cost" placeholder=" کلمات کلیدی را با کاما از هم جدا کنید. مثال کتاب,چاپ,اصفهان" required=""></textarea>
+                        <textarea class="form-control" id="inputEmail43" v-model="setting_data.sending_cost" placeholder="هزینه ارسال" required=""></textarea>
                         <div class="invalid-feedback">
                             لطفا توضیحات  دسته را واد کنید
                         </div>
@@ -35,7 +35,7 @@
 
                     <div class="form-group col-md-12">
                         <label for="inputEmail411"> حداقل مقدار سفارش</label>
-                        <textarea class="form-control" id="inputEmail411" v-model="setting_data.minimum_order_cost" placeholder=" کلمات کلیدی را با کاما از هم جدا کنید. مثال کتاب,چاپ,اصفهان" required=""></textarea>
+                        <textarea class="form-control" id="inputEmail411" v-model="setting_data.minimum_order_cost" placeholder="حداقل مقدار سفارش" required=""></textarea>
                         <div class="invalid-feedback">
                             لطفا توضیحات  دسته را واد کنید
                         </div>
@@ -54,41 +54,44 @@
                         <label for="inputname1"> شماره تماس مشاوره </label>
                         <input type="text" class="form-control" v-model="setting_data.consultant_mobile" id="inputname1" placeholder="شماره تماس  مشاوره">
                     </div>
+                    <!--<div class="form-group col-md-12">-->
+                        <!--<label for="inputname2"> داخلی مشاور </label>-->
+                        <!--<input type="text" v-model="setting_data.consultant_number" class="form-control" id="inputname2" placeholder="شماره داخلی مشاور را وارد کنید">-->
+                    <!--</div>-->
+
                     <div class="form-group col-md-12">
-                        <label for="inputname2"> داخلی مشاور </label>
-                        <input type="text" v-model="setting_data.consultant_number" class="form-control" id="inputname2" placeholder="شماره داخلی مشاور را وارد کنید">
+                        <label for="inputname3"> تلگرام </label>
+                        <input type="text" class="form-control" id="inputname3" v-model="setting_data.telegram" placeholder="لینک تلگرام">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputname6">  اینستاگرام </label>
+                        <input type="text" class="form-control" v-model="setting_data.instagram" id="inputname6" placeholder="لینک اینستاگرام">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputname7"> توئیتر </label>
+                        <input type="text" class="form-control" id="inputname7" v-model="setting_data.account_number" placeholder="لینک توئیتر">
                     </div>
 
                     <div class="form-group col-md-12">
-                        <label for="inputname3"> ارتباط از طریق تلگرام </label>
-                        <input type="text" class="form-control" id="inputname3" v-model="setting_data.telegram" placeholder="شماره را وارد کنید">
+                        <label for="inputname8"> لینکدین </label>
+                        <input type="text" class="form-control" v-model="setting_data.card_number" id="inputname8" placeholder="لینک لینکدین">
                     </div>
-
 
                     <div class="form-group col-md-12">
                         <label for="inputname4">ایمیل</label>
                         <input type="text" class="form-control" v-model="setting_data.email" id="inputname4" placeholder="آدرس ایمیل را وارد کنید">
                     </div>
-                    <div class="form-group col-md-12">
-                        <label for="inputname5">ایمیل  info</label>
-                        <input type="text" class="form-control" v-model="setting_data.email_info" id="inputname5" placeholder="آدرس ایمیل را وارد کنید">
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label for="inputname6">  اینستاگرام </label>
-                        <input type="text" class="form-control" v-model="setting_data.instagram" id="inputname6" placeholder="آدرس  اینستاگرام خود را وارد کنید">
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label for="inputname7"> شماره حساب </label>
-                        <input type="text" class="form-control" id="inputname7" v-model="setting_data.account_number" placeholder="شماره حساب بانکی خود را وارد کنید">
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label for="inputname8">  شماره کارت </label>
-                        <input type="text" class="form-control" v-model="setting_data.card_number" id="inputname8" placeholder="شماره کارت هود را وارد کنید">
-                    </div>
-                    <div class="form-group col-md-12">
-                        <label for="inputname9"> دارنده حساب  </label>
-                        <input type="text" class="form-control" v-model="setting_data.account_owner" id="inputname9" placeholder="نام دارنده حساب را همراه با بانک وارد کنید. مثال بانک ملت-حسین مولوی">
-                    </div>
+                    <!--<div class="form-group col-md-12">-->
+                        <!--<label for="inputname5">ایمیل  info</label>-->
+                        <!--<input type="text" class="form-control" v-model="setting_data.email_info" id="inputname5" placeholder="آدرس ایمیل را وارد کنید">-->
+                    <!--</div>-->
+
+
+
+                    <!--<div class="form-group col-md-12">-->
+                        <!--<label for="inputname9"> دارنده حساب  </label>-->
+                        <!--<input type="text" class="form-control" v-model="setting_data.account_owner" id="inputname9" placeholder="نام دارنده حساب را همراه با بانک وارد کنید. مثال بانک ملت-حسین مولوی">-->
+                    <!--</div>-->
                     <div class="custom-file" style="margin-top: 25px;text-align: left;margin-right: 15px;">
                         <input type="file" class="custom-file-input" id="logo1" ref="logo" v-on:change="handle">
                         <label class="custom-file-label" for="logo1"> عکس لوگو را آپلود کنید  </label>

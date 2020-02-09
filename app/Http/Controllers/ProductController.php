@@ -11,7 +11,7 @@ use App\ThirdCategory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use Morilog\Jalali\Jalalian;
 
 
 class ProductController extends Controller
@@ -218,6 +218,7 @@ class ProductController extends Controller
         unset($products['product_img']);
         unset($products['main']);
         unset($products['second']);
+        $products['date'] = Jalalian::forge($products['updated_at'])->format('%A, %d %B %y');
 
         return response()->json($products);
     }

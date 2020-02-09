@@ -27,7 +27,7 @@
 
             <!--end-body-->
         </div>
-        <main-footer></main-footer>
+        <main-footer :setting="setting_data"></main-footer>
     </div>
 </template>
 

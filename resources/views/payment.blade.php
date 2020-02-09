@@ -27,10 +27,7 @@
 </head>
 <body>
 <div id="app">
-    <h1>{{session('code')}}</h1>
-    <another-header></another-header>
-    <pay-success></pay-success>
-    <main-footer></main-footer>
+    <payment-is-successful></payment-is-successful>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src='/js/login-register/login.js'></script>

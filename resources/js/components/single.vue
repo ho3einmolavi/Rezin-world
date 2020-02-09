@@ -3,8 +3,8 @@
         <another-header :order="orders"></another-header>
         <single-product-feature @send_number="get_order($event)"></single-product-feature>
         <hr class="hr-end-box">
-        <single-same-products @newest-products="get_products($event)"></single-same-products>
-        <single-newest-products :products="products"></single-newest-products>
+        <single-same-products @send_number="get_order($event)" @newest-products="get_products($event)"></single-same-products>
+        <single-newest-products @send_number="get_order($event)" :products="products"></single-newest-products>
         <main-footer></main-footer>
     </div>
 </template>

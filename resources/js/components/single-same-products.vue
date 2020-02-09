@@ -29,7 +29,7 @@
                                 </div>
                             </a><div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom flex delete-padding"><a href="#">
                             </a><div class="col-3 col-sm-3 col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box-bottom-bottom-buy"><a href="#">
-                            </a><a href="#"><i class="fas fa-shopping-basket"></i></a>
+                            </a><a v-if="item.number" @click="sent_to_card(item)"><i class="fas fa-shopping-basket"></i></a>
                             </div>
                                 <div class="col col-sm col-xs col-md- col-lg- col-xl-9 product-page-left-slider-inside-box-bottom-bottom-price delete-padding">
                                     <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-off">
@@ -64,7 +64,7 @@
                                 </div>
                             </a><div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom flex delete-padding"><a href="#">
                             </a><div class="col-3 col-sm-3 col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box-bottom-bottom-buy"><a href="#">
-                            </a><a href="#"><i class="fas fa-shopping-basket"></i></a>
+                            </a><a v-if="item.number" @click="sent_to_card(item)"><i class="fas fa-shopping-basket"></i></a>
                             </div>
                                 <div class="col col-sm col-xs col-md- col-lg- col-xl-9 product-page-left-slider-inside-box-bottom-bottom-price delete-padding">
                                     <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-off">
@@ -98,8 +98,8 @@
                                 </div>
                             </a><div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom flex delete-padding"><a href="#">
                             </a>
-                                <div v-if="item.number !== 0" class="col-3 col-sm-3 col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box-bottom-bottom-buy">
-                                    <a>
+                                <div class="col-3 col-sm-3 col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box-bottom-bottom-buy">
+                                    <a v-if="item.number" @click="sent_to_card(item)">
                                     <i class="fas fa-shopping-basket"></i>
                                     </a>
                                 </div>
@@ -151,6 +151,54 @@
         } ,
 
         methods: {
+            sent_to_card(product) {
+                this.$toasted.show('محصول اضافه شد', {
+                    position: 'bottom-center' ,
+                    type: 'success' ,
+                    theme: 'bubble' ,
+                    fitToScreen: true ,
+                    className: ['your-custom-class']
+                }).goAway(1500);
+                let arr = JSON.parse(localStorage.getItem('order')) || [];
+
+                if (product.order_number)
+                {
+                    product.order_number ++;
+                    product.final_price1 = product.final_price * product.order_number;
+                }
+                else
+                {
+                    product.order_number = 1;
+                    product.final_price1 = product.final_price * product.order_number;
+                }
+
+                let flag = 0;
+                arr.forEach(item => {
+                    if (item.id === product.id)
+                    {
+                        flag = 1;
+                        if (item.order_number)
+                        {
+                            item.order_number ++;
+                            item.final_price1 = item.final_price * item.order_number;
+                        }
+                        else
+                        {
+                            item.order_number = 1;
+                            item.final_price1 = item.final_price * item.order_number;
+                        }
+                    }
+                });
+
+                if (flag === 0)
+                {
+                    arr.push(product);
+                }
+
+
+                localStorage.setItem('order' , JSON.stringify(arr));
+                this.$emit('send_number' , JSON.parse(localStorage.getItem('order')));
+            } ,
             chunk(array, size) {
                 const chunked_arr = [];
                 let copied = [...array]; // ES6 destructuring

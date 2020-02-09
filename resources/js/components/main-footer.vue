@@ -12,7 +12,7 @@
                         <ul>
                             <a href="#"><li class="text-black"> صفحه اصلی </li></a>
                             <a href="#"><li style="list-style: none; display: inline"></li></a>
-                            <a href="#"><li class="text-black"> درباره ما </li></a>
+                            <a href="/about-us"><li class="text-black"> درباره ما </li></a>
                             <a href="#"><li class="text-black"> همکاری با ما </li></a>
                             <a href="#"><li class="text-black"> وبلاگ رزین ولد  </li></a>
                         </ul>
@@ -28,7 +28,7 @@
                             <a href="#"><li style="list-style: none; display: inline"></li></a>
                             <a href="#"><li class="text-black"> راهنمای سایت</li></a>
                             <a href="#"><li class="text-black"> قوانین و مقررات</li></a>
-                            <a href="#"><li class="text-black"> تماس با ما </li></a>
+                            <a href="/contact-us"><li class="text-black"> تماس با ما </li></a>
                         </ul>
                     </div>
                 </div>
@@ -52,14 +52,10 @@
                         <a href="#"><img src="/img/footer/logo-enmad.png"></a>
                     </div>
                     <div class="col col-sm col-xs col-md col-lg col-xl-12 footer-main-bottom-namad-beetween">
-                        <a href="#" class="text-black"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-black"><i class="fab fa-telegram-plane"></i></a>
-                        <a href="#" class="text-black"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-black"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-black"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="text-black"><i class="fab fa-telegram-plane"></i></a>
-                        <a href="#" class="text-black"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-black"><i class="fab fa-instagram"></i></a>
+                        <a :href="setting.card_number" class="text-black"><i class="fab fa-linkedin"></i></a>
+                        <a :href="setting.telegram" class="text-black"><i class="fab fa-telegram-plane"></i></a>
+                        <a :href="setting.account_number" class="text-black"><i class="fab fa-twitter"></i></a>
+                        <a :href="setting.instagram" class="text-black"><i class="fab fa-instagram"></i></a>
                     </div>
                     <div class="col col-sm col-xs col-md col-lg col-xl-12 footer-main-bottom-namad-end">
                         <div class="col col-sm col-xs col-md col-lg col-xl-12 footer-main-bottom-namad-end-webdesign">
@@ -80,7 +76,8 @@
 
 <script>
     export default {
-        name: "main-footer"
+        name: "main-footer" ,
+        props: ['setting']
     }
 </script>
 

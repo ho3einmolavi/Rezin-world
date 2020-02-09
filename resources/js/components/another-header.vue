@@ -20,7 +20,7 @@
 
 
             <div class="col-xs-6 col-5 col-sm-6 col-md-5 col-lg col-xl logo-site-res">
-                <img src="/img/header/payjoy.png">
+                <img :src="'/images/logo/' + setting_data.logo">
             </div>
             <div class="col-xs-6 col-5 col-sm-6 col-md-8 col-lg col-xl-10 header-main-top-right delete-res">
                 <a href="/"><span class="text-main title-4">  صفحه اصلی </span></a>
@@ -28,7 +28,7 @@
                 <a href=""><span class="text-main title-4"> تعرفه ها  </span></a>
                 <a href=""><span class="text-main title-4">  وبلاگ </span></a>
                 <a href=""><span class="text-main title-4"> پیشنهاد ناب </span></a>
-                <a href=""><span class="text-main title-4"> تماس با ما </span></a>
+                <a href="/contact-us"><span class="text-main title-4"> تماس با ما </span></a>
             </div>
 
 
@@ -41,12 +41,21 @@
                         <li><a class="signin" href="#0">  ورود </a></li>
                     </ul>
                 </nav>
-                <div class="col-xs- col- col-sm- col-md- col-lg- col-xl-6" v-if="user">
-                    <ul>
-                        <li style="padding-top: 8px" v-if="!user.first_name || !user.last_name"><a style="color: #676767" href="/user/profile">حساب کاربری</a></li>
-                        <li style="padding-top: 8px" v-if="user.first_name && user.last_name"><a style="color: #676767" href="/user/profile">{{user.first_name}} {{user.last_name}}</a></li>
-                    </ul>
-                </div>
+
+
+                    <div class="col-xs- col- col-sm- col-md- col-lg- col-xl-6" v-if="user && (!user.first_name || !user.last_name)" style="padding-right: 0px; padding-left: 0px">
+                        <ul>
+                            <li style="padding-top: 8px"><a style="color: #676767" href="/user/profile">حساب کاربری</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-xs- col- col-sm- col-md- col-lg- col-xl-6" v-if="user && user.first_name && user.last_name" style="padding-right: 0px; padding-left: 0px">
+                        <ul>
+                            <li style="padding-top: 8px"><a style="color: #676767" href="/user/profile">{{user.first_name}} {{user.last_name}}</a></li>
+                        </ul>
+                    </div>
+
+
 
                 <div class="user-modal">
                     <div class="user-modal-container">
@@ -236,7 +245,7 @@
                 sum: '' ,
                 show: '' ,
                 orders: [] ,
-                user: [] ,
+                user: null ,
                 code: '' ,
                 phone_number: '' ,
                 email: '' ,

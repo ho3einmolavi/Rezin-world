@@ -150,16 +150,16 @@
                     .then(res => {
                         this.loading = 0;
                         console.log(res);
-                       localStorage.removeItem('order');
+                        localStorage.removeItem('order');
                         this.sendMessage(res.data.order.tracking_code);
                         localStorage.setItem('tracking_code' , res.data.order.tracking_code);
-                       window.location.href = '/payment-success'
+                        window.location.href = '/payment-success'
                     })
                     .catch(err => {
                         this.loading = 0;
                         console.log(err.response);
                         localStorage.removeItem('order');
-                        // this.$router.push({ path: '/order/pay/error'})
+                        window.location.href = '/payment-error'
                     })
             } ,
             where_to_go() {

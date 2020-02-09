@@ -87,4 +87,18 @@ class MainController extends Controller
         ]);
     }
 
+    public function about()
+    {
+        return view('about' , [
+            'title' => 'درباره ما'
+        ]);
+    }
+
+    public function contact_us()
+    {
+        return view('about' , [
+            'title' => 'تماس با ما'
+        ]);
+    }
+
 }

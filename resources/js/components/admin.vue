@@ -1,8 +1,8 @@
 <template>
     <div>
-        <another-header @mainCategories="get_second($event)"></another-header>
+        <another-header @setting="get_setting($event)" @mainCategories="get_second($event)"></another-header>
         <admin-content :allCats="allCats" :main="mainCat"></admin-content>
-        <main-footer></main-footer>
+        <main-footer :setting="setting"></main-footer>
     </div>
 </template>
 
@@ -14,10 +14,14 @@
             return {
                 mainCat: [] ,
                 allCats: [] ,
+                setting: [] ,
             }
         } ,
 
         methods: {
+            get_setting(event) {
+                this.setting = event
+            },
             get_second(event) {
                 event.forEach(item => {
                     item.second.forEach( value => {

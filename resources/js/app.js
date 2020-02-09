@@ -97,6 +97,12 @@ Vue.component('user-order-details', require('./components/user-order-details.vue
 Vue.component('user-changePassword', require('./components/user-changePassword.vue').default);
 Vue.component('special-discount', require('./components/special-discount.vue').default);
 Vue.component('edit-article', require('./components/edit-article.vue').default);
+Vue.component('about-us', require('./components/about-us.vue').default);
+Vue.component('contact-us', require('./components/contact-us.vue').default);
+Vue.component('about', require('./components/about.vue').default);
+Vue.component('payment-is-successful', require('./components/payment-is-successful.vue').default);
+Vue.component('payment-failed', require('./components/payment-failed.vue').default);
+Vue.component('pay-error', require('./components/pay-error.vue').default);
 
 
 
@@ -131,6 +137,8 @@ const routes = [
     {path: '/user/orders',name:'card',component:require('./components/user-orders.vue').default } ,
     {path: '/user/order/details/:orderID',name:'card',component:require('./components/user-order-details.vue').default } ,
     {path: '/user/changePassword',name:'card',component:require('./components/user-changePassword.vue').default } ,
+    {path: '/about-us',name:'card',component:require('./components/about-us.vue').default } ,
+    {path: '/contact-us',name:'card',component:require('./components/contact-us.vue').default } ,
 
 ];
 

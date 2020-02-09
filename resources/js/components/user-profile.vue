@@ -1,5 +1,5 @@
 <template>
-    <div class="col-xs col-sm col-10 col-md-11 col-lg-11 col-xl-11 delete-padding-left">
+    <div class="col-xs col-sm col-10 col-md-11 col-lg-9 col-xl-9 delete-padding-left">
         <div class="information-page-content">
             <div class="line-div-dashed-margin-right"></div>
             <div class="profile-res flex margin-bottom">

@@ -26,7 +26,7 @@
                 <a href=""><span class="text-main title-4"> تعرفه ها  </span></a>
                 <a href=""><span class="text-main title-4">  وبلاگ </span></a>
                 <a href=""><span class="text-main title-4"> پیشنهاد ناب </span></a>
-                <a href=""><span class="text-main title-4"> تماس با ما </span></a>
+                <a href="/contact-us"><span class="text-main title-4"> تماس با ما </span></a>
             </div>
             <div class="col-xs-6 col-6 col-sm-4 col-md-4 col-lg-3 col-xl header-main-top-left">
 
@@ -37,10 +37,15 @@
                         <li><a class="signin" href="#0">  ورود </a></li>
                     </ul>
                 </nav>
-                <div class="col-xs- col- col-sm- col-md- col-lg- col-xl-6" v-if="user">
+                <div class="col-xs- col- col-sm- col-md- col-lg- col-xl-6" v-if="user && (!user.first_name || !user.last_name)" style="padding-right: 0px; padding-left: 0px">
                     <ul>
-                        <li style="padding-top: 8px" v-if="!user.first_name || !user.last_name"><a style="color: #676767" href="/user/profile">حساب کاربری</a></li>
-                        <li style="padding-top: 8px" v-if="user.first_name && user.last_name"><a style="color: #676767" href="/user/profile">{{user.first_name}} {{user.last_name}}</a></li>
+                        <li style="padding-top: 8px"><a style="color: #676767" href="/user/profile">حساب کاربری</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-xs- col- col-sm- col-md- col-lg- col-xl-6" v-if="user && user.first_name && user.last_name" style="padding-right: 0px; padding-left: 0px">
+                    <ul>
+                        <li style="padding-top: 8px"><a style="color: #676767" href="/user/profile">{{user.first_name}} {{user.last_name}}</a></li>
                     </ul>
                 </div>
 
@@ -131,22 +136,42 @@
                             </form>
                         </div>
 
-                        <div id="reset-password">
-                            <p class="form-message">Lost your password? Please enter your email address.</br> You will receive a link to create a new password.</p>
+                        <div id="reset-password" >
+                            <p class="form-message" v-if="allow !== 1"> رمز عبور جدید شما برابر با شماره همراهتان خواهد بود
+                                </br> و در صورت تمایل می توانید رمز عبور را از طریق وارد شدن به پنل کاربری خود تغییر دهید</p>
 
-                            <form class="form">
+                            <form class="form" v-if="allow !== 1">
                                 <p class="fieldset">
                                     <label class="image-replace email" for="reset-email">E-mail</label>
-                                    <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+                                    <input class="full-width has-padding has-border" v-model="phone_number" id="reset-email" type="number" placeholder="شماره همراه خود را وارد کنید">
                                     <span class="error-message">An account with this email does not exist!</span>
                                 </p>
 
                                 <p class="fieldset">
-                                    <input class="full-width has-padding" type="submit" value="Reset password">
+                                    <input class="full-width has-padding auth-button" type="button" @click="forgetCode" value="دریافت کد">
                                 </p>
+
+                                <div class="alert alert-warning" v-if="loadingForget === 0">
+                                    <div>
+                                        <span style="float: right"> در حال ارسال اطلاعات شما ...</span>
+                                    </div>
+                                    <div class="loader"></div>
+                                </div>
                             </form>
 
-                            <p class="form-bottom-message"><a href="#0">Back to log-in</a></p>
+                            <form class="form" v-if="allow === 1">
+                                <p class="fieldset">
+                                    <label class="image-replace email" for="reset-email">E-mail</label>
+                                    <input class="full-width has-padding has-border" v-model="code" id="reset-email" type="number" placeholder="کد تایید را وارد کنید">
+                                    <span class="error-message">An account with this email does not exist!</span>
+                                </p>
+
+                                <p class="fieldset">
+                                    <input class="full-width auth-button" type="button" @click="forgetCodeVerify" value="تایید">
+                                </p>
+
+                            <p class="form-bottom-message"><a href="#0">بازگشت به ورود</a></p>
+                            </form>
                         </div>
                         <a href="#0" class="close-form">Close</a>
                     </div>
@@ -310,11 +335,92 @@
                 show: '' ,
                 token: '' ,
                 user: [] ,
-                setting_data: []
+                setting_data: [] ,
+                loadingForget: '' ,
+                allow: 0
             }
         } ,
 
         methods: {
+            forgetCodeVerify() {
+                axios({
+                    url: '/api/forgetPassword/verify' ,
+                    method: 'post' ,
+                    headers: {
+                        accept: 'application/json'
+                    } ,
+                    data: {
+                        phone_number: this.phone_number ,
+                        code: this.code
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.$toasted.success(res.data.message, {
+                            position: 'bottom-center' ,
+                            theme: 'bubble' ,
+                            fitToScreen: true ,
+                            className: ['your-custom-class']
+                        }).goAway(3000);
+
+                        this.$toasted.success(res.data.password, {
+                            position: 'bottom-center' ,
+                            theme: 'bubble' ,
+                            fitToScreen: true ,
+                            className: ['your-custom-class']
+                        }).goAway(5000);
+
+                        setTimeout(function () {
+                            window.location = '/'
+                        } , 5000)
+
+                    })
+                    .catch(err => {
+                        console.log(err.response);
+                        this.$toasted.error(err.response.data.message, {
+                            position: 'bottom-center' ,
+                            theme: 'bubble' ,
+                            fitToScreen: true ,
+                            className: ['your-custom-class']
+                        }).goAway(3000);
+                    })
+            } ,
+            forgetCode() {
+                this.loadingForget = 0;
+                axios({
+                    url: '/api/forgetPassword' ,
+                    method: 'post' ,
+                    headers: {
+                        accept: 'application/json'
+                    } ,
+                    data: {
+                        phone_number: this.phone_number
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.$toasted.success(res.data.message, {
+                            position: 'bottom-center' ,
+                            theme: 'bubble' ,
+                            fitToScreen: true ,
+                            className: ['your-custom-class']
+                        }).goAway(3000);
+                        this.allow = 1;
+                        this.loadingForget = 1;
+                    })
+                    .catch(err => {
+                        this.loadingForget = 1;
+                        console.log(err.response);
+                        err.response.data.forEach(error => {
+                            this.$toasted.error(error, {
+                                position: 'bottom-center' ,
+                                theme: 'bubble' ,
+                                fitToScreen: true ,
+                                className: ['your-custom-class']
+                            }).goAway(3000);
+                        })
+                    })
+            } ,
             setting() {
                 axios({
                     url: '/api/setting/index' ,
@@ -326,6 +432,7 @@
                     .then(res => {
                         console.log(res);
                         this.setting_data = res.data[0];
+                        this.$emit('setting' , this.setting_data)
                     })
                     .catch(err => {
                         console.log(err.response);

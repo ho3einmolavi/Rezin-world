@@ -42,7 +42,7 @@
                     </div>
                     <div class="col col-sm col-xs col-md col-lg col-xl-4 card-main-left-subject-left">
                         <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-subject-left-top">
-                            <div class="stars" data-stars="5">
+                            <div class="stars" data-stars="3">
                                 <svg height="20" width="18" class="star rating" data-rating="1">
                                     <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"></polygon>
                                 </svg>
@@ -81,7 +81,7 @@
                     <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-like-between flex">
                         <div class="col col-sm col-xs col-md-4 col-lg col-xl-4 card-main-left-like-between-right">
                             <span> {{product.final_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} <span> تومان </span> </span>
-                            <span class="offer-number"> {{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</span>
+                            <span class="offer-number" v-if="product.price !== product.final_price"> {{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}}</span>
                         </div>
                         <div class="col col-sm col-xs col-md-8 col-lg col-xl-8 card-main-left-like-between-left flex">
                             <div class="col col-sm col-xs col-md col-lg col-xl-3 card-main-left-like-between-left-number">
@@ -110,54 +110,33 @@
                     <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-like-end">
                         <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-like-end-inside">
                             <span class="text-black"><i class="fas fa-calendar-alt"></i></span>
-                            <span class="text-black title-4"> 1398/12/03 </span>
+                            <span class="text-black title-4"> {{product.date}} </span>
                         </div>
                     </div>
 
                     <!--res-->
-                    <div class="col col-sm col-xs col-md col-lg col-xl-7 card-main-left-like-between-left-buy-res">
-                        <div class="buy-icon-res">
-                            <a href="/card/products"><span class="title-4"> لینک خرید محصول </span></a>
+                    <div style="cursor: pointer" class="col col-sm col-xs col-md col-lg col-xl-7 card-main-left-like-between-left-buy-res">
+                        <div class="buy-icon-res" @click="increasePrd(product)">
+                            <a><span class="title-4"> افزودن به سبد خرید </span></a>
                         </div>
-                        <div></div></div>
+                        <div></div>
+                    </div>
                     <!--end-res-->
 
                 </div>
                 <hr class="hr-page-card">
                 <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des flex">
                     <div class="col col-sm col-xs col-md col-lg col-xl-3 card-main-left-des-right">
-                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-right-inside">
-                            <span class="text-black title-4"> رنگ محصول </span>
+                        <div v-for="item in JSON.parse(product.features)" class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-right-inside">
+                            <span class="text-black title-4"> {{item.feature_name}} </span>
                         </div>
-                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-right-inside">
-                            <span class="text-black title-4"> رنگ محصول </span>
-                        </div>
-                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-right-inside">
-                            <span class="text-black title-4"> رنگ محصول </span>
-                        </div>
-                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-right-inside">
-                            <span class="text-black title-4"> رنگ محصول </span>
-                        </div>
-                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-right-inside">
-                            <span class="text-black title-4"> رنگ محصول </span>
-                        </div>
+
                     </div>
                     <div class="col col-sm col-xs col-md col-lg col-xl-9 card-main-left-des-left">
-                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-left-inside">
-                            <span class="text-black title-4"> خاکستری تیره  </span>
+                        <div v-for="item in JSON.parse(product.features)" class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-left-inside">
+                            <span class="text-black title-4"> {{item.feature_values.join(' ')}}  </span>
                         </div>
-                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-left-inside">
-                            <span class="text-black title-4"> خاکستری تیره  </span>
-                        </div>
-                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-left-inside">
-                            <span class="text-black title-4"> خاکستری تیره  </span>
-                        </div>
-                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-left-inside">
-                            <span class="text-black title-4"> خاکستری تیره  </span>
-                        </div>
-                        <div class="col col-sm col-xs col-md col-lg col-xl-12 card-main-left-des-left-inside">
-                            <span class="text-black title-4"> خاکستری تیره  </span>
-                        </div>
+
 
                     </div>
                 </div>

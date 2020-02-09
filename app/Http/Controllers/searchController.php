@@ -34,7 +34,19 @@ class searchController extends Controller
             }
             return response()->json($arr);
         }
-        return response($res);
+
+        if ($table === 'products')
+        {
+
+            foreach ($res as $item)
+            {
+                $item->images = explode(',' , $item->product_img);
+                unset($item->product_img);
+            }
+            return response()->json($res);
+        }
+
+        return response()->json($res);
     }
 
     public function deleteEverything($table , $id)

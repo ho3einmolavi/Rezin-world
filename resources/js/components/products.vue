@@ -124,7 +124,7 @@
                                     </div>
                                     <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom flex delete-padding">
                                         <div class="col-3 col-sm-3 col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box-bottom-bottom-buy">
-                                            <a @click="sent_to_card(product)"><i class="fas fa-shopping-basket"></i></a>
+                                            <a v-if="product.number" @click="sent_to_card(product)"><i class="fas fa-shopping-basket"></i></a>
                                         </div>
                                         <div class="col col-sm col-xs col-md- col-lg- col-xl-9 product-page-left-slider-inside-box-bottom-bottom-price delete-padding">
                                             <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-off">
@@ -166,28 +166,28 @@
                 <!--slide-4-->
                 <div class="col col-sm col-xs col-md-12 col-lg-12 col-xl-12 product-page-left-slider-inside flex margin-top-big table-responsive-md table-responsive-lg table-responsive-xl">
 
-                    <div class="col col-sm col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box delete-padding">
-                        <a href="#">
+                    <div v-for="item in latest" class="col col-sm col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box delete-padding">
+                        <a  >
                             <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-top">
-                                <img src="/img/page-product/img1.png">
+                                <a :href="'/single/' + item.id"><img :src="'/images/products/' + item.images[0]"></a>
                             </div>
                             <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom delete-padding">
                                 <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-top delete-padding">
                                     <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-top-subject">
-                                        <span class="text-black title-4">  برنج آوازه مشهد  </span>
+                                        <span class="text-black title-4"> {{item.title}}  </span>
                                     </div>
                                 </div>
                                 <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom flex delete-padding">
                                     <div class="col-3 col-sm-3 col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box-bottom-bottom-buy">
-                                        <a href="#"><i class="fas fa-shopping-basket"></i></a>
+                                        <a v-if="item.number" @click="sent_to_card(item)"><i class="fas fa-shopping-basket"></i></a>
                                     </div>
                                     <div class="col col-sm col-xs col-md- col-lg- col-xl-9 product-page-left-slider-inside-box-bottom-bottom-price delete-padding">
                                         <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-off">
-                                            <span class="price-none text-black title-4">250/000</span>
-                                            <span class="box-offer"> %10 </span>
+                                            <span class="price-none text-black title-4" v-if="item.price !== item.final_price">{{item.price}}</span>
+                                            <span class="box-offer" v-if="item.discount !== 1"> %{{Math.round((1 - item.discount) * 100)}} </span>
                                         </div>
                                         <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-none">
-                                            <span class="">  215/000 <span class=""> تومان  </span> </span>
+                                            <span class="">  {{item.final_price}} <span class=""> تومان  </span> </span>
                                         </div>
                                     </div>
                                 </div>
@@ -195,95 +195,6 @@
                         </a>
                     </div>
 
-
-                    <div class="col col-sm col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box delete-padding">
-                        <a href="#">
-                            <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-top">
-                                <img src="/img/page-product/img1.png">
-                            </div>
-                            <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom delete-padding">
-                                <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-top delete-padding">
-                                    <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-top-subject">
-                                        <span class="text-black title-4">  برنج آوازه مشهد  </span>
-                                    </div>
-                                </div>
-                                <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom flex delete-padding">
-                                    <div class="col-3 col-sm-3 col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box-bottom-bottom-buy">
-                                        <a href="#"><i class="fas fa-shopping-basket"></i></a>
-                                    </div>
-                                    <div class="col col-sm col-xs col-md- col-lg- col-xl-9 product-page-left-slider-inside-box-bottom-bottom-price delete-padding">
-                                        <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-off">
-                                            <span class="price-none text-black title-4">250/000</span>
-                                            <span class="box-offer"> %10 </span>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-none">
-                                            <span class="">  215/000 <span class=""> تومان  </span> </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="col col-sm col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box delete-padding">
-                        <a href="#">
-                            <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-top">
-                                <img src="img/page-product/img1.png">
-                            </div>
-                            <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom delete-padding">
-                                <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-top delete-padding">
-                                    <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-top-subject">
-                                        <span class="text-black title-4">  برنج آوازه مشهد  </span>
-                                    </div>
-                                </div>
-                                <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom flex delete-padding">
-                                    <div class="col-3 col-sm-3 col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box-bottom-bottom-buy">
-                                        <a href="#"><i class="fas fa-shopping-basket"></i></a>
-                                    </div>
-                                    <div class="col col-sm col-xs col-md- col-lg- col-xl-9 product-page-left-slider-inside-box-bottom-bottom-price delete-padding">
-                                        <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-off">
-                                            <span class="price-none text-black title-4">250/000</span>
-                                            <span class="box-offer"> %10 </span>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-none">
-                                            <span class="">  215/000 <span class=""> تومان  </span> </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div class="col col-sm col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box delete-padding">
-                        <a href="#">
-                            <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-top">
-                                <img src="/img/page-product/img1.png">
-                            </div>
-                            <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom delete-padding">
-                                <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-top delete-padding">
-                                    <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-top-subject">
-                                        <span class="text-black title-4">  برنج آوازه مشهد  </span>
-                                    </div>
-                                </div>
-                                <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom flex delete-padding">
-                                    <div class="col-3 col-sm-3 col-xs col-md- col-lg- col-xl-3 product-page-left-slider-inside-box-bottom-bottom-buy">
-                                        <a href="#"><i class="fas fa-shopping-basket"></i></a>
-                                    </div>
-                                    <div class="col col-sm col-xs col-md- col-lg- col-xl-9 product-page-left-slider-inside-box-bottom-bottom-price delete-padding">
-                                        <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-off">
-                                            <span class="price-none text-black title-4">250/000</span>
-                                            <span class="box-offer"> %10 </span>
-                                        </div>
-                                        <div class="col col-sm col-xs col-md- col-lg- col-xl-12 product-page-left-slider-inside-box-bottom-bottom-price-none">
-                                            <span class="">  215/000 <span class=""> تومان  </span> </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
                 </div>
                 <!--end-slide-4-->
             </div>
@@ -310,7 +221,8 @@
                 ok: '' ,
                 param: 'newest' ,
                 pagination: [] ,
-                searchflag: 0
+                searchflag: 0 ,
+                latest: []
             }
         } ,
 
@@ -355,9 +267,25 @@
             {
                 this.productsBySec(this.$route.params.main, this.$route.params.sec, this.param);
             }
+
+            this.latest_products();
         } ,
 
         methods: {
+            latest_products() {
+                axios({
+                    url: '/api/latest_products/4' ,
+                    method: 'get' ,
+
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.latest = res.data;
+                    })
+                    .catch(err => {
+                        console.log(err.response);
+                    })
+            } ,
             sent_to_card(product) {
                 this.$toasted.show('محصول اضافه شد', {
                     position: 'bottom-center' ,

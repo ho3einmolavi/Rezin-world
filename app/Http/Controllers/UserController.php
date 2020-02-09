@@ -329,7 +329,6 @@ class UserController extends Controller
             $user->update([
                 'verification' => '1' ,
                 'password' => bcrypt($request->phone_number) ,
-                'api_token' => Str::random(200),
             ]);
 
             return response()->json([
@@ -416,12 +415,6 @@ class UserController extends Controller
             ] , 404);
         }
 
-//        if (! $user->verification)
-//        {
-//            return new JsonResponse([
-//                'message' => ['این شماره تایید نشده است'],
-//            ] , 400);
-//        }
 
         if (($user->code == $code))
         {

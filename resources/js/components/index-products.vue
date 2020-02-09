@@ -34,15 +34,15 @@
                                     <div class="col col-sm col-xs col-md col-lg col-xl-12 rezin-name">
                                         <span class="title-4 text-black"> {{item.title}} </span>
                                     </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 rezin-model">
-                                        <span class="title-4 text-black"> مدل : transparent </span>
+                                    <div v-for="item1 in JSON.parse(item.features)" class="col col-sm col-xs col-md col-lg col-xl-12 rezin-model">
+                                        <span class="title-4 text-black"> {{item1.feature_name}} : {{item1.feature_values.join(' ')}} </span>
                                     </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 rezin-cod">
-                                        <span class="title-4 text-black"> کد BGRG04 حجم 60 میلی لیتر  </span>
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 rezin-number">
-                                        <span class="title-4 text-black">(بسته 4 عددی) </span>
-                                    </div>
+                                    <!--<div class="col col-sm col-xs col-md col-lg col-xl-12 rezin-cod">-->
+                                        <!--<span class="title-4 text-black"> کد BGRG04 حجم 60 میلی لیتر  </span>-->
+                                    <!--</div>-->
+                                    <!--<div class="col col-sm col-xs col-md col-lg col-xl-12 rezin-number">-->
+                                        <!--<span class="title-4 text-black">(بسته 4 عددی) </span>-->
+                                    <!--</div>-->
                                 </div>
                                 <hr class="hr-product-top">
                                 <div class="col col-sm col-xs col-md col-lg col-xl-12 product-rezin-inside-bottom flex delete-padding">
@@ -89,15 +89,15 @@
                                     <div class="col col-sm col-xs col-md col-lg col-xl-12 rezin-name">
                                         <span class="title-4 text-black"> {{item.title}} </span>
                                     </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 rezin-model">
-                                        <span class="title-4 text-black"> مدل : transparent </span>
+                                    <div v-for="item1 in JSON.parse(item.features)" class="col col-sm col-xs col-md col-lg col-xl-12 rezin-model">
+                                        <span class="title-4 text-black"> {{item1.feature_name}} : {{item1.feature_values.join(' ')}} </span>
                                     </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 rezin-cod">
-                                        <span class="title-4 text-black"> کد BGRG04 حجم 60 میلی لیتر  </span>
-                                    </div>
-                                    <div class="col col-sm col-xs col-md col-lg col-xl-12 rezin-number">
-                                        <span class="title-4 text-black">(بسته 4 عددی) </span>
-                                    </div>
+                                    <!--<div class="col col-sm col-xs col-md col-lg col-xl-12 rezin-cod">-->
+                                        <!--<span class="title-4 text-black"> کد BGRG04 حجم 60 میلی لیتر  </span>-->
+                                    <!--</div>-->
+                                    <!--<div class="col col-sm col-xs col-md col-lg col-xl-12 rezin-number">-->
+                                        <!--<span class="title-4 text-black">(بسته 4 عددی) </span>-->
+                                    <!--</div>-->
                                 </div>
                                 <hr class="hr-product-top">
                                 <div class="col col-sm col-xs col-md col-lg col-xl-12 product-rezin-inside-bottom flex delete-padding">

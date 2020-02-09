@@ -63,15 +63,22 @@ class AuthController extends Controller
             }
         }
 
+        if (auth()->user()->verification == 1)
+        {
+            $accessToken = auth()->user()->createToken('AuthToken')->accessToken;
 
-        $accessToken = auth()->user()->createToken('AuthToken')->accessToken;
-
-        //return a response
-        return response()->json([
-            'user' => auth()->user() ,
-            'access_token' => $accessToken
-        ]);
+            //return a response
+            return response()->json([
+                'user' => auth()->user() ,
+                'access_token' => $accessToken
+            ]);
+        }
+        else
+        {
+            return \response()->json(['شماره همراه کاربر تایید نشده است'], 400);
+        }
     }
+
 
     public function getCode($phone_number , $code)
     {

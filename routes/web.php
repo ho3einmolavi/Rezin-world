@@ -43,13 +43,9 @@ Route::get('/faq' , function () {
     return view('products');
 });
 
-Route::get('/about-us' , function () {
-    return view('products');
-});
+Route::get('/about-us' , 'MainController@about');
 
-Route::get('/contact-us' , function () {
-    return view('products');
-});
+Route::get('/contact-us' ,'MainController@contact_us');
 
 Route::get('/admin/{any}' , function () {
     return view('admin');
@@ -63,9 +59,6 @@ Route::get('/details/{any}' , function () {
     return view('admin');
 })->where('any', '.*');
 
-Route::get('/adminOrdersDetails/{any}' , function () {
-    return view('admin');
-})->where('any', '.*');
 
 Route::get('/product/{any}' , function () {
     return view('admin');
@@ -74,5 +67,9 @@ Route::get('/product/{any}' , function () {
 Route::get('/payment-success' , function () {
     return view('payment');
 })->name('pay.success');
+
+Route::get('/payment-error' , function () {
+    return view('payment-error');
+})->name('pay.error');
 
 
