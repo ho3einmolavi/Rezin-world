@@ -81,6 +81,8 @@
                         this.code = res.data.code;
                         this.loading = 0;
                         this.ok = 1;
+                        localStorage.removeItem('toPay');
+                        localStorage.removeItem('order');
                         //this.sendMessage(this.code);
                     })
                     .catch(err => {

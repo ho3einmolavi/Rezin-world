@@ -19,7 +19,11 @@
 
 <script>
     export default {
-        name: "pay-error"
+        name: "pay-error" ,
+        created() {
+            localStorage.removeItem('toPay');
+            localStorage.removeItem('order');
+        }
     }
 </script>
 
