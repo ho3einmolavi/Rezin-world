@@ -224,6 +224,61 @@
                        {
                            this.create_orders();
                        }
+                       if (this.payMethod === 'online')
+                       {
+                           this.loading = 1;
+                           let cost = '';
+                           let factor = '';
+                           if (this.cost_after_off)
+                           {
+                               cost = this.cost_after_off;
+                           }
+                           else
+                           {
+                               cost = this.cost(this.orders);
+                           }
+
+                           if (this.setting.sending_cost)
+                           {
+                               cost += this.setting.sending_cost;
+                           }
+                           if (!this.factor)
+                           {
+                               factor = 0;
+                           }
+                           else
+                           {
+                               factor = this.factor;
+                           }
+
+                           let toPay = {
+                               products: this.orders ,
+                               total: cost ,
+                               factor: factor ,
+                               payment_method: this.payMethod
+
+                           } ;
+                           axios({
+                               url: '/api/zarinpal/request' ,
+                               method: 'post' ,
+                               data: {
+                                   price: cost
+                               } ,
+                               headers: {
+                                   Accept: 'application/json' ,
+                                   Authorization: `Bearer ${localStorage.token}`
+                               }
+                           })
+                               .then(res => {
+                                   this.loading = 0;
+                                   localStorage.setItem('toPay' , JSON.stringify(toPay));
+                                   window.open(res.data)
+                               })
+                               .catch(err => {
+                                   this.loading = 0;
+                                   console.log(err.response)
+                               })
+                       }
                    }
                    else
                    {

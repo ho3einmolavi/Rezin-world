@@ -74,6 +74,9 @@
                 axios({
                     url: `/api/comment/verify/${id}` ,
                     method: 'get' ,
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
                 })
                     .then(res => {
                         console.log(res);

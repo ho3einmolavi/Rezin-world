@@ -1,7 +1,9 @@
 <template>
     <div class="col-xs col-sm col- col-md col-lg col-xl-12 pay-Successful">
-        <center >
-            <div class="col-xs col-sm col- col-md col-lg col-xl-10 pay-Successful-inside">
+        <center>
+            <div v-if="loading === 1" class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+
+            <div v-if="ok === 1" class="col-xs col-sm col- col-md col-lg col-xl-10 pay-Successful-inside">
                 <div class="col-xs col-sm col- col-md col-lg col-xl-10 pay-Successful-inside-img">
                     <img src="/img/pay/success.png">
                 </div>
@@ -13,39 +15,79 @@
                 </div>
             </div>
         </center>
-        <!--<center v-if="loading === 1">-->
-            <!--<div class="col-xs col-sm col- col-md col-lg col-xl-10 pay-Successful-inside">-->
-                <!--<div class="col-xs col-sm col- col-md col-lg col-xl-10 text-gray">-->
-                    <!--<span >  لطفا منتظر بمانید  </span>-->
-                <!--</div>-->
-                <!--<div class="col-xs col-sm col- col-md col-lg col-xl-10 pay-Successful-inside-img">-->
-                    <!--<div class="lds-ellipsis" ><div></div><div></div><div></div><div></div></div>-->
-                <!--</div>-->
-
-            <!--</div>-->
-
-        <!--</center>-->
     </div>
 </template>
 
 <script>
     export default {
         name: "pay-success" ,
-
+        props: ['pay_id'] ,
 
         data() {
             return {
-                code: ''
+                order: [] ,
+                code: '' ,
+                loading: '' ,
+                ok: 0 ,
             }
         } ,
         created() {
-            this.get_code();
+            this.get_order();
         } ,
 
         methods: {
-            get_code() {
-                this.code = localStorage.getItem('tracking_code')
-            }
+            sendMessage(code) {
+                axios({
+                    url: '/api/sendMessage' ,
+                    method: 'post' ,
+                    data: {
+                        code: code,
+                    } ,
+                    headers: {
+                        Accept: 'application/json' ,
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                    })
+                    .catch(err => {
+                        console.log(err.response);
+                    })
+            } ,
+            get_order() {
+                this.order = JSON.parse(localStorage.getItem('toPay'));
+                this.create_orders();
+            } ,
+            create_orders() {
+                this.loading = 1;
+                axios({
+                    url: '/api/order/create' ,
+                    method: 'post' ,
+                    data: {
+                        total: this.order.total ,
+                        products: this.order.products ,
+                        factor: this.order.factor ,
+                        payment_method: this.order.payment_method ,
+                        pay_id: this.pay_id ,
+                    } ,
+                    headers: {
+                        Accept: 'application/json' ,
+                        Authorization: `Bearer ${localStorage.token}`
+                    }
+                })
+                    .then(res => {
+                        console.log(res);
+                        this.code = res.data.code;
+                        this.loading = 0;
+                        this.ok = 1;
+                        //this.sendMessage(this.code);
+                    })
+                    .catch(err => {
+                        this.loading = 0;
+                        console.log(err.response);
+                    })
+            } ,
         }
     }
 </script>
@@ -63,7 +105,7 @@
         width: 13px;
         height: 13px;
         border-radius: 50%;
-        background: #1b73f4;
+        background: #ff7a76;
         animation-timing-function: cubic-bezier(0, 1, 1, 0);
     }
     .lds-ellipsis div:nth-child(1) {

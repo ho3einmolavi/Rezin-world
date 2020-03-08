@@ -21,7 +21,7 @@ class sendCodeToNewUserListener
                 'password' => bcrypt($event->password) ,
                 'code' =>  $event->code ,
             ]);
-            $accessToken = $user->createToken('AuthToken')->accessToken;
+            $accessToken = $user->createToken('AuthToken' , ['user'])->accessToken;
             return response()->json([
                 'message' => $sms->getOriginalContent() ,
                 'user' => $user ,

@@ -12,11 +12,11 @@
                     <i class="fas fa-credit-card"></i>
                     <span class="title-3"> پرداخت اینترنتی هوشمند  <span class="title-6"> (آنلاین با تمامی کارت های بانکی) </span></span>
                 </div>
-                <div class="col-xs col-sm col- col-md col-lg col-xl-12 card-right-bottom-two delete-padding">
-                    <input type="radio" name="gender" v-model="payMethod" value="offline" @change="checkPayMethod">
-                    <i class="fab fa-cc-amazon-pay"></i>
-                    <span class="title-3">پرداخت در محل با کارت بانکی   <span class="title-6"> (پرداخت در هنگام تحویل سفارش  با تمامی کارت های بانکی عضو شتاب )</span></span>
-                </div>
+                <!--<div class="col-xs col-sm col- col-md col-lg col-xl-12 card-right-bottom-two delete-padding">-->
+                    <!--<input type="radio" name="gender" v-model="payMethod" value="offline" @change="checkPayMethod">-->
+                    <!--<i class="fab fa-cc-amazon-pay"></i>-->
+                    <!--<span class="title-3">پرداخت در محل با کارت بانکی   <span class="title-6"> (پرداخت در هنگام تحویل سفارش  با تمامی کارت های بانکی عضو شتاب )</span></span>-->
+                <!--</div>-->
             </div>
         </div>
         <!--end-1-->

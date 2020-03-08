@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Invoice;
 use App\Order;
 use App\Product;
 use Illuminate\Http\JsonResponse;
@@ -86,9 +87,17 @@ class OrderController extends Controller
             }
         }
 
-        return response()->json(['order' => $order ,
-            'date' => Jalalian::forge($order->created_at)->format('%A, %d %B %y'),
-            'time' =>  Jalalian::forge($order->created_at)->format('H:i:s')]);
+        $invoice = Invoice::where('transaction_id' , $request->pay_id)->first();
+        $invoice->update([
+            'order_id' => $order->id
+        ]);
+        $order->update([
+            'invoice_id' => $invoice->id
+        ]);
+        return response()->json([
+            'message' => 'order created' ,
+            'code' => $order->tracking_code
+        ]);
     }
 
     public function index()

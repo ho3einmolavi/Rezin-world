@@ -192,6 +192,9 @@
                         url: `/api/product/edit/${id}` ,
                         method: 'post' ,
                         data: data ,
+                        headers: {
+                            Authorization: `Bearer ${localStorage.getItem('token')}`
+                        } ,
                         onUploadProgress: uploadEvent => {
                             this.percent = Math.round(uploadEvent.loaded / uploadEvent.total * 100);
                         }

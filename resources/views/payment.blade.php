@@ -27,7 +27,7 @@
 </head>
 <body>
 <div id="app">
-    <payment-is-successful></payment-is-successful>
+    <payment-is-successful pay_id="{{ session('pay_id') }}"></payment-is-successful>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src='/js/login-register/login.js'></script>

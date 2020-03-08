@@ -103,6 +103,10 @@ Vue.component('about', require('./components/about.vue').default);
 Vue.component('payment-is-successful', require('./components/payment-is-successful.vue').default);
 Vue.component('payment-failed', require('./components/payment-failed.vue').default);
 Vue.component('pay-error', require('./components/pay-error.vue').default);
+Vue.component('admin-register', require('./components/admin-register.vue').default);
+Vue.component('admin-auth', require('./components/admin-auth.vue').default);
+Vue.component('admin-login', require('./components/admin-login.vue').default);
+Vue.component('forbidden', require('./components/forbidden.vue').default);
 
 
 
@@ -139,6 +143,9 @@ const routes = [
     {path: '/user/changePassword',name:'card',component:require('./components/user-changePassword.vue').default } ,
     {path: '/about-us',name:'card',component:require('./components/about-us.vue').default } ,
     {path: '/contact-us',name:'card',component:require('./components/contact-us.vue').default } ,
+    {path: '/register/admin',component:require('./components/admin-register.vue').default } ,
+    {path: '/login/admin',component:require('./components/admin-login.vue').default } ,
+    // {path: '/forbidden/403',component:require('./components/forbidden.vue').default } ,
 
 ];
 

@@ -49,15 +49,19 @@ Route::post('/logo' , 'SettingController@logo');
 //passport
 Route::post('/register' , 'AuthController@register');
 Route::post('/login' , 'AuthController@login');
+Route::post('/registerAdmin' , 'AuthController@registerAdmin');
+Route::post('/loginAdmin' , 'AuthController@loginAdmin');
+Route::get('/check/admin' , function (){
+    return auth()->user();
+})->middleware(['auth:api', 'scope:admin']);
 
 
 
 //users
 Route::get('/users' , 'UserController@index');
-Route::post('/sendMessage' , 'UserController@sendMessage');
+Route::post('/sendMessage' , 'UserController@sendMessage')->middleware('auth:api');
 Route::post('/forgetPassword' , 'UserController@forgetPassword');
 Route::post('/forgetPassword/verify' , 'UserController@forgetPassword_verify');
-//Route::post('/login' , 'UserController@login');
 Route::post('/getcode' , 'UserController@getCode');
 Route::post('/verification' , 'UserController@verificationTheCode');
 Route::post('/{id}/deleteUser' , 'UserController@deleteUser');
@@ -76,11 +80,11 @@ Route::post('/search/{param}' , 'ProductController@search');
 Route::get('/product/{id}' , 'ProductController@show');
 Route::get('/index' , 'ProductController@index');
 Route::get('/sameProducts/{id}' , 'ProductController@sameProducts');
-Route::post('/product/edit/{id}' , 'ProductController@edit');
-Route::post('/store' , 'ProductController@store');
+Route::post('/product/edit/{id}' , 'ProductController@edit')->middleware(['auth:api', 'scope:admin']);
+Route::post('/store' , 'ProductController@store')->middleware(['auth:api', 'scope:admin']);
 Route::get('/mostSale' , 'ProductController@mostSale');
 Route::get('/latest_products/{number}' , 'ProductController@latest_products');
-Route::get('/addtoslideshow/{id}' , 'ProductController@addToSlideShow');
+Route::get('/addtoslideshow/{id}' , 'ProductController@addToSlideShow')->middleware(['auth:api', 'scope:admin']);
 Route::get('/slideShow' , 'ProductController@getSlideShow');
 Route::post('/filters/brands' , 'ProductController@filterByBrands');
 Route::get('/filters/category/{id}/{param}' , 'ProductController@filterByCategory');
@@ -92,17 +96,17 @@ Route::post('/search/{table}/{param}' , 'searchController@search');
 Route::get('/{table}/{id}/delete' , 'searchController@deleteEverything');
 
 //orders
-Route::post('/order/create' , 'OrderController@create')->middleware('auth:api');
+Route::post('/order/create' , 'OrderController@create')->middleware(['auth:api']);
 Route::get('/orders' , 'OrderController@index');
 Route::get('/check/order/{id}' , 'OrderController@show')->middleware('auth:api');
-Route::get('/user/orders' , 'OrderController@userOrders')->middleware('auth:api');
-Route::get('/verify/order/{id}' , 'OrderController@verify');
+Route::get('/user/orders' , 'OrderController@userOrders')->middleware(['auth:api']);
+Route::get('/verify/order/{id}' , 'OrderController@verify')->middleware(['auth:api', 'scope:admin']);
 
 
 //comments
 Route::post('/store/comment' , 'CommentController@store')->middleware($middleware);
 Route::get('/comments/{product_id}' , 'CommentController@index');
-Route::get('/comment/verify/{id}' , 'CommentController@verify');
+Route::get('/comment/verify/{id}' , 'CommentController@verify')->middleware(['auth:api', 'scope:admin']);
 Route::get('/allComments' , 'CommentController@allComments');
 Route::get('/comments_in_index' , 'CommentController@comments_in_index');
 
@@ -113,19 +117,12 @@ Route::post('/update/baner/{id}' , 'BanerController@update');
 Route::get('/productsPage/baner' , 'BanerController@showProductsPageBaner');
 
 
-////for android app
-//Route::post('/register' , 'UserController@registerForApp');
-//Route::post('/app/verifyCode' , 'UserController@verificationTheCodeForApp');
-//Route::post('/app/getcode' , 'UserController@getCodeForApp');
-//Route::get('/newProducts' , 'ProductController@newProductsForApp');
-//Route::get('/mostDiscounted' , 'ProductController@mostDiscountedForApp');
-//Route::post('/price/filter' , 'ProductController@productsByPriceForApp');
-//Route::post('/app/filters/category/{main}/{third}/third' , 'ProductController@productsByThirdCatForApp');
-//Route::post('/app/search' , 'ProductController@searchForApp');
+//zarinpal
+Route::post('/zarinpal/request' , 'InvoiceController@zarinPal_request');
 
 
 //articles
-Route::post('/article/store' , 'ArticleController@store')->middleware('auth:api');
+Route::post('/article/store' , 'ArticleController@store')->middleware(['auth:api', 'scope:admin']);
 Route::get('/articles' , 'ArticleController@index');
 Route::get('/articlesForShow' , 'ArticleController@show');
-Route::post('/article/{id}' , 'ArticleController@update')->middleware('auth:api');
+Route::post('/article/{id}' , 'ArticleController@update')->middleware(['auth:api', 'scope:admin']);

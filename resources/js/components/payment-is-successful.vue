@@ -1,7 +1,7 @@
 <template>
     <div>
         <another-header @setting="get_setting($event)"></another-header>
-        <pay-success></pay-success>
+        <pay-success :pay_id="pay_id"></pay-success>
         <main-footer :setting="setting"></main-footer>
     </div>
 </template>
@@ -9,6 +9,8 @@
 <script>
     export default {
         name: "payment-is-successful" ,
+
+        props: ['pay_id'] ,
 
         data() {
             return {

@@ -206,8 +206,6 @@ class UserController extends Controller
     public function sendMessage(Request $request)
     {
         $validator = Validator::make($request->all() , [
-            'phone_number' => ['required' , 'iran_mobile'],
-            'first_name' => ['required'],
             'code' => ['required'],
         ]);
 
@@ -217,10 +215,10 @@ class UserController extends Controller
         }
 
         $client = new Client();
-
+        $user = \auth()->user();
         $body = [
-            'receptor' => $request->phone_number,
-            'token' => $request->first_name,
+            'receptor' => $user->phone_number,
+            'token' => $user->first_name ,
             'token2' => $request->code,
             'template' => 'order'
         ];

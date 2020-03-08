@@ -1,17 +1,20 @@
 <template>
     <div>
-        <another-header @setting="get_setting($event)"></another-header>
-        <section>
-            <center>
-                <div class="col col-sm col-xs col-md col-lg col-xl-12 dashboard-page flex">
-                    <user-dashboard></user-dashboard>
-                    <user-dashboard-res></user-dashboard-res>
+        <div v-if="ok === 1">
+            <another-header @setting="get_setting($event)"></another-header>
+            <section>
+                <center>
+                    <div class="col col-sm col-xs col-md col-lg col-xl-12 dashboard-page flex">
+                        <user-dashboard></user-dashboard>
+                        <user-dashboard-res></user-dashboard-res>
 
-                    <router-view></router-view>
-                </div>
-            </center>
-        </section>
-        <main-footer :setting="setting"></main-footer>
+                        <router-view></router-view>
+                    </div>
+                </center>
+            </section>
+            <main-footer :setting="setting"></main-footer>
+        </div>
+        <forbidden v-if="ok === 0"></forbidden>
     </div>
 </template>
 
@@ -20,11 +23,35 @@
         name: "user" ,
         data() {
             return {
-                setting: []
+                setting: [] ,
+                loggedInUser: null ,
+                ok: ''
             }
         } ,
 
+        created() {
+            this.checkForUser();
+        } ,
+
         methods: {
+            checkForUser() {
+                axios({
+                    method: 'get' ,
+                    url: '/api/user' ,
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                })
+                    .then(res => {
+                        this.ok = 1;
+                        console.log(res);
+
+                    })
+                    .catch(err => {
+                        this.ok = 0;
+                        console.log(err.response);
+                    })
+            } ,
             get_setting(event) {
                 this.setting = event
             },

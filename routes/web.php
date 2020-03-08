@@ -72,4 +72,15 @@ Route::get('/payment-error' , function () {
     return view('payment-error');
 })->name('pay.error');
 
+Route::get('/register/admin' , function () {
+    return view('adminAuth');
+});
+
+Route::get('/login/admin' , function () {
+    return view('adminAuth');
+});
+
+Route::get('/zarinpal/callback/{price}' ,'InvoiceController@callback')->name('zarinpal.verify');
+
+
 

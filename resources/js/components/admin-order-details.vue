@@ -110,6 +110,7 @@
                     method: 'get' ,
                     headers: {
                         Accept: 'application/json' ,
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
                     }
                 })
                     .then(res => {

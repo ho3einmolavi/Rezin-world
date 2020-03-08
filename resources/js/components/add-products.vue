@@ -194,7 +194,8 @@
                         method: 'post' ,
                         data: data ,
                         headers: {
-                            'Content-type': 'multipart/form-data'
+                            'Content-type': 'multipart/form-data' ,
+                            Authorization: `Bearer ${localStorage.getItem('token')}`
                         } ,
                         onUploadProgress: uploadEvent => {
                             this.percent = Math.round(uploadEvent.loaded / uploadEvent.total * 100);
