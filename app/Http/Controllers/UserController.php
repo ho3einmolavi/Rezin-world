@@ -487,7 +487,7 @@ class UserController extends Controller
         $valid = Validator::make($request->all(), [
             'phone' =>'nullable|numeric',
             'phone_number' => 'required|iran_mobile' ,
-            'postal_code' =>'required|numeric',
+            'postal_code' =>'nullable|numeric',
             'address' => 'required' ,
             'first_name' => 'required' ,
             'last_name' => 'required' ,

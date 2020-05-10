@@ -118,35 +118,37 @@ class OrderController extends Controller
 
     public function show($id , Request $request)
     {
-        $user = auth()->user();
+       // $user = auth()->user();
         $order = Order::find($id);
 
         if ($order)
         {
-            if ($order->user->id === $user->id || $user->type === 'admin')
-            {
-                foreach ($order->products as $product)
-                {
-                    $productsID[] = $product['id'];
-                }
-                $res = $this->find($order['id'] , $productsID);
+//            if ($order->user->id === $user->id || $user->type === 'admin')
+//            {
+//
+//
+//            }
+//            else
+//            {
+//                return new JsonResponse("شما اجازه دسترسی به این صفحه را ندارید" , 401);
+//            }
 
-                unset($order['user']);
-                unset($order['products']);
-                return new JsonResponse([
-                    'message' => "it's ok" ,
-                    'tracking_code' => $order->tracking_code ,
-                    'order' => $order ,
-                    'user' => $order->user ,
-                    'products' => $res ,
-                    'check' => 1
-                ] , 200);
-
-            }
-            else
+            foreach ($order->products as $product)
             {
-                return new JsonResponse("شما اجازه دسترسی به این صفحه را ندارید" , 401);
+                $productsID[] = $product['id'];
             }
+            $res = $this->find($order['id'] , $productsID);
+
+            unset($order['user']);
+            unset($order['products']);
+            return new JsonResponse([
+                'message' => "it's ok" ,
+                'tracking_code' => $order->tracking_code ,
+                'order' => $order ,
+                'user' => $order->user ,
+                'products' => $res ,
+                'check' => 1
+            ] , 200);
         }
         else
         {

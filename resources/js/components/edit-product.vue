@@ -280,7 +280,6 @@
                         this.brands = [];
                     })
             } ,
-
             get_product(id) {
                 axios({
                     url: `/api/product/${id}` ,

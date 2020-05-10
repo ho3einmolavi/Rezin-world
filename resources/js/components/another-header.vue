@@ -193,11 +193,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col col-sm col-md-2 col-lg col-xl-1  logo-like flex delete-padding">
-                        <span class="text-main"><i class="far fa-heart"></i> </span>
-                        <span class="text-main title-4 tuman">  مورد علاقه </span>
-                        <span style="color: red;" class="tuman"> 1 </span>
-                    </div>
+                    <!--<div class="col col-sm col-md-2 col-lg col-xl-1  logo-like flex delete-padding">-->
+                        <!--<span class="text-main"><i class="far fa-heart"></i> </span>-->
+                        <!--<span class="text-main title-4 tuman">  مورد علاقه </span>-->
+                        <!--<span style="color: red;" class="tuman"> 1 </span>-->
+                    <!--</div>-->
                     <div  class="col-1 col-sm col-md-2 col-lg col-xl-1 logo-buy-cart flex delete-padding">
                         <a href="/card/products"><span class="text-main"> <i class="fas fa-cart-plus"></i> </span></a>
                         <a href="/card/products"><span class="text-main title-4 tuman"> {{show.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}} تومان  </span></a>

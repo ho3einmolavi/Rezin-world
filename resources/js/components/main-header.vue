@@ -18,7 +18,7 @@
 
 
             <div class="col-xs-6 col-5 col-sm-6 col-md-5 col-lg col-xl logo-site-res">
-                <img src="/img/header/payjoy.png">
+                <img :src="'/images/logo/' + setting_data.logo">
             </div>
             <div class="col-xs-6 col-5 col-sm-6 col-md-8 col-lg col-xl-10 header-main-top-right delete-res">
                 <a href="/"><span class="text-main title-4">  صفحه اصلی </span></a>
@@ -207,11 +207,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col col-sm col-md-2 col-lg col-xl-1  logo-like flex delete-padding">
-                        <span class="text-main"><i class="far fa-heart"></i> </span>
-                        <span class="text-main title-4 tuman">  مورد علاقه </span>
-                        <span style="color: red;" class="tuman"> 1 </span>
-                    </div>
+                    <!--<div class="col col-sm col-md-2 col-lg col-xl-1  logo-like flex delete-padding">-->
+                        <!--<span class="text-main"><i class="far fa-heart"></i> </span>-->
+                        <!--<span class="text-main title-4 tuman">  مورد علاقه </span>-->
+                        <!--<span style="color: red;" class="tuman"> 1 </span>-->
+                    <!--</div>-->
                     <div class="col-1 col-sm col-md-2 col-lg col-xl-1 logo-buy-cart flex delete-padding">
                         <a href="/card/products">
                             <span class="text-main"> <i class="fas fa-cart-plus"></i></span>

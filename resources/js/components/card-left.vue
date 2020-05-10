@@ -200,7 +200,7 @@
                else if (this.$route.path === '/card/address')
                {
                    if (this.user.first_name && this.user.last_name
-                        && this.user.address && this.user.postal_code)
+                        && this.user.address)
                    {
                        this.$router.push({ path: '/card/pay' })
                    }

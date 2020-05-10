@@ -74,7 +74,7 @@
 
                 <div class="form-row">
                     <div class="col-xl-12 mb-3">
-                        <input type="text" class="form-control" v-model="show.postal_code" id="validadetionTooltip01" placeholder ="کدپستی" required>
+                        <input type="text" class="form-control" v-model="show.postal_code" id="validadetionTooltip01" placeholder ="کدپستی (اختیاری)" required>
                         <div class="valid-tooltip">
                             Looks good!
                         </div>

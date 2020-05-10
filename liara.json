@@ -1,3 +1,8 @@
 {
-  "volume": "/var/www/html/public/images"
+  "disks": [
+    {
+      "name": "disk",
+      "mountTo": "/var/www/html/public/images"
+    }
+  ]
 }
